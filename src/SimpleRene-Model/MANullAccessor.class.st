@@ -18,9 +18,9 @@ MANullAccessor class >> isAbstract [
 { #category : #'instance creation' }
 MANullAccessor class >> new [
 	| random uuid |
-	random := Random new next.
+	random := Random new.
 	uuid := Array new: 16.
-	1 to: 16 do: [ :i | uuid at: i put: (random nextInt: 256) -1 ].
+	1 to: 16 do: [ :i | uuid at: i put: (random next: 256) -1 ].
 	^ self uuid: uuid
 ]
 
