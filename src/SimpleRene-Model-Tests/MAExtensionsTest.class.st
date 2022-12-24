@@ -46,7 +46,7 @@ MAExtensionsTest >> testCopyWithoutFirst [
 	self deny: col == res.
 
 	col := Set with: #a with: #b with: #c.
-	res := col copyWithoutFirstOccurrenceOf: #a.
+	res := col simpleReneCopyWithoutFirstOccurrenceOf: #a.
 	self assert: res size = 2.
 	self assert: (res includes: #b).
 	self assert: (res includes: #c).

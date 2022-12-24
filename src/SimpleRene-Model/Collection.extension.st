@@ -21,6 +21,16 @@ Collection >> simpleReneCopyWithAll: aCollection [
 ]
 
 { #category : #'*SimpleRene-Model' }
+Collection >> simpleReneCopyWithoutFirstOccurrenceOf: anObject [
+	| done |
+	done := false.
+	^ self reject: [ :each |
+		each = anObject
+			and: [ done not
+			and: [ done := true ] ] ]
+]
+
+{ #category : #'*SimpleRene-Model' }
 Collection >> simpleReneSelectMatching: aString [ 
 	^ self select: [ :e | e asString beginsWith: aString ]
 ]
