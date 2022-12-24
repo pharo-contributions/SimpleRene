@@ -6,11 +6,11 @@ UndefinedObject >> asSimpleReneAccessor [
 ]
 
 { #category : #'*SimpleRene-Model' }
-UndefinedObject >> simpleReneLabel [
-	^ 'n/a'
+UndefinedObject >> simpleReneDescription [
+	^ MAContainer new
 ]
 
 { #category : #'*SimpleRene-Model' }
-UndefinedObject >> simpleReneMagritteDescription [
-	^ MAContainer new
+UndefinedObject >> simpleReneLabel [
+	^ 'n/a'
 ]

@@ -79,7 +79,7 @@ MAElementDescription >> storeOn: aStream [
 	aStream 
 		nextPutAll: self className;
 		nextPutAll: ' new'; cr.
-	(self simpleReneMagritteDescription reject: #isReadOnly) do: [ :desc |
+	(self simpleReneDescription reject: #isReadOnly) do: [ :desc |
 		| value |
 		value := desc read: self.
 		(value ~= desc default and: [ value isNotNil ]) ifTrue: [ 

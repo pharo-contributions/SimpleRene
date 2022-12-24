@@ -34,7 +34,7 @@ MAMementoTest >> descriptionInstance [
 
 { #category : #accessing }
 MAMementoTest >> descriptionValue [
-	^ self simpleReneMagritteDescription children first
+	^ self simpleReneDescription children first
 ]
 
 { #category : #private }
@@ -90,7 +90,7 @@ MAMementoTest >> setUp [
 ]
 
 { #category : #'acessing-magritte' }
-MAMementoTest >> simpleReneMagritteDescription [
+MAMementoTest >> simpleReneDescription [
 	^ description
 ]
 
@@ -101,8 +101,8 @@ MAMementoTest >> testCommit [
 
 { #category : #'tests-accessing' }
 MAMementoTest >> testDescription [
-	self assert: self memento simpleReneMagritteDescription = self simpleReneMagritteDescription.
-	self assert: self memento simpleReneMagritteDescription = self descriptionInstance
+	self assert: self memento simpleReneDescription = self simpleReneDescription.
+	self assert: self memento simpleReneDescription = self descriptionInstance
 ]
 
 { #category : #'tests-accessing' }

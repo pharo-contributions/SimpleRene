@@ -9,7 +9,7 @@ Object >> basicSimpleReneDescription [
 Object >> initializeSimpleRene [
 	"Initializes the receiving object with the default values of its description."
 
-	self simpleReneMagritteDescription do: [ :each |
+	self simpleReneDescription do: [ :each |
 		each isReadOnly
 			ifFalse: [ self simpleReneWrite: each default using: each ] ]
 ]
@@ -21,7 +21,7 @@ Object >> isSimpleReneDescription [
 
 { #category : #'*SimpleRene-Model' }
 Object >> isSimpleReneSameAs: rhs [
-	^ self isSimpleReneSameAs: rhs using: [ self simpleReneMagritteDescription ]
+	^ self isSimpleReneSameAs: rhs using: [ self simpleReneDescription ]
 ]
 
 { #category : #'*SimpleRene-Model' }
@@ -48,6 +48,13 @@ Object class >> magritteTemplate [
 	^self new
 ]
 
+{ #category : #'*SimpleRene-Model-builder' }
+Object >> simpleReneDescription [
+	
+	^  self basicSimpleReneDescription
+
+]
+
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneDescriptionContainer [
 
@@ -61,7 +68,7 @@ Object >> simpleReneDescriptionContainer [
 
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneHash [
-	^ self simpleReneHashUsing: [ self simpleReneMagritteDescription ]
+	^ self simpleReneHashUsing: [ self simpleReneDescription ]
 ]
 
 { #category : #'*SimpleRene-Model' }
@@ -87,13 +94,6 @@ Object >> simpleReneMagritteActions [
 	^ (MAActionPragmaBuilder for: self) children
 ]
 
-{ #category : #'*SimpleRene-Model-builder' }
-Object >> simpleReneMagritteDescription [
-	
-	^  self basicSimpleReneDescription
-
-]
-
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneMementoClass [
 	"Return a class to be used to remember or cache the receiver, namely a memento object."
@@ -112,7 +112,7 @@ Object >> simpleReneReadUsing: aDescription [
 
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneValidate [
-	^ self simpleReneMagritteDescription validate: self
+	^ self simpleReneDescription validate: self
 ]
 
 { #category : #'*SimpleRene-Model' }

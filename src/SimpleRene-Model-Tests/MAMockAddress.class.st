@@ -19,31 +19,31 @@ MAMockAddress >> = anObject [
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionNilled1 [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionNilled1: aDescription [
-	<magritteDescription: #descriptionNilled1>
+	<simpleReneDescription: #descriptionNilled1>
 	^ aDescription beRequired
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionNilled2 [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionNilled2: aDescription [
-	<magritteDescription: #descriptionNilled2>
+	<simpleReneDescription: #descriptionNilled2>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionPlace [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #place;
 		label: 'Place';
@@ -52,19 +52,19 @@ MAMockAddress >> descriptionPlace [
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionPlace: aDescription [
-	<magritteDescription: #descriptionPlace>
+	<simpleReneDescription: #descriptionPlace>
 	^ aDescription beRequired
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionPlaceOther: aDescription [
-	<magritteDescription: #descriptionPlace>
+	<simpleReneDescription: #descriptionPlace>
 	^ aDescription beHidden
 ]
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionPlz [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MANumberDescription new
 		accessor: #plz;
 		label: 'PLZ';
@@ -73,7 +73,7 @@ MAMockAddress >> descriptionPlz [
 
 { #category : #'acessing-magritte' }
 MAMockAddress >> descriptionStreet [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #street;
 		label: 'Street';

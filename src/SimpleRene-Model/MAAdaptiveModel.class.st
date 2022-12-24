@@ -41,7 +41,7 @@ MAAdaptiveModel >> magritteDescription: aDescription [
 ]
 
 { #category : #accessing }
-MAAdaptiveModel >> simpleReneMagritteDescription [
+MAAdaptiveModel >> simpleReneDescription [
 	"Answer the description of the receiver."
 
 	^ magritteDescription

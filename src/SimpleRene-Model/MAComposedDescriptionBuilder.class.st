@@ -7,7 +7,7 @@ Class {
 { #category : #visiting }
 MAComposedDescriptionBuilder >> setBuiltDescription: aDescription [ 
 	| builders |
-	builders := self target simpleReneMagritteDescription descriptionBuilders.
+	builders := self target simpleReneDescription descriptionBuilders.
 	builtDescription := aDescription.
 	builders do: [ :each | builtDescription := each buildFrom: builtDescription target: target model: model ]
 ]
@@ -23,7 +23,7 @@ MAComposedDescriptionBuilder >> visitContainer: aContainer [
 { #category : #'visiting-description' }
 MAComposedDescriptionBuilder >> visitRelationDescription: aDescription [
 	| builders buildedReference relationValue |
-	builders := self target simpleReneMagritteDescription descriptionBuilders.
+	builders := self target simpleReneDescription descriptionBuilders.
 	buildedReference := aDescription reference.
 	relationValue := (target simpleReneReadUsing: aDescription).
 	relationValue ifNotNil: [ 

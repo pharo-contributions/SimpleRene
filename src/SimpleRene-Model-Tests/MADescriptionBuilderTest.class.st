@@ -48,7 +48,7 @@ MADescriptionBuilderTest >> descriptionDescriptionBar: aDescription [
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescriptionRec: aDescription [
 	<magritteDescription: #descriptionDescription>
-	^ aDescription reference: self simpleReneMagritteDescription
+	^ aDescription reference: self simpleReneDescription
 ]
 
 { #category : #'acessing-magritte' }
@@ -59,23 +59,23 @@ MADescriptionBuilderTest >> simpleReneDescriptionContainer [
 
 { #category : #tests }
 MADescriptionBuilderTest >> testContainer [
-	self assert: self simpleReneMagritteDescription label = 'mock'.
-	self assert: (self simpleReneMagritteDescription hasProperty: #foo).
-	self assert: (self simpleReneMagritteDescription hasProperty: #bar)
+	self assert: self simpleReneDescription label = 'mock'.
+	self assert: (self simpleReneDescription hasProperty: #foo).
+	self assert: (self simpleReneDescription hasProperty: #bar)
 ]
 
 { #category : #tests }
 MADescriptionBuilderTest >> testDescription [
-	self assert: self simpleReneMagritteDescription size = 1.
-	self assert: self simpleReneMagritteDescription children first label = 'foo'.
-	self assert: (self simpleReneMagritteDescription children first hasProperty: #foo).
-	self assert: (self simpleReneMagritteDescription children first hasProperty: #bar)
+	self assert: self simpleReneDescription size = 1.
+	self assert: self simpleReneDescription children first label = 'foo'.
+	self assert: (self simpleReneDescription children first hasProperty: #foo).
+	self assert: (self simpleReneDescription children first hasProperty: #bar)
 ]
 
 { #category : #tests }
 MADescriptionBuilderTest >> testExtension [
 	| description |
-	description := MAMockAddress new simpleReneMagritteDescription
+	description := MAMockAddress new simpleReneDescription
 		detect: [ :each | each accessor selector = #place ].
 	self assert: description isRequired.
 	self assert: description isVisible not
@@ -84,11 +84,11 @@ MADescriptionBuilderTest >> testExtension [
 { #category : #tests }
 MADescriptionBuilderTest >> testNilled [
 	| description |
-	description := MAMockAddress new simpleReneMagritteDescription.
-	self assert: description size = 3
+	description := MAMockAddress new simpleReneDescription.
+	self assert: description size equals: 4
 ]
 
 { #category : #tests }
 MADescriptionBuilderTest >> testRecursive [
-	self assert: self simpleReneMagritteDescription children first reference = self simpleReneMagritteDescription
+	self assert: self simpleReneDescription children first reference equals: self simpleReneDescription
 ]

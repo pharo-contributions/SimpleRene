@@ -20,7 +20,7 @@ MADescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 
 { #category : #visiting }
 MADescriptionFlattener >> expandDescription: aDescription for: aValue [
-	aValue simpleReneMagritteDescription do: [ :each |
+	aValue simpleReneDescription do: [ :each |
 		| val |
 		val := aValue simpleReneReadUsing: each.
 		each

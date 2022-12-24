@@ -54,7 +54,7 @@ MACheckedMementoTest >> testConflictReset [
 
 { #category : #'tests-accessing' }
 MACheckedMementoTest >> testOriginal [
-	self assert: self memento original size = self simpleReneMagritteDescription size
+	self assert: self memento original size = self simpleReneDescription size
 ]
 
 { #category : #'tests-actions' }

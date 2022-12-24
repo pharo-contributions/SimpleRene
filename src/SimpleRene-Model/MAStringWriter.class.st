@@ -77,13 +77,13 @@ MAStringWriter >> visitTimeStampDescription: aDescription [
 { #category : #'visiting-description' }
 MAStringWriter >> visitToManyRelationDescription: aDescription [
 	self object
-		do: [ :each | self object: each during: [ self visit: each simpleReneMagritteDescription ] ]
+		do: [ :each | self object: each during: [ self visit: each simpleReneDescription ] ]
 		separatedBy: [ self stream nextPutAll: ', ' ]
 ]
 
 { #category : #'visiting-description' }
 MAStringWriter >> visitToOneRelationDescription: aDescription [
-	self visit: self object simpleReneMagritteDescription
+	self visit: self object simpleReneDescription
 ]
 
 { #category : #'visiting-description' }

@@ -16,7 +16,7 @@ MACachedMementoTest >> actualClass [
 
 { #category : #'tests-accessing' }
 MACachedMementoTest >> testCache [
-	self assert: self memento cache size = self simpleReneMagritteDescription size
+	self assert: self memento cache size = self simpleReneDescription size
 ]
 
 { #category : #'tests-actions' }

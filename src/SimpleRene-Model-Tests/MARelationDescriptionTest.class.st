@@ -34,7 +34,7 @@ MARelationDescriptionTest >> addressInstance2 [
 MARelationDescriptionTest >> setUp [
 	super setUp.
 	self description
-		reference: MAMockAddress simpleReneMagritteDescription;
+		reference: MAMockAddress simpleReneDescription;
 		classes: (Array with: MAMockAddress)
 ]
 

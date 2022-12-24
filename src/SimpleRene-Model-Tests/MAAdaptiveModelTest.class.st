@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 MAAdaptiveModelTest >> descriptions [
-	^ self scaffolder simpleReneMagritteDescription children
+	^ self scaffolder simpleReneDescription children
 ]
 
 { #category : #accessing }
@@ -20,7 +20,7 @@ MAAdaptiveModelTest >> scaffolder [
 { #category : #running }
 MAAdaptiveModelTest >> setUp [
 	scaffolder := MAAdaptiveModel new.
-	scaffolder simpleReneMagritteDescription
+	scaffolder simpleReneDescription
 		add: MAStringDescription new;
 		add: MANumberDescription new.
 	scaffolder simpleReneWrite: 'foo' using: self descriptions first.

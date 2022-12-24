@@ -7,7 +7,7 @@ Class {
 { #category : #'acessing-magritte' }
 MAMockAddress2 >> descriptionStreet [
 	"this pragma #magritteDescription is optional as the pragma will be retrieved from the super class's overridden method."
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ super descriptionStreet
 		beRequired;

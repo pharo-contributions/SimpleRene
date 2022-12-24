@@ -17,7 +17,7 @@ Class {
 
 { #category : #'instance creation' }
 MAMemento class >> model: aModel [
-	^ self model: aModel description: aModel simpleReneMagritteDescription
+	^ self model: aModel description: aModel simpleReneDescription
 ]
 
 { #category : #'instance creation' }
@@ -43,7 +43,7 @@ MAMemento >> cookRawPull: aDictionary [
 
 { #category : #'reflective operations' }
 MAMemento >> doesNotUnderstand: aMessage [
-  ^ self simpleReneMagritteDescription children 
+  ^ self simpleReneDescription children 
   	detect: [ :desc | desc handlesSelector: aMessage selector ] 
   	ifFound: [ :desc | desc handleMessage: aMessage for: self ]
   	ifNone: [ super doesNotUnderstand: aMessage ]
@@ -52,7 +52,7 @@ MAMemento >> doesNotUnderstand: aMessage [
 { #category : #private }
 MAMemento >> isDifferent: firstDictionary to: secondDictionary [
 	| firstValue secondValue |
-	self simpleReneMagritteDescription do: [ :each |
+	self simpleReneDescription do: [ :each |
 		(each isVisible and: [ each isReadOnly not ]) ifTrue: [
 			firstValue := firstDictionary at: each ifAbsent: [ nil ].
 			secondValue := secondDictionary at: each ifAbsent: [ nil ].
@@ -91,7 +91,7 @@ MAMemento >> pullRaw [
 MAMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
-	self simpleReneMagritteDescription do: [ :each |
+	self simpleReneDescription do: [ :each |
 		| value transformedValue |
 		value := self model simpleReneReadUsing: each.
 		transformedValue := aBlock value: value.
@@ -129,7 +129,7 @@ MAMemento >> shouldPush: anObject using: aDescription [
 ]
 
 { #category : #accessing }
-MAMemento >> simpleReneMagritteDescription [
+MAMemento >> simpleReneDescription [
 	"`#modelDescription` would probably be clearer, but we want to be polymorphic (see implementors)"
 	^ description
 ]
@@ -143,5 +143,5 @@ MAMemento >> simpleReneReadUsing: aDescription [
 MAMemento >> validate [
 	"Check if the data in the receiver would be valid if committed. In case of problems an exception is raised."
 
-	self simpleReneMagritteDescription validate: self
+	self simpleReneDescription validate: self
 ]
