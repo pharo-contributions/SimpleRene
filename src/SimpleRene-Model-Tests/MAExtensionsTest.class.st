@@ -55,19 +55,17 @@ MAExtensionsTest >> testCopyWithoutFirst [
 
 { #category : #'tests-integer' }
 MAExtensionsTest >> testFileSize [
-	self assert: (1000) asFileSize = '1000 B'.
-	self assert: (1024) asFileSize = '1 KB'.
+	self assert: 1000 asFileSize equals: '1000 B'.
+	self assert: 1024 asFileSize equals: '1 KB'.
 
-	self assert: (1000 * 1000) asFileSize = '976 KB'.
-	self assert: (1024 * 1024) asFileSize = '1 MB'.
+	self assert: (1000 * 1000) asFileSize equals: '976 KB'.
+	self assert: (1024 * 1024) asFileSize equals: '1 MB'.
 
-	self assert: (1000 * 1000 * 1000) asFileSize = '953 MB'.
-	self assert: (1024 * 1024 * 1024) asFileSize = '1 GB'.
+	self assert: (1000 * 1000 * 1000) asFileSize equals: '953 MB'.
+	self assert: (1024 * 1024 * 1024) asFileSize equals: '1 GB'.
 
-	self assert: (1000 * 1000 * 1000 * 1000) asFileSize = '931 GB'.
-	self assert: (1024 * 1024 * 1024 * 1024) asFileSize = '1 TB'.
-
-	" etc "
+	self assert: (1000 * 1000 * 1000 * 1000) asFileSize equals: '931 GB'.
+	self assert: (1024 * 1024 * 1024 * 1024) asFileSize equals: '1 TB'.
 ]
 
 { #category : #'tests-collection' }
@@ -166,27 +164,23 @@ MAExtensionsTest >> testMoveDown [
 	self assert: col = #( 2 3 1 )
 ]
 
-{ #category : #'tests-string' }
-MAExtensionsTest >> testPrintingConvenience [
+{ #category : #'tests-collection' }
+MAExtensionsTest >> testMoveUp [
 
-	| result table |
-	table := {
-		{ MAStringDescription new
-				accessor: #asString;
-				yourself.
-			self asString }.
-		{ MAElementDescription new
-				accessor: (MAPluggableAccessor new readBlock: [ :obj | nil ]);
-				yourself.
-			'' } }.
-	
-	table do: [ :data | 
-		| description expected |
-		description := data first.
-		expected := data second.
-		result := String streamContents: [ :str | str maPrint: description for: self ].
+	| col |
+	col := Array with: 1 with: 2 with: 3.
 
-		self assert: result equals: expected ].
+	self assert: (col moveUp: 3) = 2.
+	self assert: col = #( 1 3 2 ).
+
+	self assert: (col moveUp: 3) = 1.
+	self assert: col = #( 3 1 2 ).
+
+	self assert: (col moveUp: 3) = 1.
+	self assert: col = #( 3 1 2 ).
+
+	self assert: (col moveUp: 0) = 0.
+	self assert: col equals: #( 3 1 2 )
 ]
 
 { #category : #'tests-collection' }
