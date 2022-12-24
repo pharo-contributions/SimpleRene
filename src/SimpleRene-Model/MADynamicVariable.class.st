@@ -1,6 +1,6 @@
 Class {
 	#name : #MADynamicVariable,
-	#superclass : #GRNotification,
+	#superclass : #Notification,
 	#category : #'SimpleRene-Model-Utility'
 }
 

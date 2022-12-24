@@ -18,7 +18,7 @@ MANullAccessor class >> isAbstract [
 { #category : #'instance creation' }
 MANullAccessor class >> new [
 	| random uuid |
-	random := GRPlatform current newRandom.
+	random := Random new next.
 	uuid := Array new: 16.
 	1 to: 16 do: [ :i | uuid at: i put: (random nextInt: 256) -1 ].
 	^ self uuid: uuid

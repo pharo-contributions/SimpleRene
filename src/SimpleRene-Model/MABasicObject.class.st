@@ -1,6 +1,6 @@
 Class {
 	#name : #MABasicObject,
-	#superclass : #GRObject,
+	#superclass : #Object,
 	#category : #'SimpleRene-Model-Core'
 }
 
