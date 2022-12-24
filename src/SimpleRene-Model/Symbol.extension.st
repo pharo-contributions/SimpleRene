@@ -2,7 +2,7 @@ Extension { #name : #Symbol }
 
 { #category : #'*SimpleRene-Model-converting' }
 Symbol >> asSimpleReneAccessor [
-	^ MASelectorAccessor selector: self
+	^ SRSelectorAccessor selector: self
 ]
 
 { #category : #'*SimpleRene-Model' }

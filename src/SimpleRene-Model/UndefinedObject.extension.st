@@ -2,12 +2,12 @@ Extension { #name : #UndefinedObject }
 
 { #category : #'*SimpleRene-Model' }
 UndefinedObject >> asSimpleReneAccessor [
-	^ MANullAccessor new
+	^ SRNullAccessor new
 ]
 
 { #category : #'*SimpleRene-Model' }
 UndefinedObject >> simpleReneDescription [
-	^ MAContainer new
+	^ SRContainer new
 ]
 
 { #category : #'*SimpleRene-Model' }

@@ -50,7 +50,7 @@ SRPerson >> birthday: anObject [
 { #category : #descriptions }
 SRPerson >> descriptionAge [
 	<simpleReneDescription>
-	 ^ MANumberDescription new
+	 ^ SRNumberDescription new
 		selectorAccessor: #age;
 		label: 'Age';
 		priority: 80;
@@ -61,7 +61,7 @@ SRPerson >> descriptionAge [
 { #category : #descriptions }
 SRPerson >> descriptionBirthday [
 	<simpleReneDescription>
-	^ MADateDescription new
+	^ SRDateDescription new
 		accessor: #birthday;
 		label: 'Birthday';
 		priority: 70;
@@ -72,7 +72,7 @@ SRPerson >> descriptionBirthday [
 SRPerson >> descriptionFirstName [
 	<simpleReneDescription>
 	
-	^ MAStringDescription new
+	^ SRStringDescription new
 			accessor: #firstName;
 			label: 'First Name';
 			priority: 20;
@@ -84,7 +84,7 @@ SRPerson >> descriptionFirstName [
 SRPerson >> descriptionHomeAddress [
 	<simpleReneDescription>
 	
-	^ MAToOneRelationDescription new
+	^ SRToOneRelationDescription new
 			"componentClass: MAInternalEditorMorph;"
 			classes: (Array with: SRAddress);
 			accessor: #homeAddress;
@@ -97,7 +97,7 @@ SRPerson >> descriptionHomeAddress [
 SRPerson >> descriptionLastName [
 	<simpleReneDescription>
 	
-	^ MAStringDescription new
+	^ SRStringDescription new
 		accessor: #lastName;
 		label: 'Last Name';
 		priority: 30;
@@ -109,7 +109,7 @@ SRPerson >> descriptionLastName [
 SRPerson >> descriptionOfficeAddress [
 	<simpleReneDescription>
 	
-	^ MAToOneRelationDescription new
+	^ SRToOneRelationDescription new
 			"componentClass: MAExternalEditorComponent;"
 			classes: (Array with: SRAddress);
 			accessor: #officeAddress;
@@ -122,7 +122,7 @@ SRPerson >> descriptionOfficeAddress [
 SRPerson >> descriptionPassword [
 	<simpleReneDescription>
 	
-	^ MAPasswordDescription new
+	^ SRPasswordDescription new
 			"componentClass: MAVerifiedPasswordComponent;"
 			accessor: #password;
 			label: 'Password';
@@ -134,7 +134,7 @@ SRPerson >> descriptionPassword [
 SRPerson >> descriptionPhoneNumbers [
 	<simpleReneDescription>
 	
-	^ MAToManyRelationDescription new
+	^ SRToManyRelationDescription new
 		classes: (Array with: SRPhone);
 		label: 'Phone Numbers';
 		default: Array new;
@@ -147,7 +147,7 @@ SRPerson >> descriptionPhoneNumbers [
 SRPerson >> descriptionPicture [
 	<simpleReneDescription>
 	
-	^ MAFileDescription new
+	^ SRFileDescription new
 		addCondition: [ :value | value isImage ] labelled: 'Image expected';
 		accessor: #picture;
 		label: 'Picture';
@@ -159,7 +159,7 @@ SRPerson >> descriptionPicture [
 SRPerson >> descriptionTitle [
 	<simpleReneDescription>
 	
-	^ MASingleOptionDescription new
+	^ SRSingleOptionDescription new
 			options: #( 'Mr.' 'Mrs.' 'Ms.' 'Miss.' );
 			accessor: #title;
 			label: 'Title';

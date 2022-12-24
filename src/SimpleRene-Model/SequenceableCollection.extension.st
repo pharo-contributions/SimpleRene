@@ -2,7 +2,7 @@ Extension { #name : #SequenceableCollection }
 
 { #category : #'*SimpleRene-Model' }
 SequenceableCollection >> asSimpleReneAccessor [
-	^ MAChainAccessor accessors: self
+	^ SRChainAccessor accessors: self
 ]
 
 { #category : #'*SimpleRene-Model' }

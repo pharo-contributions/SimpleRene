@@ -2,7 +2,7 @@ Extension { #name : #Object }
 
 { #category : #'*SimpleRene-Model-accessing' }
 Object >> basicSimpleReneDescription [
-	^ MAPragmaBuilder for: self
+	^ SRPragmaBuilder for: self
 ]
 
 { #category : #'*SimpleRene-Model-model' }
@@ -61,7 +61,7 @@ Object >> simpleReneDescriptionContainer [
 	"Return the default description container."
 
 	<simpleReneContainer>
-	^ MAPriorityContainer new
+	^ SRPriorityContainer new
 		  label: self class simpleReneLabel;
 		  yourself
 ]
@@ -91,14 +91,14 @@ Object >> simpleReneLazyInstVarUsing: description [
 
 { #category : #'*SimpleRene-Model-builder' }
 Object >> simpleReneMagritteActions [
-	^ (MAActionPragmaBuilder for: self) children
+	^ (SRActionPragmaBuilder for: self) children
 ]
 
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneMementoClass [
 	"Return a class to be used to remember or cache the receiver, namely a memento object."
 
-	^ MACheckedMemento
+	^ SRCheckedMemento
 ]
 
 { #category : #'*SimpleRene-Model' }

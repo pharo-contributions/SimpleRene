@@ -15,7 +15,7 @@ Class >> simpleReneDescriptionContainer [
 	"Return the default description container."
 
 	<simpleReneContainer>
-	^ MAPriorityContainer new
+	^ SRPriorityContainer new
 		  label: self simpleReneLabel;
 		  yourself
 ]

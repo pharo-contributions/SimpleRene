@@ -38,9 +38,9 @@ SRAddress >> canton: anObject [
 SRAddress >> descriptionCanton [
 	<simpleReneDescription>
 	
-	^ MASingleOptionDescription new
+	^ SRSingleOptionDescription new
 		options: #( 'Zurich' 'Bern' 'Luzern' 'Uri' 'Schwyz' 'Unterwalden' 'Glarus' 'Zug' 'Freiburg' 'Solothurn' 'Basel' 'Schaffhausen' 'Appenzell' 'St. Gallen' 'Graubunden' 'Aargau' 'Thurgau' 'Ticino' 'Vaud' 'Valais' 'Neuchatel' 'Geneve' 'Jura' );
-		reference: MAStringDescription new;
+		reference: SRStringDescription new;
 		accessor: #canton;
 		label: 'Canton';
 		priority: 40;
@@ -52,7 +52,7 @@ SRAddress >> descriptionCanton [
 SRAddress >> descriptionPlace [
 	<simpleReneDescription>
 	
-	^ MAStringDescription new
+	^ SRStringDescription new
 			accessor: #place;
 			label: 'Place';
 			priority: 30;
@@ -62,7 +62,7 @@ SRAddress >> descriptionPlace [
 { #category : #descriptions }
 SRAddress >> descriptionPlz [
 	<simpleReneDescription>
-	^ MANumberDescription new
+	^ SRNumberDescription new
 		accessor: #plz;
 		label: 'PLZ';
 		priority: 20;
@@ -74,7 +74,7 @@ SRAddress >> descriptionPlz [
 { #category : #descriptions }
 SRAddress >> descriptionStreet [
 	<simpleReneDescription>
-	^ MAStringDescription new
+	^ SRStringDescription new
 		accessor: #street;
 		label: 'Street';
 		priority: 10;

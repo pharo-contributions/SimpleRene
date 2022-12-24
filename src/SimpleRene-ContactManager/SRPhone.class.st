@@ -21,7 +21,7 @@ SRPhone >> = anObject [
 { #category : #descriptions }
 SRPhone >> descriptionKind [
 	<simpleReneDescription>
-	^ MAStringDescription new
+	^ SRStringDescription new
 		accessor: #kind;
 		label: 'Kind';
 		priority: 10;
@@ -32,7 +32,7 @@ SRPhone >> descriptionKind [
 SRPhone >> descriptionNumber [
 	<simpleReneDescription>
 	
-	^ MAStringDescription new
+	^ SRStringDescription new
 		accessor: #number;
 		label: 'Number';
 		priority: 20;
