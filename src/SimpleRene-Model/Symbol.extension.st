@@ -1,7 +1,7 @@
 Extension { #name : #Symbol }
 
 { #category : #'*SimpleRene-Model-converting' }
-Symbol >> asAccessor [
+Symbol >> asSimpleReneAccessor [
 	^ MASelectorAccessor selector: self
 ]
 
@@ -11,6 +11,6 @@ Symbol >> cull: receiverObject cull: argumentObject [
 ]
 
 { #category : #'*SimpleRene-Model' }
-Symbol >> optionFor: anObject ifPresent: aBlock [
+Symbol >> simpleReneOptionFor: anObject ifPresent: aBlock [
 	aBlock value: (anObject perform: self)
 ]

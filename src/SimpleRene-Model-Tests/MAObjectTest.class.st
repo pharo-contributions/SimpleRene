@@ -92,7 +92,7 @@ MAObjectTest >> testHash [
 
 { #category : #'tests-testing' }
 MAObjectTest >> testIsDescription [
-	self deny: self instance isDescription
+	self deny: self instance isSimpleReneDescription
 ]
 
 { #category : #'tests-properties' }

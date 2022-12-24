@@ -27,7 +27,7 @@ MAPragmaBuilder class >> magritteDescriptionExtensionPragma [
 
 { #category : #constants }
 MAPragmaBuilder class >> magritteDescriptionPragma [ 
-	^ #magritteDescription
+	^ #simpleReneMagritteDescription
 ]
 
 { #category : #constants }

@@ -39,8 +39,8 @@ MAElementDescription >> default: anObject [
 MAElementDescription >> handleMessage: aMessage for: anObject [
 	"We do no error checking; you probably want to send #handlesSelector: first to make sure"
 	^ aMessage numArgs = 0
-		ifTrue: [ anObject readUsing: self ]
-		ifFalse: [ anObject write: aMessage argument using: self ]
+		ifTrue: [ anObject simpleReneReadUsing: self ]
+		ifFalse: [ anObject simpleReneWrite: aMessage argument using: self ]
 ]
 
 { #category : #testing }
@@ -65,7 +65,7 @@ MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	| defaultValue |		
 	currentValue ifNotNil: [ ^ currentValue ].
 	defaultValue := self default.
-	self shouldCacheDefault ifTrue: [ anObject write: defaultValue using: self ].
+	self shouldCacheDefault ifTrue: [ anObject simpleReneWrite: defaultValue using: self ].
 	^ defaultValue
 ]
 
@@ -79,7 +79,7 @@ MAElementDescription >> storeOn: aStream [
 	aStream 
 		nextPutAll: self className;
 		nextPutAll: ' new'; cr.
-	(self magritteDescription reject: #isReadOnly) do: [ :desc |
+	(self simpleReneMagritteDescription reject: #isReadOnly) do: [ :desc |
 		| value |
 		value := desc read: self.
 		(value ~= desc default and: [ value isNotNil ]) ifTrue: [ 

@@ -13,12 +13,12 @@ MAStraightMemento class >> isAbstract [
 ]
 
 { #category : #private }
-MAStraightMemento >> readUsing: aDescription [
-	^ (self model readUsing: aDescription)
+MAStraightMemento >> simpleReneReadUsing: aDescription [
+	^ (self model simpleReneReadUsing: aDescription)
 		ifNil: [ aDescription default ]
 ]
 
 { #category : #private }
-MAStraightMemento >> write: anObject using: aDescription [
-	self model write: anObject using: aDescription
+MAStraightMemento >> simpleReneWrite: anObject using: aDescription [
+	self model simpleReneWrite: anObject using: aDescription
 ]

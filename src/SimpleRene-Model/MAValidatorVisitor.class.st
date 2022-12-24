@@ -60,7 +60,7 @@ MAValidatorVisitor >> visitContainer: aDescription [
 	self object ifNotNil: [ :obj |
 		aDescription do: [ :description |
 			self
-				use: (obj readUsing: description)
+				use: (obj simpleReneReadUsing: description)
 				during: [ self visit: description ] ] ]
 ]
 

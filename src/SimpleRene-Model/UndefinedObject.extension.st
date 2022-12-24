@@ -1,16 +1,16 @@
 Extension { #name : #UndefinedObject }
 
 { #category : #'*SimpleRene-Model' }
-UndefinedObject >> asAccessor [
+UndefinedObject >> asSimpleReneAccessor [
 	^ MANullAccessor new
 ]
 
 { #category : #'*SimpleRene-Model' }
-UndefinedObject >> label [
+UndefinedObject >> simpleReneLabel [
 	^ 'n/a'
 ]
 
 { #category : #'*SimpleRene-Model' }
-UndefinedObject >> magritteDescription [
+UndefinedObject >> simpleReneMagritteDescription [
 	^ MAContainer new
 ]

@@ -55,7 +55,7 @@ MATableDescription >> columnLabels: aCollection [
 { #category : #'accessing-textual' }
 MATableDescription >> columnLabelsTextual [
 	^ (MAStringDescription new toStringCollection: self columnLabels)
-		asMultilineString
+		simpleReneAsMultilineString
 ]
 
 { #category : #'accessing-textual' }
@@ -113,7 +113,7 @@ MATableDescription >> rowLabels: aCollection [
 { #category : #'accessing-textual' }
 MATableDescription >> rowLabelsTextual [
 	^ (MAStringDescription new toStringCollection: self rowLabels)
-		asMultilineString
+		simpleReneAsMultilineString
 ]
 
 { #category : #'accessing-textual' }

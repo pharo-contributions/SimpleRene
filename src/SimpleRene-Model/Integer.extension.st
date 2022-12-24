@@ -1,7 +1,7 @@
 Extension { #name : #Integer }
 
 { #category : #'*SimpleRene-Model' }
-Integer >> asFileSize [
+Integer >> asSimpleReneFileSize [
 	"Return the receiver with the adequate file size identified."
 	
 	#( 'B' 'KB' 'MB' 'GB' 'TB' 'PB' 'EB' 'ZB' 'YB' )

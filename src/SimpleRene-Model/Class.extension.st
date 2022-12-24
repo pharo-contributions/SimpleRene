@@ -1,16 +1,25 @@
 Extension { #name : #Class }
 
+{ #category : #'*SimpleRene-Model' }
+Class >> label [
+	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
+
+	self deprecated: 'use simpleReneLabel' transformWith: '`@receiver label' 
+						-> '`@receiver simpleReneLabel'.
+	^ self simpleReneLabel
+]
+
 { #category : #'*SimpleRene-Model-configuration' }
-Class >> descriptionContainer [
+Class >> simpleReneDescriptionContainer [
 	"Return the default description container."
-	<magritteContainer>
+	<simpleReneContainer>
 	^ MAPriorityContainer new
 		label: self label;
 		yourself
 ]
 
 { #category : #'*SimpleRene-Model' }
-Class >> label [
+Class >> simpleReneLabel [
 	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
 
 	| start input |

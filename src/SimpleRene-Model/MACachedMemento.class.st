@@ -46,11 +46,6 @@ MACachedMemento >> hasChanges [
 	^ self isDifferent: self cache to: self pullRaw
 ]
 
-{ #category : #private }
-MACachedMemento >> readUsing: aDescription [
-	^ self cache at: aDescription
-]
-
 { #category : #actions }
 MACachedMemento >> reset [
 	super reset.
@@ -63,6 +58,11 @@ MACachedMemento >> setCache: aDictionary [
 ]
 
 { #category : #private }
-MACachedMemento >> write: anObject using: aDescription [
+MACachedMemento >> simpleReneReadUsing: aDescription [
+	^ self cache at: aDescription
+]
+
+{ #category : #private }
+MACachedMemento >> simpleReneWrite: anObject using: aDescription [
 	self cache at: aDescription put: anObject
 ]

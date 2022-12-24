@@ -68,7 +68,7 @@ MADelegatorAccessor >> next [
 
 { #category : #accessing }
 MADelegatorAccessor >> next: anAccessor [ 
-	next := anAccessor asAccessor
+	next := anAccessor asSimpleReneAccessor
 ]
 
 { #category : #copying }

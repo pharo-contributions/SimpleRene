@@ -26,7 +26,7 @@ MASortBlock >> fixTemps [
 
 { #category : #initialization }
 MASortBlock >> initializeAccessor: anAccessor selector: aSelector [
-	accessor := anAccessor asAccessor.
+	accessor := anAccessor asSimpleReneAccessor.
 	selector := aSelector
 ]
 

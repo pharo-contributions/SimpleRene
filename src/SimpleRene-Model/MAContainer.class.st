@@ -269,16 +269,6 @@ MAContainer >> magritteTemplate [
 	^ self
 ]
 
-{ #category : #moving }
-MAContainer >> moveDown: aDescription [
-	self children moveDown: aDescription
-]
-
-{ #category : #moving }
-MAContainer >> moveUp: aDescription [
-	self children moveUp: aDescription
-]
-
 { #category : #enumerating }
 MAContainer >> noneSatisfy: aBlock [
 	^ self children noneSatisfy: aBlock
@@ -338,6 +328,16 @@ MAContainer >> select: aBlock [
 { #category : #initialization }
 MAContainer >> setChildren: aCollection [
 	children := aCollection
+]
+
+{ #category : #moving }
+MAContainer >> simpleReneMoveDown: aDescription [
+	self children simpleReneMoveDown: aDescription
+]
+
+{ #category : #moving }
+MAContainer >> simpleReneMoveUp: aDescription [
+	self children simpleReneMoveUp: aDescription
 ]
 
 { #category : #accessing }

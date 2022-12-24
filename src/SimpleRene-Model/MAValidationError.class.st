@@ -22,7 +22,7 @@ MAValidationError >> isResumable [
 
 { #category : #printing }
 MAValidationError >> printOn: aStream [
-	(self tag isDescription and: [ self tag label notNil ])
+	(self tag isSimpleReneDescription and: [ self tag label notNil ])
 		ifTrue: [ aStream nextPutAll: self tag label asString; nextPutAll: ': ' ].
 	aStream nextPutAll: self messageText asString 
 ]

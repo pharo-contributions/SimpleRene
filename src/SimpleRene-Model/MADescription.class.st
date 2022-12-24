@@ -166,7 +166,7 @@ MADescription >> accessor [
 
 { #category : #accessing }
 MADescription >> accessor: anObject [
-	accessor := anObject asAccessor
+	accessor := anObject asSimpleReneAccessor
 ]
 
 { #category : #validation }
@@ -597,13 +597,6 @@ MADescription >> isContainer [
 ]
 
 { #category : #testing }
-MADescription >> isDescription [
-	"Answer ==true== if the receiver is a description."
-
-	^ true
-]
-
-{ #category : #testing }
 MADescription >> isGrouped [
 	^ false
 ]
@@ -630,6 +623,13 @@ MADescription >> isSatisfiedBy: anObject [
 	[ self validate: anObject ]
 		on: MAValidationError
 		do: [ :err | ^ false ].
+	^ true
+]
+
+{ #category : #testing }
+MADescription >> isSimpleReneDescription [
+	"Answer ==true== if the receiver is a description."
+
 	^ true
 ]
 
@@ -734,7 +734,7 @@ MADescription >> propertyAccessor: aSelector [
 
 { #category : #convenience }
 MADescription >> read: aModel [
-	^ aModel readUsing: self
+	^ aModel simpleReneReadUsing: self
 ]
 
 { #category : #'accessing-properties' }
@@ -963,7 +963,7 @@ MADescription >> visibleInReport: aBoolean [
 
 { #category : #convenience }
 MADescription >> write: anObject to: aModel [
-	^ aModel write: anObject using: self
+	^ aModel simpleReneWrite: anObject using: self
 ]
 
 { #category : #convenience }

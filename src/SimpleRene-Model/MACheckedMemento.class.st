@@ -55,6 +55,6 @@ MACheckedMemento >> validate [
 		ifFalse: [ ^ super validate ].
 	self reset.
 	MAConflictError
-		description: self magritteDescription
-		signal: self magritteDescription conflictErrorMessage
+		description: self simpleReneMagritteDescription
+		signal: self simpleReneMagritteDescription conflictErrorMessage
 ]

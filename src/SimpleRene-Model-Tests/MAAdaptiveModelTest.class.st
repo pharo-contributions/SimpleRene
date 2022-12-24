@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 MAAdaptiveModelTest >> descriptions [
-	^ self scaffolder magritteDescription children
+	^ self scaffolder simpleReneMagritteDescription children
 ]
 
 { #category : #accessing }
@@ -20,24 +20,24 @@ MAAdaptiveModelTest >> scaffolder [
 { #category : #running }
 MAAdaptiveModelTest >> setUp [
 	scaffolder := MAAdaptiveModel new.
-	scaffolder magritteDescription
+	scaffolder simpleReneMagritteDescription
 		add: MAStringDescription new;
 		add: MANumberDescription new.
-	scaffolder write: 'foo' using: self descriptions first.
-	scaffolder write: 123 using: self descriptions second
+	scaffolder simpleReneWrite: 'foo' using: self descriptions first.
+	scaffolder simpleReneWrite: 123 using: self descriptions second
 ]
 
 { #category : #tests }
 MAAdaptiveModelTest >> testRead [
-	self assert: (self scaffolder readUsing: self descriptions first) = 'foo'.
-	self assert: (self scaffolder readUsing: self descriptions second) = 123
+	self assert: (self scaffolder simpleReneReadUsing: self descriptions first) = 'foo'.
+	self assert: (self scaffolder simpleReneReadUsing: self descriptions second) = 123
 ]
 
 { #category : #tests }
 MAAdaptiveModelTest >> testWrite [
-	self scaffolder write: 'bar' using: self descriptions first.
-	self scaffolder write: 321 using: self descriptions second.
+	self scaffolder simpleReneWrite: 'bar' using: self descriptions first.
+	self scaffolder simpleReneWrite: 321 using: self descriptions second.
 
-	self assert: (self scaffolder readUsing: self descriptions first) = 'bar'.
-	self assert: (self scaffolder readUsing: self descriptions second) = 321
+	self assert: (self scaffolder simpleReneReadUsing: self descriptions first) = 'bar'.
+	self assert: (self scaffolder simpleReneReadUsing: self descriptions second) = 321
 ]

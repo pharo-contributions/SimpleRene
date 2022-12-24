@@ -34,7 +34,7 @@ MAMementoTest >> descriptionInstance [
 
 { #category : #accessing }
 MAMementoTest >> descriptionValue [
-	^ self magritteDescription children first
+	^ self simpleReneMagritteDescription children first
 ]
 
 { #category : #private }
@@ -50,11 +50,6 @@ MAMementoTest >> instance [
 { #category : #private }
 MAMementoTest >> invalidInstance [
 	^ 31415
-]
-
-{ #category : #'acessing-magritte' }
-MAMementoTest >> magritteDescription [
-	^ description
 ]
 
 { #category : #accessing }
@@ -84,7 +79,7 @@ MAMementoTest >> otherInstance [
 
 { #category : #'accessing-memento' }
 MAMementoTest >> read [
-	^ self memento readUsing: self descriptionValue
+	^ self memento simpleReneReadUsing: self descriptionValue
 ]
 
 { #category : #running }
@@ -94,6 +89,11 @@ MAMementoTest >> setUp [
 	memento := self mementoInstance
 ]
 
+{ #category : #'acessing-magritte' }
+MAMementoTest >> simpleReneMagritteDescription [
+	^ description
+]
+
 { #category : #'tests-actions' }
 MAMementoTest >> testCommit [
 	self subclassResponsibility
@@ -101,8 +101,8 @@ MAMementoTest >> testCommit [
 
 { #category : #'tests-accessing' }
 MAMementoTest >> testDescription [
-	self assert: self memento magritteDescription = self magritteDescription.
-	self assert: self memento magritteDescription = self descriptionInstance
+	self assert: self memento simpleReneMagritteDescription = self simpleReneMagritteDescription.
+	self assert: self memento simpleReneMagritteDescription = self descriptionInstance
 ]
 
 { #category : #'tests-accessing' }
@@ -157,5 +157,5 @@ MAMementoTest >> value: anObject [
 
 { #category : #'accessing-memento' }
 MAMementoTest >> write: anObject [
-	self memento write: anObject using: self descriptionValue
+	self memento simpleReneWrite: anObject using: self descriptionValue
 ]

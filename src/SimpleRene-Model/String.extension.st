@@ -1,7 +1,7 @@
 Extension { #name : #String }
 
 { #category : #'*SimpleRene-Model' }
-String >> matches: aString [
+String >> simpleReneMatches: aString [
 	aString isEmpty ifTrue: [ ^ true ].
 	^ (aString includesAnyOf: '*#')
 		ifTrue: [ aString match: self ]
@@ -9,7 +9,7 @@ String >> matches: aString [
 ]
 
 { #category : #'*SimpleRene-Model' }
-String >> normalizeCamelCase [
+String >> simpleReneNormalizeCamelCase [
 
 	^ self class streamContents: [ :out |
 		self do: [ :e |

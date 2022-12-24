@@ -18,18 +18,18 @@ MADerivedDescriptions >> setUp [
 
 { #category : #tests }
 MADerivedDescriptions >> testContainer [
-	self assert: (baseModel magritteDescription hasProperty: #addressContainerBase).
-	self assert: (derivedModel magritteDescription hasProperty: #addressContainerDerived)
+	self assert: (baseModel simpleReneMagritteDescription hasProperty: #addressContainerBase).
+	self assert: (derivedModel simpleReneMagritteDescription hasProperty: #addressContainerDerived)
 ]
 
 { #category : #tests }
 MADerivedDescriptions >> testDescription [
 	| baseDescription derivedDescription |
 	
-	baseDescription := baseModel magritteDescription detect: [ :each | each accessor selector = #street ].
+	baseDescription := baseModel simpleReneMagritteDescription detect: [ :each | each accessor selector = #street ].
 	self assert: baseDescription isRequired not.
 	
-	derivedDescription := derivedModel magritteDescription detect: [ :each | each accessor selector = #street ].
+	derivedDescription := derivedModel simpleReneMagritteDescription detect: [ :each | each accessor selector = #street ].
 	self assert: derivedDescription isRequired.	
 	
 ]

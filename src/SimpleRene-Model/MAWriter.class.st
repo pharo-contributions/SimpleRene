@@ -31,7 +31,7 @@ MAWriter >> error: aString [
 
 { #category : #visiting }
 MAWriter >> write: anObject [
-	^ self write: anObject description: anObject magritteDescription
+	^ self write: anObject description: anObject simpleReneMagritteDescription
 ]
 
 { #category : #visiting }

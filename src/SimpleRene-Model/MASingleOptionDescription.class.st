@@ -50,7 +50,7 @@ MASingleOptionDescription >> groupBy [
 MASingleOptionDescription >> groupBy: anAccessor [
 	"anAccessor to be sent to the options objects for getting their group."
 	
-	self propertyAt: #groupBy put: anAccessor asAccessor
+	self propertyAt: #groupBy put: anAccessor asSimpleReneAccessor
 ]
 
 { #category : #testing }

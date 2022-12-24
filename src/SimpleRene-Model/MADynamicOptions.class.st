@@ -48,16 +48,6 @@ MADynamicOptions >> includesBlock: aBlock [
 ]
 
 { #category : #'as yet unclassified' }
-MADynamicOptions >> maAllOptionsFor: anOptionDescription [ 
-	^ self
-]
-
-{ #category : #'as yet unclassified' }
-MADynamicOptions >> maSelectMatching: aString [ 
-	^ self block value: aString
-]
-
-{ #category : #'as yet unclassified' }
 MADynamicOptions >> reader [
 	^ completionToObjectBlock ifNil: [ [ :obj | obj ] ]
 ]
@@ -65,4 +55,14 @@ MADynamicOptions >> reader [
 { #category : #'as yet unclassified' }
 MADynamicOptions >> reader: aBlock [
 	completionToObjectBlock := aBlock
+]
+
+{ #category : #'as yet unclassified' }
+MADynamicOptions >> simpleReneAllOptionsFor: anOptionDescription [ 
+	^ self
+]
+
+{ #category : #'as yet unclassified' }
+MADynamicOptions >> simpleReneSelectMatching: aString [ 
+	^ self block value: aString
 ]

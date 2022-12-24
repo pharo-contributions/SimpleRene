@@ -43,7 +43,7 @@ MAStringWriter >> visitContainer: aDescription [
 	aDescription do: [ :each |
 		each isVisible ifTrue: [
 			each stringWriter
-				write: (self object readUsing: each)
+				write: (self object simpleReneReadUsing: each)
 				description: each to: stream.
 			^ self ] ]
 ]
@@ -77,13 +77,13 @@ MAStringWriter >> visitTimeStampDescription: aDescription [
 { #category : #'visiting-description' }
 MAStringWriter >> visitToManyRelationDescription: aDescription [
 	self object
-		do: [ :each | self object: each during: [ self visit: each magritteDescription ] ]
+		do: [ :each | self object: each during: [ self visit: each simpleReneMagritteDescription ] ]
 		separatedBy: [ self stream nextPutAll: ', ' ]
 ]
 
 { #category : #'visiting-description' }
 MAStringWriter >> visitToOneRelationDescription: aDescription [
-	self visit: self object magritteDescription
+	self visit: self object simpleReneMagritteDescription
 ]
 
 { #category : #'visiting-description' }

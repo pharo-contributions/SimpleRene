@@ -22,7 +22,7 @@ MANullAccessorTest >> actualClass [
 { #category : #'tests-identity' }
 MANullAccessorTest >> testAsAccessor [
 	super testAsAccessor.
-	self assert: (nil asAccessor isKindOf: self actualClass)
+	self assert: (nil asSimpleReneAccessor isKindOf: self actualClass)
 ]
 
 { #category : #'tests-testing' }

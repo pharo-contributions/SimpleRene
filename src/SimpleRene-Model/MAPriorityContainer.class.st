@@ -17,16 +17,6 @@ MAPriorityContainer >> acceptMagritte: aVisitor [
 	aVisitor visitPriorityContainer: self
 ]
 
-{ #category : #moving }
-MAPriorityContainer >> moveDown: aDescription [
-	self shouldNotImplement
-]
-
-{ #category : #moving }
-MAPriorityContainer >> moveUp: aDescription [
-	self shouldNotImplement
-]
-
 { #category : #actions }
 MAPriorityContainer >> resort [
 	self setChildren: self children copy
@@ -35,4 +25,14 @@ MAPriorityContainer >> resort [
 { #category : #initialization }
 MAPriorityContainer >> setChildren: aCollection [
 	super setChildren: aCollection asSortedCollection
+]
+
+{ #category : #moving }
+MAPriorityContainer >> simpleReneMoveDown: aDescription [
+	self shouldNotImplement
+]
+
+{ #category : #moving }
+MAPriorityContainer >> simpleReneMoveUp: aDescription [
+	self shouldNotImplement
 ]

@@ -34,11 +34,11 @@ MAChainAccessorTest >> testAccessor [
 MAChainAccessorTest >> testAsAccessor [
 	super testAsAccessor.
 	
-	accessor := #(value) asAccessor.
+	accessor := #(value) asSimpleReneAccessor.
 	self assert: (accessor isKindOf: MASelectorAccessor).
 	self assert: (accessor selector = #value).
 	
-	accessor := #(value contents) asAccessor.
+	accessor := #(value contents) asSimpleReneAccessor.
 	self assert: (accessor isKindOf: MAChainAccessor).
 	self assert: (accessor next isKindOf: MASelectorAccessor).
 	self assert: (accessor next selector = #contents).
@@ -72,7 +72,7 @@ MAChainAccessorTest >> testKind [
 { #category : #tests }
 MAChainAccessorTest >> testNext [
 	| next |
-	next := #foo asAccessor.
+	next := #foo asSimpleReneAccessor.
 	self accessor next: next.
 	self assert: self accessor next = next
 ]

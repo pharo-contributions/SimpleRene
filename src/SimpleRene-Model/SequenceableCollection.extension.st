@@ -1,12 +1,12 @@
 Extension { #name : #SequenceableCollection }
 
 { #category : #'*SimpleRene-Model' }
-SequenceableCollection >> asAccessor [
+SequenceableCollection >> asSimpleReneAccessor [
 	^ MAChainAccessor accessors: self
 ]
 
 { #category : #'*SimpleRene-Model' }
-SequenceableCollection >> moveDown: anObject [
+SequenceableCollection >> simpleReneMoveDown: anObject [
 	| first second |
 	first := self findFirst: [ :value | value == anObject ].
 	second := (first > 0 and: [ first < self size ])
@@ -17,7 +17,7 @@ SequenceableCollection >> moveDown: anObject [
 ]
 
 { #category : #'*SimpleRene-Model' }
-SequenceableCollection >> moveUp: anObject [
+SequenceableCollection >> simpleReneMoveUp: anObject [
 	| first second |
 
 	first := self findFirst: [ :value | value == anObject ].

@@ -30,7 +30,7 @@ MACompositeAccessor class >> sampleContainer [
 { #category : #'instance creation' }
 MACompositeAccessor class >> via: anAccessor using: aDescription [
 	| result |
-	result := (self on: aDescription accessor asAccessor accessor: anAccessor asAccessor)
+	result := (self on: aDescription accessor asSimpleReneAccessor accessor: anAccessor asSimpleReneAccessor)
 		kind: aDescription kind;
 		yourself.
 	aDescription hasLabel ifTrue: [ aDescription label: (result accessor defaultLabelFor: aDescription) , '::' , aDescription label ].

@@ -341,7 +341,7 @@ MAElementDescriptionTest >> testUndefinedValue [
 	self assert: self description undefinedValue equals: 'null'.
 	
 	self description accessor: #yourself.
-	self assert: (self nullInstance readUsing: self description) equals: 'null'
+	self assert: (self nullInstance simpleReneReadUsing: self description) equals: 'null'
 ]
 
 { #category : #'tests-validation' }

@@ -328,11 +328,11 @@ MAContainerTest >> testMoveDown [
 	self assert: self description children first = self child1.
 	self assert: self description children second = self child2.
 
-	self description moveDown: self child1.
+	self description simpleReneMoveDown: self child1.
 	self assert: self description children first = self child2.
 	self assert: self description children second = self child1.
 
-	self description moveDown: self child1.
+	self description simpleReneMoveDown: self child1.
 	self assert: self description children first = self child2.
 	self assert: self description children second = self child1
 ]
@@ -343,11 +343,11 @@ MAContainerTest >> testMoveUp [
 	self assert: self description children first = self child1.
 	self assert: self description children second = self child2.
 
-	self description moveUp: self child2.
+	self description simpleReneMoveUp: self child2.
 	self assert: self description children first = self child2.
 	self assert: self description children second = self child1.
 
-	self description moveUp: self child2.
+	self description simpleReneMoveUp: self child2.
 	self assert: self description children first = self child2.
 	self assert: self description children second = self child1
 ]

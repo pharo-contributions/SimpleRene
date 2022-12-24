@@ -146,7 +146,7 @@ MADescriptionTest >> testIsContainer [
 
 { #category : #'tests-testing' }
 MADescriptionTest >> testIsDescription [
-	self assert: self description isDescription
+	self assert: self description isSimpleReneDescription
 ]
 
 { #category : #'tests-testing' }

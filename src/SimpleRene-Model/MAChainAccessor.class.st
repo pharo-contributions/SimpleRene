@@ -15,10 +15,10 @@ MAChainAccessor class >> accessors: aSequenceableCollection [
 	aSequenceableCollection isEmpty
 		ifTrue: [ self error: 'Unable to create accessor sequence from empty collection.' ].
 	aSequenceableCollection size = 1
-		ifTrue: [ ^ aSequenceableCollection first asAccessor ].
+		ifTrue: [ ^ aSequenceableCollection first asSimpleReneAccessor ].
 	^ self 
 		on: (self accessors: aSequenceableCollection allButFirst)
-		accessor: aSequenceableCollection first asAccessor
+		accessor: aSequenceableCollection first asSimpleReneAccessor
 ]
 
 { #category : #'instance creation' }

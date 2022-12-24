@@ -36,22 +36,29 @@ MAAdaptiveModel >> initialize [
 ]
 
 { #category : #accessing }
-MAAdaptiveModel >> magritteDescription [
+MAAdaptiveModel >> magritteDescription: aDescription [
+	magritteDescription := aDescription
+]
+
+{ #category : #accessing }
+MAAdaptiveModel >> simpleReneMagritteDescription [
 	"Answer the description of the receiver."
 
 	^ magritteDescription
 ]
 
-{ #category : #accessing }
-MAAdaptiveModel >> magritteDescription: aDescription [
-	magritteDescription := aDescription
-]
-
 { #category : #model }
-MAAdaptiveModel >> readUsing: aDescription [
+MAAdaptiveModel >> simpleReneReadUsing: aDescription [
 	"Answer the actual value of ==aDescription== within the receiver, ==nil== if not present."
 
 	^ self values at: aDescription ifAbsent: [ nil ]
+]
+
+{ #category : #model }
+MAAdaptiveModel >> simpleReneWrite: anObject using: aDescription [
+	"Set ==anObject== to be that actual value of the receiver for ==aDescription==."
+
+	self values at: aDescription put: anObject
 ]
 
 { #category : #accessing }
@@ -64,11 +71,4 @@ MAAdaptiveModel >> values [
 { #category : #accessing }
 MAAdaptiveModel >> values: aDictionary [
 	values := aDictionary
-]
-
-{ #category : #model }
-MAAdaptiveModel >> write: anObject using: aDescription [
-	"Set ==anObject== to be that actual value of the receiver for ==aDescription==."
-
-	self values at: aDescription put: anObject
 ]

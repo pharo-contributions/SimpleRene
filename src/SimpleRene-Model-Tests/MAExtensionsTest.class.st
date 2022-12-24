@@ -18,12 +18,12 @@ MAExtensionsTest >> does: aCollection haveEqualElementsTo: anotherCollection [
 MAExtensionsTest >> testCopyWithAll [
 	| col res |
 	col := #( a b ).
-	res := col copyWithAll: #( c d ).
+	res := col simpleReneCopyWithAll: #( c d ).
 	self assert: res = #( a b c d ).
 	self deny: col == res.
 
 	col := Set with: #a with: #b.
-	res := col copyWithAll: #( c d ).
+	res := col simpleReneCopyWithAll: #( c d ).
 	self assert: (res size = 4).
 	self assert: (res includes: #a).
 	self assert: (res includes: #b).
@@ -32,7 +32,7 @@ MAExtensionsTest >> testCopyWithAll [
 	self deny: col == res.
 
 	col := OrderedCollection with: #a with: #b.
-	res := col copyWithAll: #( c d ).
+	res := col simpleReneCopyWithAll: #( c d ).
 	self assert: res = (OrderedCollection with: #a with: #b with: #c with: #d).
 	self deny: col == res
 ]
@@ -55,17 +55,17 @@ MAExtensionsTest >> testCopyWithoutFirst [
 
 { #category : #'tests-integer' }
 MAExtensionsTest >> testFileSize [
-	self assert: 1000 asFileSize equals: '1000 B'.
-	self assert: 1024 asFileSize equals: '1 KB'.
+	self assert: 1000 asSimpleReneFileSize equals: '1000 B'.
+	self assert: 1024 asSimpleReneFileSize equals: '1 KB'.
 
-	self assert: (1000 * 1000) asFileSize equals: '976 KB'.
-	self assert: (1024 * 1024) asFileSize equals: '1 MB'.
+	self assert: (1000 * 1000) asSimpleReneFileSize equals: '976 KB'.
+	self assert: (1024 * 1024) asSimpleReneFileSize equals: '1 MB'.
 
-	self assert: (1000 * 1000 * 1000) asFileSize equals: '953 MB'.
-	self assert: (1024 * 1024 * 1024) asFileSize equals: '1 GB'.
+	self assert: (1000 * 1000 * 1000) asSimpleReneFileSize equals: '953 MB'.
+	self assert: (1024 * 1024 * 1024) asSimpleReneFileSize equals: '1 GB'.
 
-	self assert: (1000 * 1000 * 1000 * 1000) asFileSize equals: '931 GB'.
-	self assert: (1024 * 1024 * 1024 * 1024) asFileSize equals: '1 TB'.
+	self assert: (1000 * 1000 * 1000 * 1000) asSimpleReneFileSize equals: '931 GB'.
+	self assert: (1024 * 1024 * 1024 * 1024) asSimpleReneFileSize equals: '1 TB'.
 ]
 
 { #category : #'tests-collection' }
@@ -151,16 +151,16 @@ MAExtensionsTest >> testMoveDown [
 	| col |
 	col := Array with: 1 with: 2 with: 3.
 
-	self assert: (col moveDown: 1) = 2.
+	self assert: (col simpleReneMoveDown: 1) = 2.
 	self assert: col = #( 2 1 3 ).
 
-	self assert: (col moveDown: 1) = 3.
+	self assert: (col simpleReneMoveDown: 1) = 3.
 	self assert: col = #( 2 3 1 ).
 
-	self assert: (col moveDown: 1) = 3.
+	self assert: (col simpleReneMoveDown: 1) = 3.
 	self assert: col = #( 2 3 1 ).
 
-	self assert: (col moveDown: 0) = 0.
+	self assert: (col simpleReneMoveDown: 0) = 0.
 	self assert: col = #( 2 3 1 )
 ]
 
@@ -170,16 +170,16 @@ MAExtensionsTest >> testMoveUp [
 	| col |
 	col := Array with: 1 with: 2 with: 3.
 
-	self assert: (col moveUp: 3) = 2.
+	self assert: (col simpleReneMoveUp: 3) = 2.
 	self assert: col = #( 1 3 2 ).
 
-	self assert: (col moveUp: 3) = 1.
+	self assert: (col simpleReneMoveUp: 3) = 1.
 	self assert: col = #( 3 1 2 ).
 
-	self assert: (col moveUp: 3) = 1.
+	self assert: (col simpleReneMoveUp: 3) = 1.
 	self assert: col = #( 3 1 2 ).
 
-	self assert: (col moveUp: 0) = 0.
+	self assert: (col simpleReneMoveUp: 0) = 0.
 	self assert: col equals: #( 3 1 2 )
 ]
 

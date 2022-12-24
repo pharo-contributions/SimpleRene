@@ -18,14 +18,6 @@ MAMockAddress >> = anObject [
 ]
 
 { #category : #'acessing-magritte' }
-MAMockAddress >> descriptionContainer [
-	<magritteContainer>
-	^ super descriptionContainer
-		propertyAt: #addressContainerBase put: nil;
-		yourself
-]
-
-{ #category : #'acessing-magritte' }
 MAMockAddress >> descriptionNilled1 [
 	<magritteDescription>
 	^ nil
@@ -111,6 +103,14 @@ MAMockAddress >> plz [
 { #category : #'accessing-generated' }
 MAMockAddress >> plz: anObject [
 	plz := anObject
+]
+
+{ #category : #'acessing-magritte' }
+MAMockAddress >> simpleReneDescriptionContainer [
+	<simpleReneContainer>
+	^ super simpleReneDescriptionContainer
+		propertyAt: #addressContainerBase put: nil;
+		yourself
 ]
 
 { #category : #'accessing-generated' }

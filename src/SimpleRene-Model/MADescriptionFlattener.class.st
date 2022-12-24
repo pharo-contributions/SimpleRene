@@ -20,9 +20,9 @@ MADescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 
 { #category : #visiting }
 MADescriptionFlattener >> expandDescription: aDescription for: aValue [
-	aValue magritteDescription do: [ :each |
+	aValue simpleReneMagritteDescription do: [ :each |
 		| val |
-		val := aValue readUsing: each.
+		val := aValue simpleReneReadUsing: each.
 		each
 			addToAccessor: aDescription accessor;
 			priority: aDescription priority + (each priority / 1000).
@@ -41,7 +41,7 @@ MADescriptionFlattener >> visitToOneRelationDescription: aDescription [
 			self target ifEmpty: [ ^ super visitToOneRelationDescription: aDescription ].
 			self target anyOne ]
 		ifFalse: [ self target ].
-	(sample readUsing: aDescription)
+	(sample simpleReneReadUsing: aDescription)
 		ifNil: [ super visitToOneRelationDescription: aDescription ]
 		ifNotNil: [ :value | self expandDescription: aDescription for: value ]
 ]

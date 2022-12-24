@@ -41,8 +41,8 @@ MAAccessorTest >> setUp [
 
 { #category : #'tests-identity' }
 MAAccessorTest >> testAsAccessor [
-	self assert: self instance asAccessor = self instance.
-	self assert: self instance asAccessor == self instance
+	self assert: self instance asSimpleReneAccessor = self instance.
+	self assert: self instance asSimpleReneAccessor == self instance
 ]
 
 { #category : #'tests-testing' }

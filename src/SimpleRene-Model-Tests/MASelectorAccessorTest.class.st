@@ -22,8 +22,8 @@ MASelectorAccessorTest >> actualClass [
 { #category : #'tests-identity' }
 MASelectorAccessorTest >> testAsAccessor [
 	super testAsAccessor.
-	self assert: #value asAccessor = self instance.
-	self deny: #value asAccessor == self instance
+	self assert: #value asSimpleReneAccessor = self instance.
+	self deny: #value asSimpleReneAccessor == self instance
 ]
 
 { #category : #'tests-testing' }

@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #converting }
-MAAccessor >> asAccessor [
+MAAccessor >> asSimpleReneAccessor [
 	^ self
 ]
 

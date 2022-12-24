@@ -17,7 +17,7 @@ Class {
 
 { #category : #'instance creation' }
 MAMemento class >> model: aModel [
-	^ self model: aModel description: aModel magritteDescription
+	^ self model: aModel description: aModel simpleReneMagritteDescription
 ]
 
 { #category : #'instance creation' }
@@ -43,7 +43,7 @@ MAMemento >> cookRawPull: aDictionary [
 
 { #category : #'reflective operations' }
 MAMemento >> doesNotUnderstand: aMessage [
-  ^ self magritteDescription children 
+  ^ self simpleReneMagritteDescription children 
   	detect: [ :desc | desc handlesSelector: aMessage selector ] 
   	ifFound: [ :desc | desc handleMessage: aMessage for: self ]
   	ifNone: [ super doesNotUnderstand: aMessage ]
@@ -52,18 +52,12 @@ MAMemento >> doesNotUnderstand: aMessage [
 { #category : #private }
 MAMemento >> isDifferent: firstDictionary to: secondDictionary [
 	| firstValue secondValue |
-	self magritteDescription do: [ :each |
+	self simpleReneMagritteDescription do: [ :each |
 		(each isVisible and: [ each isReadOnly not ]) ifTrue: [
 			firstValue := firstDictionary at: each ifAbsent: [ nil ].
 			secondValue := secondDictionary at: each ifAbsent: [ nil ].
 			firstValue = secondValue ifFalse: [ ^ true ] ] ].
 	^ false
-]
-
-{ #category : #accessing }
-MAMemento >> magritteDescription [
-	"`#modelDescription` would probably be clearer, but we want to be polymorphic (see implementors)"
-	^ description
 ]
 
 { #category : #accessing }
@@ -97,9 +91,9 @@ MAMemento >> pullRaw [
 MAMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
-	self magritteDescription do: [ :each |
+	self simpleReneMagritteDescription do: [ :each |
 		| value transformedValue |
-		value := self model readUsing: each.
+		value := self model simpleReneReadUsing: each.
 		transformedValue := aBlock value: value.
 		result at: each put: transformedValue ].
 	^ result
@@ -111,12 +105,7 @@ MAMemento >> push: aDictionary [
 
 	aDictionary keysAndValuesDo: [ :key :value |
 		(self shouldPush: value using: key) 
-			ifTrue: [ self model write: value using: key ] ]
-]
-
-{ #category : #private }
-MAMemento >> readUsing: aDescription [
-	^ self subclassResponsibility
+			ifTrue: [ self model simpleReneWrite: value using: key ] ]
 ]
 
 { #category : #actions }
@@ -139,9 +128,20 @@ MAMemento >> shouldPush: anObject using: aDescription [
 	^ aDescription isVisible and: [ aDescription isReadOnly not ]
 ]
 
+{ #category : #accessing }
+MAMemento >> simpleReneMagritteDescription [
+	"`#modelDescription` would probably be clearer, but we want to be polymorphic (see implementors)"
+	^ description
+]
+
+{ #category : #private }
+MAMemento >> simpleReneReadUsing: aDescription [
+	^ self subclassResponsibility
+]
+
 { #category : #actions }
 MAMemento >> validate [
 	"Check if the data in the receiver would be valid if committed. In case of problems an exception is raised."
 
-	self magritteDescription validate: self
+	self simpleReneMagritteDescription validate: self
 ]

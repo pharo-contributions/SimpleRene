@@ -49,7 +49,7 @@ MAOptionDescription >> acceptMagritte: aVisitor [
 
 { #category : #'accessing-dynamic' }
 MAOptionDescription >> allOptions [
-	^ self options maAllOptionsFor: self
+	^ self options simpleReneAllOptionsFor: self
 ]
 
 { #category : #'accessing-dynamic' }
@@ -145,7 +145,7 @@ MAOptionDescription >> isSorted [
 
 { #category : #private }
 MAOptionDescription >> labelForOption: anObject [
-	self propertyAt: #labels ifPresent: [ :labels | labels optionFor: anObject ifPresent: [ :value | ^ value ] ].
+	self propertyAt: #labels ifPresent: [ :labels | labels simpleReneOptionFor: anObject ifPresent: [ :value | ^ value ] ].
 	^ self displayStringFor: anObject.
 ]
 
@@ -172,7 +172,7 @@ MAOptionDescription >> optionsAndLabels: aCollection [
 { #category : #'accessing-textual' }
 MAOptionDescription >> optionsTextual [
 	^ (self reference toStringCollection: self options)
-		asMultilineString
+		simpleReneAsMultilineString
 ]
 
 { #category : #'accessing-textual' }
