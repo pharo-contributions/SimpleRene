@@ -16,7 +16,7 @@ SRSymbolDescriptionTest >> actualClass [
 
 { #category : #private }
 SRSymbolDescriptionTest >> includedInstance [
-	^ #magritte
+	^ #simpleRene
 ]
 
 { #category : #'tests-validation' }

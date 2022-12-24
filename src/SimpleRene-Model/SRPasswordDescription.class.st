@@ -13,7 +13,7 @@ SRPasswordDescription class >> label [
 ]
 
 { #category : #visiting }
-SRPasswordDescription >> acceptMagritte: aVisitor [
+SRPasswordDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitPasswordDescription: self
 ]
 

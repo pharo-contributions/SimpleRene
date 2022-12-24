@@ -1,5 +1,5 @@
 "
-I represent a generic Magritte error.
+I represent a generic SimpleRene error.
 "
 Class {
 	#name : #SRError,

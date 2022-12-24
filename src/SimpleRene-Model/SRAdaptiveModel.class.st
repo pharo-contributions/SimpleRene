@@ -5,8 +5,8 @@ Class {
 	#name : #SRAdaptiveModel,
 	#superclass : #SRBasicObject,
 	#instVars : [
-		'magritteDescription',
-		'values'
+		'values',
+		'description'
 	],
 	#category : #'SimpleRene-Model-Models'
 }
@@ -14,7 +14,7 @@ Class {
 { #category : #'instance creation' }
 SRAdaptiveModel class >> description: aDescription [
 	^ self new
-		magritteDescription: aDescription;
+		simpleReneDescription: aDescription;
 		yourself
 ]
 
@@ -31,20 +31,20 @@ SRAdaptiveModel >> defaultDictionary [
 { #category : #initialization }
 SRAdaptiveModel >> initialize [
 	super initialize.
-	self magritteDescription: self defaultDescription.
+	self simpleReneDescription: self defaultDescription.
 	self values: self defaultDictionary
-]
-
-{ #category : #accessing }
-SRAdaptiveModel >> magritteDescription: aDescription [
-	magritteDescription := aDescription
 ]
 
 { #category : #accessing }
 SRAdaptiveModel >> simpleReneDescription [
 	"Answer the description of the receiver."
 
-	^ magritteDescription
+	^ description
+]
+
+{ #category : #accessing }
+SRAdaptiveModel >> simpleReneDescription: aDescription [
+	description := aDescription
 ]
 
 { #category : #model }

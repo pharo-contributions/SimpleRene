@@ -16,7 +16,7 @@ SRElementDescription class >> new [
 ]
 
 { #category : #visiting }
-SRElementDescription >> acceptMagritte: aVisitor [
+SRElementDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitElementDescription: self
 ]
 

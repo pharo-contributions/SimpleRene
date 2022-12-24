@@ -23,6 +23,6 @@ SRColorDescription class >> label [
 ]
 
 { #category : #visiting }
-SRColorDescription >> acceptMagritte: aVisitor [
+SRColorDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitColorDescription: self
 ]

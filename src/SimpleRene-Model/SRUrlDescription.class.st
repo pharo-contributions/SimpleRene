@@ -5,6 +5,6 @@ Class {
 }
 
 { #category : #visiting }
-SRUrlDescription >> acceptMagritte: aVisitor [
+SRUrlDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitUrlDescription: self
 ]

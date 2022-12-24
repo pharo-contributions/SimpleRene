@@ -33,7 +33,7 @@ SRTableDescription class >> label [
 ]
 
 { #category : #visiting }
-SRTableDescription >> acceptMagritte: aVisitor [
+SRTableDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitTableDescription: self
 ]
 

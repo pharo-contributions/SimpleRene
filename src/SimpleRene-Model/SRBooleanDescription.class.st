@@ -43,7 +43,7 @@ SRBooleanDescription class >> label [
 ]
 
 { #category : #visiting }
-SRBooleanDescription >> acceptMagritte: aVisitor [
+SRBooleanDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitBooleanDescription: self
 ]
 

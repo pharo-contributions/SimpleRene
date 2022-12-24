@@ -13,7 +13,7 @@ SRPriorityContainer class >> defaultCollection [
 ]
 
 { #category : #visiting }
-SRPriorityContainer >> acceptMagritte: aVisitor [
+SRPriorityContainer >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitPriorityContainer: self
 ]
 

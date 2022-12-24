@@ -10,6 +10,6 @@ SRDirectoryDescription class >> label [
 ]
 
 { #category : #visiting }
-SRDirectoryDescription >> acceptMagritte: aVisitor [
+SRDirectoryDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitDirectoryDescription: self
 ]

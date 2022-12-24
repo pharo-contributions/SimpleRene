@@ -40,6 +40,6 @@ SRMoneyDescription class >> label [
 ]
 
 { #category : #visiting }
-SRMoneyDescription >> acceptMagritte: aVisitor [
+SRMoneyDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMoneyDescription: self
 ]

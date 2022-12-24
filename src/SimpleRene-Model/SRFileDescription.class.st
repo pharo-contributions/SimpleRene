@@ -28,7 +28,7 @@ SRFileDescription class >> label [
 ]
 
 { #category : #visiting }
-SRFileDescription >> acceptMagritte: aVisitor [
+SRFileDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitFileDescription: self
 ]
 

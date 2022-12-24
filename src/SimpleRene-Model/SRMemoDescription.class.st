@@ -18,7 +18,7 @@ SRMemoDescription class >> label [
 ]
 
 { #category : #visiting }
-SRMemoDescription >> acceptMagritte: aVisitor [
+SRMemoDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMemoDescription: self
 ]
 

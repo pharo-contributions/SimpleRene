@@ -18,7 +18,7 @@ SRToOneRelationDescription class >> label [
 ]
 
 { #category : #visiting }
-SRToOneRelationDescription >> acceptMagritte: aVisitor [
+SRToOneRelationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitToOneRelationDescription: self
 ]
 

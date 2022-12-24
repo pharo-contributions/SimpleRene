@@ -18,6 +18,6 @@ SRSymbolDescription class >> label [
 ]
 
 { #category : #visiting }
-SRSymbolDescription >> acceptMagritte: aVisitor [
+SRSymbolDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitSymbolDescription: self
 ]

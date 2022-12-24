@@ -1,11 +1,9 @@
 "
-I am a visitor responsible for visiting Magritte descriptions. I am an abstract class providing a default implementation for concrete visitors.
+I am a visitor responsible for visiting SimpleRene descriptions. I am an abstract class providing a default implementation for concrete visitors.
 
-My key entry point is #visit:, which starts the visiting process. Other visiting messages, like #visitAll:, send #visit: at some point.
+My key entry point is `visit:`, which starts the visiting process. Other visiting messages, like `visitAll:`, send `visit:` at some point.
 
-In order to get from the generic #visit: to the #visitXyzDescription: message from my 'visiting-description' protocol that is appropriate for the object I'm visiting (e.g. #visitBooleanDescription:), a handshake is performed between me and that object using two double-dispatches. I send the object #acceptMagritte: with myself as argument. Each description type's acceptMagritte: method then sends the appropriate #visitXyzDescription: message back to me with itself as the argument.
-
-My 'visiting-description' protocol reflects the hierarchy of *MADescription* and its subclasses. Visiting a class which my subclasses don't handle specifically automatically defaults to a less-specific implementation e.g. Boolean -> Element -> Description. This code, along with the corresponding #acceptMagritte: methods, was automatically created using code on my class-side.
+My 'visiting-description' protocol reflects the hierarchy of `SRDescription` and its subclasses. Visiting a class which my subclasses doesn't handle specifically automatically defaults to a less-specific implementation e.g. Boolean -> Element -> Description. This code, along with the corresponding #acceptSimpleReneVisitor:` methods, was automatically created using code on my class-side.
 "
 Class {
 	#name : #SRVisitor,
@@ -15,11 +13,14 @@ Class {
 
 { #category : #private }
 SRVisitor class >> buildVisitorHierarchyForClass: aClass selector: aBlock classified: aSelector [
-	" self buildVisitorHierarchyForClass: MADescription selector: [ :class | 'visit' , (class name allButFirst: 2) , ':' ] classified: #'visiting-description' "
+	" self 
+			buildVisitorHierarchyForClass: SRDescription 
+			selector: [ :class | 'visit' , (class name allButFirst: 2) , ':' ] 
+			classified: #'visiting-description' "
 
-	| visitSourceCode acceptSourceCode classesOwnedByMagritte |
-	classesOwnedByMagritte := aClass withAllSubclasses select: [ :class | class category beginsWith: 'Magritte' ].
-	classesOwnedByMagritte do: [ :class | | visitSelector |
+	| visitSourceCode acceptSourceCode classesOwnedBySimpleRene |
+	classesOwnedBySimpleRene := aClass withAllSubclasses select: [ :class | class category beginsWith: 'SimpleRene' ].
+	classesOwnedBySimpleRene do: [ :class | | visitSelector |
 			visitSelector := aBlock value: class.
 			visitSourceCode := String streamContents: [ :stream |
 					stream nextPutAll: visitSelector; nextPutAll: ' aDescription'; cr.
@@ -28,7 +29,7 @@ SRVisitor class >> buildVisitorHierarchyForClass: aClass selector: aBlock classi
 			self compile: visitSourceCode classified: aSelector.
 				
 			acceptSourceCode := String streamContents: [ :stream |
-					stream nextPutAll: 'acceptMagritte: aVisitor'; cr.
+					stream nextPutAll: 'acceptSimpleReneVisitor: aVisitor'; cr.
 					stream tab; nextPutAll: 'aVisitor '; nextPutAll: visitSelector; nextPutAll: ' self' ].
 			class compile: acceptSourceCode classified: #visiting ]
 ]
@@ -39,7 +40,7 @@ SRVisitor >> visit: anObject [
 	| errors |
 	errors := OrderedCollection new.
 	[
-		anObject acceptMagritte: self.
+		anObject acceptSimpleReneVisitor: self.
 	]
 		on: SRValidationError
 		do: [ :err | 

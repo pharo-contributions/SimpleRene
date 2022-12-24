@@ -6,7 +6,7 @@ Class {
 
 { #category : #'acessing-magritte' }
 SRMockAddress2 >> descriptionStreet [
-	"this pragma #magritteDescription is optional as the pragma will be retrieved from the super class's overridden method."
+	"this pragma simpleReneDescription is optional as the pragma will be retrieved from the super class's overridden method."
 	<simpleReneDescription>
 	
 	^ super descriptionStreet

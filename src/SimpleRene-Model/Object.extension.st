@@ -42,10 +42,9 @@ Object >> isSimpleReneSameAs: rhs using: valuableDescription [
 	"Motivation: We cache the description because profiling on a large dataset (120,000 records) showed about 66% of processing time was spent (re)building it"
 ]
 
-{ #category : #'*SimpleRene-Model-description' }
-Object class >> magritteTemplate [
-	"Allow subclasses to have a prototype instance for creating a Magritte description (especially reference description)."
-	^self new
+{ #category : #'*SimpleRene-Model-builder' }
+Object >> simpleReneActions [
+	^ (SRActionPragmaBuilder for: self) children
 ]
 
 { #category : #'*SimpleRene-Model-builder' }
@@ -89,11 +88,6 @@ Object >> simpleReneLazyInstVarUsing: description [
 	^ description lazilyInitializeFrom: currentValue for: self.
 ]
 
-{ #category : #'*SimpleRene-Model-builder' }
-Object >> simpleReneMagritteActions [
-	^ (SRActionPragmaBuilder for: self) children
-]
-
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneMementoClass [
 	"Return a class to be used to remember or cache the receiver, namely a memento object."
@@ -108,6 +102,12 @@ Object >> simpleReneReadUsing: aDescription [
 	| result |
 	result := aDescription accessor read: self.
 	^ result ifNil: [ aDescription undefinedValue ]
+]
+
+{ #category : #'*SimpleRene-Model-description' }
+Object class >> simpleReneTemplate [
+	"Allow subclasses to have a prototype instance for creating a Magritte description (especially reference description)."
+	^self new
 ]
 
 { #category : #'*SimpleRene-Model' }

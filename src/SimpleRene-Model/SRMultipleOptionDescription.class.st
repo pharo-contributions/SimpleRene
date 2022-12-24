@@ -33,7 +33,7 @@ SRMultipleOptionDescription class >> label [
 ]
 
 { #category : #visiting }
-SRMultipleOptionDescription >> acceptMagritte: aVisitor [
+SRMultipleOptionDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMultipleOptionDescription: self
 ]
 

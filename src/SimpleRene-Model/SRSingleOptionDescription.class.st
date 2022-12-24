@@ -26,7 +26,7 @@ SRSingleOptionDescription class >> label [
 ]
 
 { #category : #visiting }
-SRSingleOptionDescription >> acceptMagritte: aVisitor [
+SRSingleOptionDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitSingleOptionDescription: self
 ]
 

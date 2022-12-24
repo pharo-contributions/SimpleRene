@@ -45,7 +45,7 @@ SRObject >> = anObject [
 ]
 
 { #category : #visiting }
-SRObject >> acceptMagritte: aVisitor [
+SRObject >> acceptSimpleReneVisitor: aVisitor [
 ]
 
 { #category : #comparing }

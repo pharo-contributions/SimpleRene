@@ -1,5 +1,5 @@
 "
-I am an abstract description for descriptions representing a relation. My instance variable ==classes== references a collection of possible classes that I can relate to. If required the reference description will be automatically built from this list of classes.
+I am an abstract description for descriptions representing a relation. My instance variable `classes` references a collection of possible classes that I can relate to. If required the reference description will be automatically built from this list of classes.
 !Background Info
 Lukas describes them as ""proof of concept"", which probably accounts for the haziness and lack of documentation.
 
@@ -15,7 +15,7 @@ satisfy particular customer requests.
 >
 >I must say that the current implementation is more at the state of a 
 proof of concept. I never used relationships in any project (other 
-than the Magritte meta editor in Magritte itself), it is largely 
+than the SimpleRene meta editor in SimpleRene itself), it is largely 
 untested in practice. The only changes relationships have seen since 
 my Master in 2006 were fixes that other people have submitted. The 
 fact that some of these fixes got reverted again by newer fixes has 
@@ -23,7 +23,7 @@ led me to the conclusion that at least in the current form the
 implementation of relationships is fragile and I refrain from 
 suggesting its use. 
 >
->I found it more flexible and user-friendly to let Magritte create 
+>I found it more flexible and user-friendly to let SimpleRene create 
 simple components only. I would then compose these individual 
 components in a master component. This allows one to easily create 
 arbitrary complex forms with custom navigation between different 
@@ -50,7 +50,7 @@ SRRelationDescription class >> defaultClasses [
 ]
 
 { #category : #visiting }
-SRRelationDescription >> acceptMagritte: aVisitor [
+SRRelationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitRelationDescription: self
 ]
 
@@ -119,5 +119,5 @@ SRRelationDescription >> postCopy [
 SRRelationDescription >> reference [
 	"The reference within a ==*MARelationDescription*== is calculated automatically from all the classes of the receiver, if set to ==nil==. By setting the reference to a ==*MAContainer*== instance it is possible to customize the reference description."
 
-	^ super reference ifNil: [ self commonClass magritteTemplate simpleReneDescription ]
+	^ super reference ifNil: [ self commonClass simpleReneTemplate simpleReneDescription ]
 ]

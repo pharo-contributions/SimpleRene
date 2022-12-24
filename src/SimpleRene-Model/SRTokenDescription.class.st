@@ -31,7 +31,7 @@ SRTokenDescription class >> label [
 ]
 
 { #category : #visiting }
-SRTokenDescription >> acceptMagritte: aVisitor [
+SRTokenDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitTokenDescription: self
 ]
 

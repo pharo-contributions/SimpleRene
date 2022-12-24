@@ -13,6 +13,6 @@ SRToManyScalarRelationDescription class >> label [
 ]
 
 { #category : #visiting }
-SRToManyScalarRelationDescription >> acceptMagritte: aVisitor [
+SRToManyScalarRelationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitToManyScalarRelationDescription: self
 ]

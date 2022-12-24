@@ -22,8 +22,8 @@ SRActionDescription class >> isAbstract [
 
 { #category : #accessing }
 SRActionDescription class >> maPragma [
-	"Annotate constructor methods with this pragma to get picked up by Magritte; similar to #magritteDescription"
-	^ #magritteActionDescription
+	"Annotate constructor methods with this pragma to get picked up by SimpleRene; similar to #simpleReneDescription"
+	^ #simpleReneActionDescription
 ]
 
 { #category : #comparing }

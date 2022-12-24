@@ -43,7 +43,7 @@ SRToManyRelationDescription class >> label [
 ]
 
 { #category : #visiting }
-SRToManyRelationDescription >> acceptMagritte: aVisitor [
+SRToManyRelationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitToManyRelationDescription: self
 ]
 

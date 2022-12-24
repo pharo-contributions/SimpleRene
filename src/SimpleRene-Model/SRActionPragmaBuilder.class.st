@@ -6,10 +6,10 @@ Class {
 
 { #category : #constants }
 SRActionPragmaBuilder class >> simpleReneDescriptionExtensionPragma [ 
-	^ #magritteActionDescription:
+	^ #simpleReneActionDescription:
 ]
 
 { #category : #constants }
 SRActionPragmaBuilder class >> simpleReneDescriptionPragma [ 
-	^ #magritteActionDescription
+	^ #simpleReneActionDescription
 ]

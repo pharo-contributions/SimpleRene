@@ -23,7 +23,7 @@ SRNumberDescription class >> label [
 ]
 
 { #category : #visiting }
-SRNumberDescription >> acceptMagritte: aVisitor [
+SRNumberDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitNumberDescription: self
 ]
 

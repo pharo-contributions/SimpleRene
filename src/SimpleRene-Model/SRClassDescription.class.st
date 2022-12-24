@@ -28,6 +28,6 @@ SRClassDescription class >> label [
 ]
 
 { #category : #visiting }
-SRClassDescription >> acceptMagritte: aVisitor [
+SRClassDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitClassDescription: self
 ]

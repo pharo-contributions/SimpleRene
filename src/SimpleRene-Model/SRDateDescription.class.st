@@ -23,6 +23,6 @@ SRDateDescription class >> label [
 ]
 
 { #category : #visiting }
-SRDateDescription >> acceptMagritte: aVisitor [
+SRDateDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitDateDescription: self
 ]

@@ -74,7 +74,7 @@ SRContainer >> = anObject [
 ]
 
 { #category : #visiting }
-SRContainer >> acceptMagritte: aVisitor [
+SRContainer >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitContainer: self
 ]
 
@@ -264,11 +264,6 @@ SRContainer >> keysAndValuesDo: aBlock [
 	self children keysAndValuesDo: aBlock
 ]
 
-{ #category : #'as yet unclassified' }
-SRContainer >> magritteTemplate [
-	^ self
-]
-
 { #category : #enumerating }
 SRContainer >> noneSatisfy: aBlock [
 	^ self children noneSatisfy: aBlock
@@ -338,6 +333,11 @@ SRContainer >> simpleReneMoveDown: aDescription [
 { #category : #moving }
 SRContainer >> simpleReneMoveUp: aDescription [
 	self children simpleReneMoveUp: aDescription
+]
+
+{ #category : #'as yet unclassified' }
+SRContainer >> simpleReneTemplate [
+	^ self
 ]
 
 { #category : #accessing }

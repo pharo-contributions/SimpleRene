@@ -23,7 +23,7 @@ SRStringDescription class >> label [
 ]
 
 { #category : #visiting }
-SRStringDescription >> acceptMagritte: aVisitor [
+SRStringDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitStringDescription: self
 ]
 

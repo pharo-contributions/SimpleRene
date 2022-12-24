@@ -25,7 +25,7 @@ SRBlockDescription class >> label [
 ]
 
 { #category : #visiting }
-SRBlockDescription >> acceptMagritte: aVisitor [
+SRBlockDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitBlockDescription: self
 ]
 

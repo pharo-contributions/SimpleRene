@@ -13,7 +13,7 @@ SRObjectTest class >> buildTestClassFor: aClass [
 	thisName := (aClass name , 'Test') asSymbol.
 	(thisName beginsWith: 'MA') ifFalse: [ ^ self ].
 	thisClass := self environment classNamed: thisName.
-	thisCategory := 'Magritte-Tests-Model-' , (aClass category copyAfterLast: $-).
+	thisCategory := 'SimpleRene-Tests-Model-' , (aClass category copyAfterLast: $-).
 	parentClass := self = thisClass 
 		ifTrue: [ self superclass ]
 		ifFalse: 
@@ -44,7 +44,7 @@ SRObjectTest class >> isAbstract [
 
 { #category : #accessing }
 SRObjectTest class >> packageNamesUnderTest [
-	^ #('Magritte-Model')
+	^ #('SimpleRene-Model')
 ]
 
 { #category : #testing }

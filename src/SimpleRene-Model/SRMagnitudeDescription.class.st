@@ -18,7 +18,7 @@ SRMagnitudeDescription class >> defaultMin [
 ]
 
 { #category : #visiting }
-SRMagnitudeDescription >> acceptMagritte: aVisitor [
+SRMagnitudeDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMagnitudeDescription: self
 ]
 

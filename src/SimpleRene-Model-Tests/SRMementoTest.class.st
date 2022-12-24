@@ -39,7 +39,7 @@ SRMementoTest >> descriptionValue [
 
 { #category : #private }
 SRMementoTest >> includedInstance [
-	^ 'Rene Magritte'
+	^ 'Rene'
 ]
 
 { #category : #accessing }
