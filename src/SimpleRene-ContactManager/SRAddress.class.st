@@ -25,6 +25,7 @@ SRAddress >> = anObject [
 
 { #category : #accessing }
 SRAddress >> canton [
+
 	^ canton
 ]
 
