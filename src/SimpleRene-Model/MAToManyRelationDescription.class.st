@@ -91,7 +91,7 @@ MAToManyRelationDescription >> definitive: aBoolean [
 
 { #category : #'acessing-magritte' }
 MAToManyRelationDescription >> descriptionDefinitive [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #definitive;
 		label: 'Definitive';
@@ -102,7 +102,7 @@ MAToManyRelationDescription >> descriptionDefinitive [
 
 { #category : #'acessing-magritte' }
 MAToManyRelationDescription >> descriptionOrdered [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #ordered;
 		label: 'Ordered';
@@ -113,7 +113,7 @@ MAToManyRelationDescription >> descriptionOrdered [
 
 { #category : #'acessing-magritte' }
 MAToManyRelationDescription >> descriptionSorted [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #sorted;
 		label: 'Sorted';

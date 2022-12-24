@@ -24,7 +24,7 @@ MAMagnitudeDescription >> acceptMagritte: aVisitor [
 
 { #category : #'acessing-magritte' }
 MAMagnitudeDescription >> descriptionMax [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ self class new
 		accessor: #max;
 		label: 'Maximum';
@@ -34,7 +34,7 @@ MAMagnitudeDescription >> descriptionMax [
 
 { #category : #'acessing-magritte' }
 MAMagnitudeDescription >> descriptionMin [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ self class new
 		accessor: #min;
 		label: 'Min';

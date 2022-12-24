@@ -37,7 +37,7 @@ MATokenDescription >> acceptMagritte: aVisitor [
 
 { #category : #'acessing-magritte' }
 MATokenDescription >> descriptionSeparators [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #separators;
 		label: 'Separators';

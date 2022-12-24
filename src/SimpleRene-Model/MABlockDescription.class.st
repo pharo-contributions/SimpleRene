@@ -31,7 +31,7 @@ MABlockDescription >> acceptMagritte: aVisitor [
 
 { #category : #'accessing-magritte' }
 MABlockDescription >> descriptionLineCount [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MANumberDescription new
 		accessor: #lineCount;
 		label: 'Number of Lines';

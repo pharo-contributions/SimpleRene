@@ -12,7 +12,7 @@ Class {
 
 { #category : #constants }
 MAPragmaBuilder class >> containerPragma [ 
-	^ #magritteContainer
+	^ #simpleReneContainer
 ]
 
 { #category : #'instance creation' }
@@ -21,18 +21,18 @@ MAPragmaBuilder class >> for: anObject [
 ]
 
 { #category : #constants }
-MAPragmaBuilder class >> magritteDescriptionExtensionPragma [ 
-	^ #magritteDescription:
+MAPragmaBuilder class >> simpleReneDescriptionExtensionPragma [ 
+	^ #simpleReneDescription:
 ]
 
 { #category : #constants }
-MAPragmaBuilder class >> magritteDescriptionPragma [ 
+MAPragmaBuilder class >> simpleReneDescriptionPragma [ 
 	^ #simpleReneDescription
 ]
 
 { #category : #constants }
-MAPragmaBuilder class >> magritteSelectors [
-	^ Array with: self containerPragma with: self magritteDescriptionExtensionPragma with: self magritteDescriptionPragma
+MAPragmaBuilder class >> simpleReneSelectors [
+	^ Array with: self containerPragma with: self simpleReneDescriptionExtensionPragma with: self simpleReneDescriptionPragma
 ]
 
 { #category : #private }
@@ -112,7 +112,7 @@ MAPragmaBuilder >> descriptionExtensions: anObject [
 	| extensionPragmas |
 	
 	extensionPragmas := Pragma
-		allNamed: self class magritteDescriptionExtensionPragma
+		allNamed: self class simpleReneDescriptionExtensionPragma
 		from: anObject class to: Object.
 	
 	^ extensionPragmas inject: Dictionary new into: [ :extensionSelectors :each | 
@@ -145,7 +145,7 @@ MAPragmaBuilder >> uniqueDescriptionSelectors: anObject [
 	| descriptionPragmas selectors |
 	
 	descriptionPragmas := Pragma 
-		allNamed: self class magritteDescriptionPragma 
+		allNamed: self class simpleReneDescriptionPragma 
 		from: anObject class to: Object.
 		
 	selectors := descriptionPragmas collect: [ :each | each method selector ].

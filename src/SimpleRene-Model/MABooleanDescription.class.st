@@ -59,7 +59,7 @@ MABooleanDescription >> allOptionsWith: anObject [
 
 { #category : #'acessing-magritte' }
 MABooleanDescription >> descriptionFalseString [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #falseString;
 		default: self class defaultFalseString;
@@ -70,13 +70,13 @@ MABooleanDescription >> descriptionFalseString [
 
 { #category : #'acessing-magritte' }
 MABooleanDescription >> descriptionRequired [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MABooleanDescription >> descriptionTrueString [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #trueString;
 		default: self class defaultTrueString;

@@ -24,7 +24,7 @@ MAMemoDescription >> acceptMagritte: aVisitor [
 
 { #category : #'acessing-magritte' }
 MAMemoDescription >> descriptionLineCount [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MANumberDescription new
 		accessor: #lineCount;
 		label: 'Number of Lines';

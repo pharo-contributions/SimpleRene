@@ -65,7 +65,7 @@ MATableDescription >> columnLabelsTextual: aString [
 
 { #category : #'acessing-magritte' }
 MATableDescription >> descriptionColumnLabels [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAMemoDescription new
 		accessor: #columnLabelsTextual;
 		label: 'Column Labels';
@@ -75,19 +75,19 @@ MATableDescription >> descriptionColumnLabels [
 
 { #category : #'acessing-magritte' }
 MATableDescription >> descriptionDefault [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MATableDescription >> descriptionRequired [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MATableDescription >> descriptionRowLabels [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAMemoDescription new
 		accessor: #rowLabelsTextual;
 		label: 'Row Labels';

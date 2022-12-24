@@ -81,13 +81,13 @@ MAOptionDescription >> beUnsorted [
 
 { #category : #'acessing-magritte' }
 MAOptionDescription >> descriptionDefault [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 
 { #category : #'acessing-magritte' }
 MAOptionDescription >> descriptionExtensible [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #extensible;
 		label: 'Extensible';
@@ -98,7 +98,7 @@ MAOptionDescription >> descriptionExtensible [
 
 { #category : #'acessing-magritte' }
 MAOptionDescription >> descriptionOptions [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAMemoDescription new
 		accessor: #optionsTextual;
 		label: 'Options';
@@ -109,7 +109,7 @@ MAOptionDescription >> descriptionOptions [
 
 { #category : #'acessing-magritte' }
 MAOptionDescription >> descriptionSorted [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #sorted;
 		label: 'Sorted';

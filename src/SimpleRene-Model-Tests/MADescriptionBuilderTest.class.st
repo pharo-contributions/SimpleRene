@@ -6,7 +6,7 @@ Class {
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionContainer: aDescription [
-	<magritteContainer>
+	<simpleReneContainer>
 	^ aDescription
 		propertyAt: #bar put: nil;
 		yourself
@@ -14,7 +14,8 @@ MADescriptionBuilderTest >> descriptionContainer: aDescription [
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionContainerFoo: aDescription [
-	<magritteContainer>
+	<simpleReneContainer>
+	
 	^ aDescription
 		propertyAt: #foo put: nil;
 		yourself
@@ -22,7 +23,7 @@ MADescriptionBuilderTest >> descriptionContainerFoo: aDescription [
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescription [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new 
 		label: 'foo';
 		accessor: MADictionaryAccessor new;
@@ -31,7 +32,7 @@ MADescriptionBuilderTest >> descriptionDescription [
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescription: aDescription [
-	<magritteDescription: #descriptionDescription>
+	<simpleReneDescription: #descriptionDescription>
 	^ aDescription
 		propertyAt: #foo put: nil;
 		yourself
@@ -39,7 +40,7 @@ MADescriptionBuilderTest >> descriptionDescription: aDescription [
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescriptionBar: aDescription [
-	<magritteDescription: #descriptionDescription>
+	<simpleReneDescription: #descriptionDescription>
 	^ aDescription
 		propertyAt: #bar put: nil;
 		yourself
@@ -47,7 +48,7 @@ MADescriptionBuilderTest >> descriptionDescriptionBar: aDescription [
 
 { #category : #'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescriptionRec: aDescription [
-	<magritteDescription: #descriptionDescription>
+	<simpleReneDescription: #descriptionDescription>
 	^ aDescription reference: self simpleReneDescription
 ]
 
@@ -59,7 +60,7 @@ MADescriptionBuilderTest >> simpleReneDescriptionContainer [
 
 { #category : #tests }
 MADescriptionBuilderTest >> testContainer [
-	self assert: self simpleReneDescription label = 'mock'.
+	self assert: self simpleReneDescription label equals: 'mock'.
 	self assert: (self simpleReneDescription hasProperty: #foo).
 	self assert: (self simpleReneDescription hasProperty: #bar)
 ]
@@ -85,7 +86,7 @@ MADescriptionBuilderTest >> testExtension [
 MADescriptionBuilderTest >> testNilled [
 	| description |
 	description := MAMockAddress new simpleReneDescription.
-	self assert: description size equals: 4
+	self assert: description size equals: 3
 ]
 
 { #category : #tests }

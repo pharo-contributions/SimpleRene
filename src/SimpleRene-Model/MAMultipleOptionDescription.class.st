@@ -59,7 +59,7 @@ MAMultipleOptionDescription >> beUnordered [
 
 { #category : #'acessing-magritte' }
 MAMultipleOptionDescription >> descriptionDistinct [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #distinct;
 		label: 'Distinct';
@@ -70,7 +70,7 @@ MAMultipleOptionDescription >> descriptionDistinct [
 
 { #category : #'acessing-magritte' }
 MAMultipleOptionDescription >> descriptionOrdered [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #ordered;
 		label: 'Ordered';

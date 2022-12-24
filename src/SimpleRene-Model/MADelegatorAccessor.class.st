@@ -42,7 +42,7 @@ MADelegatorAccessor >> defaultLabelFor: aDescription [
 
 { #category : #'accessing-magritte' }
 MADelegatorAccessor >> descriptionNext [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new
 			reference: MAStringDescription new;
 			accessor: #next;

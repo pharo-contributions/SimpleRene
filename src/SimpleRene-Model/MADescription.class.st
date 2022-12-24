@@ -298,7 +298,6 @@ MADescription >> defaultCanExpand [
 	" used to expand a relation description into a group "
 	self isVisible ifFalse: [ ^false ].
 	self isReadOnly ifTrue: [ ^false ].
-	self tabDisplay ifTrue: [ ^false ].
 	self group ifNotNil: [ ^false ].
 	^true
 ]
@@ -315,7 +314,7 @@ MADescription >> describedObject [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionAccessor [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new
 		reference: MAStringDescription new;
 		accessor: #accessor;
@@ -326,7 +325,7 @@ MADescription >> descriptionAccessor [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionComment [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAMemoDescription new
 		accessor: #comment;
 		label: 'Comment';
@@ -337,7 +336,7 @@ MADescription >> descriptionComment [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionDefault [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ self class isAbstract
 		ifFalse: [ 
 			self class new
@@ -350,7 +349,7 @@ MADescription >> descriptionDefault [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionGroup [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #group;
 		default: self class defaultGroup;
@@ -361,7 +360,7 @@ MADescription >> descriptionGroup [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionLabel [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #label;
 		label: 'Label';
@@ -372,7 +371,7 @@ MADescription >> descriptionLabel [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionName [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASymbolDescription new
 		accessor: #name;
 		priority: 1;
@@ -381,7 +380,7 @@ MADescription >> descriptionName [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionPriority [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MANumberDescription new
 		accessor: #priority;
 		label: 'Priority';
@@ -393,7 +392,7 @@ MADescription >> descriptionPriority [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionReadOnly [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #readOnly;
 		label: 'Read-only';
@@ -404,7 +403,7 @@ MADescription >> descriptionReadOnly [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionRequired [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #required;
 		label: 'Required';
@@ -415,7 +414,7 @@ MADescription >> descriptionRequired [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionStringReader [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASingleOptionDescription new
 		accessor: #stringReader;
 		label: 'String Reader';
@@ -428,7 +427,7 @@ MADescription >> descriptionStringReader [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionStringWriter [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASingleOptionDescription new
 		accessor: #stringWriter;
 		label: 'String Writer';
@@ -441,7 +440,7 @@ MADescription >> descriptionStringWriter [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionType [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #type;
 		label: 'Kind';
@@ -452,7 +451,7 @@ MADescription >> descriptionType [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionUndefined [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAStringDescription new
 		accessor: #undefined;
 		label: 'Undefined String';
@@ -463,7 +462,7 @@ MADescription >> descriptionUndefined [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionUndefinedValue [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new
 		accessor: #undefinedValue;
 		priority: 150;
@@ -473,7 +472,7 @@ MADescription >> descriptionUndefinedValue [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionValidator [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASingleOptionDescription new
 		accessor: #validator;
 		label: 'Validator';
@@ -486,7 +485,7 @@ MADescription >> descriptionValidator [
 
 { #category : #'acessing-magritte' }
 MADescription >> descriptionVisible [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MABooleanDescription new
 		accessor: #visible;
 		label: 'Visible';
@@ -879,7 +878,7 @@ MADescription >> undefined: aString [
 
 { #category : #'accessing-properties' }
 MADescription >> undefinedValue [
-	self flag: 'could this be simplified with maLazyXyz?'.
+
 	^ (self propertyAt: #undefinedValue ifAbsent: [ self class defaultUndefinedValue ])
 		ifNil: [ self class defaultUndefinedValue ]
 ]

@@ -5,11 +5,11 @@ Class {
 }
 
 { #category : #constants }
-MAActionPragmaBuilder class >> magritteDescriptionExtensionPragma [ 
+MAActionPragmaBuilder class >> simpleReneDescriptionExtensionPragma [ 
 	^ #magritteActionDescription:
 ]
 
 { #category : #constants }
-MAActionPragmaBuilder class >> magritteDescriptionPragma [ 
+MAActionPragmaBuilder class >> simpleReneDescriptionPragma [ 
 	^ #magritteActionDescription
 ]

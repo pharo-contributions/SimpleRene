@@ -70,7 +70,7 @@ MAReferenceDescription >> acceptMagritte: aVisitor [
 
 { #category : #'acessing-magritte' }
 MAReferenceDescription >> descriptionReference [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new
 		accessor: #reference;
 		classes: MADescription withAllConcreteClasses;

@@ -174,7 +174,7 @@ MAContainer >> descriptionBuilders: aList [
 
 { #category : #'acessing-magritte' }
 MAContainer >> descriptionChildren [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToManyRelationDescription new
 		accessor: (MASelectorAccessor read: #children write: #setChildren:);
 		classes: MAElementDescription withAllConcreteClasses;
@@ -187,7 +187,7 @@ MAContainer >> descriptionChildren [
 
 { #category : #'acessing-magritte' }
 MAContainer >> descriptionDefault [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ nil
 ]
 

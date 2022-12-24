@@ -60,7 +60,7 @@ MADictionaryAccessor >> key: aKey [
 
 { #category : #'magritte-accessing' }
 MADictionaryAccessor >> keyDescription [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASymbolDescription new
 		accessor: #key;
 		required: true;

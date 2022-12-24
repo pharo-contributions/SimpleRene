@@ -58,7 +58,7 @@ MAChainAccessor >> defaultLabelFor: aDescription [
 
 { #category : #'accessing-magritte' }
 MAChainAccessor >> descriptionAccessor [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAToOneRelationDescription new
 			reference: MAStringDescription new;
 			accessor: #accessor;

@@ -49,7 +49,7 @@ SRPerson >> birthday: anObject [
 
 { #category : #descriptions }
 SRPerson >> descriptionAge [
-	<magritteDescription>
+	<simpleReneDescription>
 	 ^ MANumberDescription new
 		selectorAccessor: #age;
 		label: 'Age';
@@ -60,7 +60,7 @@ SRPerson >> descriptionAge [
 
 { #category : #descriptions }
 SRPerson >> descriptionBirthday [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MADateDescription new
 		accessor: #birthday;
 		label: 'Birthday';
@@ -70,7 +70,7 @@ SRPerson >> descriptionBirthday [
 
 { #category : #descriptions }
 SRPerson >> descriptionFirstName [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAStringDescription new
 			accessor: #firstName;
@@ -82,10 +82,10 @@ SRPerson >> descriptionFirstName [
 
 { #category : #descriptions }
 SRPerson >> descriptionHomeAddress [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAToOneRelationDescription new
-			componentClass: MAInternalEditorComponent;
+			"componentClass: MAInternalEditorMorph;"
 			classes: (Array with: SRAddress);
 			accessor: #homeAddress;
 			label: 'Home Address';
@@ -95,7 +95,7 @@ SRPerson >> descriptionHomeAddress [
 
 { #category : #descriptions }
 SRPerson >> descriptionLastName [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAStringDescription new
 		accessor: #lastName;
@@ -107,10 +107,10 @@ SRPerson >> descriptionLastName [
 
 { #category : #descriptions }
 SRPerson >> descriptionOfficeAddress [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAToOneRelationDescription new
-			componentClass: MAExternalEditorComponent;
+			"componentClass: MAExternalEditorComponent;"
 			classes: (Array with: SRAddress);
 			accessor: #officeAddress;
 			label: 'Office Address';
@@ -120,10 +120,10 @@ SRPerson >> descriptionOfficeAddress [
 
 { #category : #descriptions }
 SRPerson >> descriptionPassword [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAPasswordDescription new
-			componentClass: MAVerifiedPasswordComponent;
+			"componentClass: MAVerifiedPasswordComponent;"
 			accessor: #password;
 			label: 'Password';
 			priority: 100;
@@ -132,7 +132,7 @@ SRPerson >> descriptionPassword [
 
 { #category : #descriptions }
 SRPerson >> descriptionPhoneNumbers [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAToManyRelationDescription new
 		classes: (Array with: SRPhone);
@@ -145,7 +145,7 @@ SRPerson >> descriptionPhoneNumbers [
 
 { #category : #descriptions }
 SRPerson >> descriptionPicture [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MAFileDescription new
 		addCondition: [ :value | value isImage ] labelled: 'Image expected';
@@ -157,7 +157,7 @@ SRPerson >> descriptionPicture [
 
 { #category : #descriptions }
 SRPerson >> descriptionTitle [
-	<magritteDescription>
+	<simpleReneDescription>
 	
 	^ MASingleOptionDescription new
 			options: #( 'Mr.' 'Mrs.' 'Ms.' 'Miss.' );

@@ -60,7 +60,7 @@ Object >> simpleReneDescriptionContainer [
 
 	"Return the default description container."
 
-	<magritteContainer>
+	<simpleReneContainer>
 	^ MAPriorityContainer new
 		  label: self class simpleReneLabel;
 		  yourself

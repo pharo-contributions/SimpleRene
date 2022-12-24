@@ -55,7 +55,7 @@ MASelectorAccessor >> defaultLabelFor: aDescription [
 
 { #category : #'accessing-magritte' }
 MASelectorAccessor >> descriptionSelector [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASymbolDescription new
 			accessor: #selector;
 			yourself

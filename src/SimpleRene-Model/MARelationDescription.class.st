@@ -87,7 +87,7 @@ MARelationDescription >> commonClass [
 
 { #category : #'acessing-magritte' }
 MARelationDescription >> descriptionClasses [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MAMultipleOptionDescription new
 		accessor: #classes;
 		label: 'Classes';
@@ -102,7 +102,7 @@ MARelationDescription >> descriptionClasses [
 
 { #category : #'acessing-magritte' }
 MARelationDescription >> descriptionReference [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ super descriptionReference
 		classes: MAContainer withAllConcreteClasses;
 		beOptional;

@@ -77,7 +77,7 @@ MADescriptionHolder class >> groupText [
 
 { #category : #'acessing-magritte' }
 MADescriptionHolder >> descriptionValue [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASingleOptionDescription new
 		reference: MAClassDescription new;
 		options: self class descriptionClasses;

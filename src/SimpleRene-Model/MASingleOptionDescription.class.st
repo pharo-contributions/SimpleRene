@@ -32,7 +32,7 @@ MASingleOptionDescription >> acceptMagritte: aVisitor [
 
 { #category : #'acessing-magritte' }
 MASingleOptionDescription >> descriptionGroupBy [
-	<magritteDescription>
+	<simpleReneDescription>
 	^ MASymbolDescription new
 		selectorAccessor: #groupBy;
 		label: 'Grouped by';
