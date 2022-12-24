@@ -41,7 +41,7 @@ MAExtensionsTest >> testCopyWithAll [
 MAExtensionsTest >> testCopyWithoutFirst [
 	| col res |
 	col := #( a b a c ).
-	res := col copyWithoutFirstOccurrenceOf: #a.
+	res := col simpleReneCopyWithoutFirstOccurrenceOf: #a.
 	self assert: res = #( b a c ).
 	self deny: col == res.
 
@@ -125,25 +125,25 @@ MAExtensionsTest >> testLines [
 
 { #category : #'tests-string' }
 MAExtensionsTest >> testMatches [
-	self assert: ('' matches: '').
-	self assert: ('zort' matches: '').
-	self assert: ('zort' matches: 'o').
-	self assert: ('zort' matches: 'O').
-	self assert: ('zort' matches: '*').
-	self assert: ('mobaz' matches: '*baz').
-	self deny: ('mobazo' matches: '*baz').
-	self assert: ('mobazo' matches: '*baz*').
-	self deny: ('mozo' matches: '*baz*').
-	self assert: ('foozo' matches: 'foo*').
-	self deny: ('bozo' matches: 'foo*').
-	self assert: ('foo23baz' matches: 'foo*baz').
-	self assert: ('foobaz' matches: 'foo*baz').
-	self deny: ('foo23bazo' matches: 'foo*baz').
-	self assert: ('Foo' matches: 'foo').
-	self deny: ('foobazort' matches: 'foo*baz*zort').
-	self assert: ('foobazzort' matches: 'foo*baz*zort').
-	self assert: ('afoo3zortthenfoo3zort' matches: '*foo#zort').
-	self assert: ('afoodezortorfoo3zort' matches: '*foo*zort')
+	self assert: ('' simpleReneMatches: '').
+	self assert: ('zort' simpleReneMatches: '').
+	self assert: ('zort' simpleReneMatches: 'o').
+	self assert: ('zort' simpleReneMatches: 'O').
+	self assert: ('zort' simpleReneMatches: '*').
+	self assert: ('mobaz' simpleReneMatches: '*baz').
+	self deny: ('mobazo' simpleReneMatches: '*baz').
+	self assert: ('mobazo' simpleReneMatches: '*baz*').
+	self deny: ('mozo' simpleReneMatches: '*baz*').
+	self assert: ('foozo' simpleReneMatches: 'foo*').
+	self deny: ('bozo' simpleReneMatches: 'foo*').
+	self assert: ('foo23baz' simpleReneMatches: 'foo*baz').
+	self assert: ('foobaz' simpleReneMatches: 'foo*baz').
+	self deny: ('foo23bazo' simpleReneMatches: 'foo*baz').
+	self assert: ('Foo' simpleReneMatches: 'foo').
+	self deny: ('foobazort' simpleReneMatches: 'foo*baz*zort').
+	self assert: ('foobazzort' simpleReneMatches: 'foo*baz*zort').
+	self assert: ('afoo3zortthenfoo3zort' simpleReneMatches: '*foo#zort').
+	self assert: ('afoodezortorfoo3zort' simpleReneMatches: '*foo*zort')
 ]
 
 { #category : #'tests-collection' }

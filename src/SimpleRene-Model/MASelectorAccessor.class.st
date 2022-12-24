@@ -50,7 +50,7 @@ MASelectorAccessor >> canWrite: aModel [
 
 { #category : #accessing }
 MASelectorAccessor >> defaultLabelFor: aDescription [
-	^ self readSelector asString normalizeCamelCase capitalized
+	^ self readSelector asString simpleReneNormalizeCamelCase capitalized
 ]
 
 { #category : #'accessing-magritte' }

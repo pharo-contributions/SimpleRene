@@ -50,11 +50,13 @@ Object class >> magritteTemplate [
 
 { #category : #'*SimpleRene-Model' }
 Object >> simpleReneDescriptionContainer [
+
 	"Return the default description container."
+
 	<magritteContainer>
 	^ MAPriorityContainer new
-		label: self class label;
-		yourself
+		  label: self class simpleReneLabel;
+		  yourself
 ]
 
 { #category : #'*SimpleRene-Model' }

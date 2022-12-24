@@ -11,11 +11,13 @@ Class >> label [
 
 { #category : #'*SimpleRene-Model-configuration' }
 Class >> simpleReneDescriptionContainer [
+
 	"Return the default description container."
+
 	<simpleReneContainer>
 	^ MAPriorityContainer new
-		label: self label;
-		yourself
+		  label: self simpleReneLabel;
+		  yourself
 ]
 
 { #category : #'*SimpleRene-Model' }
