@@ -1,73 +1,80 @@
 "
 A simple address for a city located in Switzerland.
+
+```
+	| address |
+	address := SRAddress example1.
+	^ address simpleReneDescription do: [ :description | 
+		  Transcript
+			  show: description label;
+			  show: ':';
+			  tab;
+			  show: (description toString: (address simpleReneReadUsing: description));
+			  cr ]
+```
 "
 Class {
 	#name : #SRAddress,
 	#superclass : #Object,
 	#instVars : [
 		'street',
-		'plz',
-		'place',
-		'canton',
-		'nationality'
+		'region',
+		'location',
+		'zip'
 	],
 	#category : #'SimpleRene-ContactManager'
 }
+
+{ #category : #examples }
+SRAddress class >> example1 [
+	<sampleInstance>
+	^ self new street: 'Champs elisee'; location: 'Paris'; zip: 75000 ; region: 'Bretagne'
+]
 
 { #category : #comparing }
 SRAddress >> = anObject [
 	^ self species = anObject species
 		and: [ self street = anObject street
-		and: [ self plz = anObject plz
-		and: [ self place = anObject place
-		and: [ self canton = anObject canton ] ] ] ]
-]
-
-{ #category : #accessing }
-SRAddress >> canton [
-
-	^ canton
-]
-
-{ #category : #accessing }
-SRAddress >> canton: anObject [
-	canton := anObject
+		and: [ self zip = anObject zip
+		and: [ self location = anObject location
+		and: [ self region = anObject region ] ] ] ]
 ]
 
 { #category : #descriptions }
-SRAddress >> descriptionCanton [
-	<simpleReneDescription>
-	
-	^ SRSingleOptionDescription new
-		options: #( 'Zurich' 'Bern' 'Luzern' 'Uri' 'Schwyz' 'Unterwalden' 'Glarus' 'Zug' 'Freiburg' 'Solothurn' 'Basel' 'Schaffhausen' 'Appenzell' 'St. Gallen' 'Graubunden' 'Aargau' 'Thurgau' 'Ticino' 'Vaud' 'Valais' 'Neuchatel' 'Geneve' 'Jura' );
-		reference: SRStringDescription new;
-		accessor: #canton;
-		label: 'Canton';
-		priority: 40;
-		beSorted;
-		yourself
-]
-
-{ #category : #descriptions }
-SRAddress >> descriptionPlace [
+SRAddress >> descriptionLocation [
 	<simpleReneDescription>
 	
 	^ SRStringDescription new
-			accessor: #place;
-			label: 'Place';
+			accessor: #location;
+			label: 'Location';
 			priority: 30;
 			yourself
 ]
 
 { #category : #descriptions }
-SRAddress >> descriptionPlz [
+SRAddress >> descriptionPostalID [
 	<simpleReneDescription>
+	
 	^ SRNumberDescription new
-		accessor: #plz;
-		label: 'PLZ';
+		accessor: #zip;
+		label: 'ZIP';
 		priority: 20;
-		min: 1000;
-		max: 9999;
+		min: 10000;
+		max: 99999;
+		yourself
+]
+
+{ #category : #descriptions }
+SRAddress >> descriptionRegion [
+	<simpleReneDescription>
+	
+	^ SRSingleOptionDescription new
+		options: #( 'Zurich' 'Bern' 'Luzern' 'Uri' 'Schwyz' 'Unterwalden' 'Glarus' 'Zug' 'Freiburg' 'Solothurn' 'Basel' 'Schaffhausen' 'Appenzell' 'St. Gallen' 'Graubunden' 'Aargau' 'Thurgau' 'Ticino' 'Vaud' 'Valais' 'Neuchatel' 'Geneve' 'Jura' );
+		reference: SRStringDescription new;
+		accessor: #region;
+		label: 'Region';
+		priority: 40;
+		beSorted;
 		yourself
 ]
 
@@ -83,37 +90,28 @@ SRAddress >> descriptionStreet [
 
 { #category : #comparing }
 SRAddress >> hash [
-	^ self street hash bitXor: self place hash
+	^ self street hash bitXor: self zip hash
 ]
 
 { #category : #accessing }
-SRAddress >> nationality [
-	^ nationality
+SRAddress >> location [
+	^ location
 ]
 
 { #category : #accessing }
-SRAddress >> nationality: anObject [
-	nationality := anObject
+SRAddress >> location: anObject [
+	location := anObject
 ]
 
 { #category : #accessing }
-SRAddress >> place [
-	^ place
+SRAddress >> region [
+
+	^ region
 ]
 
 { #category : #accessing }
-SRAddress >> place: anObject [
-	place := anObject
-]
-
-{ #category : #accessing }
-SRAddress >> plz [
-	^ plz
-]
-
-{ #category : #accessing }
-SRAddress >> plz: anObject [
-	plz := anObject
+SRAddress >> region: anObject [
+	region := anObject
 ]
 
 { #category : #accessing }
@@ -124,4 +122,14 @@ SRAddress >> street [
 { #category : #accessing }
 SRAddress >> street: anObject [
 	street := anObject
+]
+
+{ #category : #accessing }
+SRAddress >> zip [
+	^ zip
+]
+
+{ #category : #accessing }
+SRAddress >> zip: anInteger [ 
+	zip := anInteger
 ]
