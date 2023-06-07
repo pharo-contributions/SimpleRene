@@ -24,14 +24,14 @@ Metacello new
 
 In you project Baseline or Configuration definition, add to the spec:
 
-```
+```smalltalk
 spec 
 	baseline: 'SimpleRene' 
-	with: [ 
-		spec 
+	with: [
+		spec
 			repository: 'github://pharo-contributions/SimpleRene:v1.0.0'; 
-            loads: #(Core) ]; 
+			loads: #(Core) ]; 
 ```
 
-This snippet uses v1.0.0 release version, remember to change the release version to your needs. 
+This snippet uses `v1.0.0` release version, remember to change the release version to your needs. 
 See `BaselineOfSimpleRene` for other groups to load beside of 'Core'.
