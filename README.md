@@ -4,7 +4,7 @@ SimpleRene is a fork of [Magritte](https://github.com/magritte-metamodel/magritt
 lighter and easier to be used on Pharo.  
 Thanks to all Magritte contributors :)
 
-[![Spec-dev](https://github.com/pharo-contributions/SimpleRene/actions/workflows/test.yml/badge.svg)](https://github.com/pharo-contributions/SimpleRene/actions/workflows/test.yml)
+[![CI](https://github.com/pharo-contributions/SimpleRene/actions/workflows/test.yml/badge.svg)](https://github.com/pharo-contributions/SimpleRene/actions/workflows/test.yml)
 
 Most applications consist of a big number of model- or so called domain-objects. Building different views, editors, 
 and reports; querying, validating and storing those objects is very repetitive and error-prone, if an object changes 
