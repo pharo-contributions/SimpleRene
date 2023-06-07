@@ -335,7 +335,7 @@ SRContainer >> simpleReneMoveUp: aDescription [
 	self children simpleReneMoveUp: aDescription
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 SRContainer >> simpleReneTemplate [
 	^ self
 ]

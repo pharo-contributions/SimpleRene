@@ -8,17 +8,15 @@ Class {
 BaselineOfSimpleRene >> baseline: spec [
 	<baseline>
 	
-	spec for: #(#'pharo10.x' #'pharo11.x') do: [ 
-		spec package: 'SimpleRene-Model'.
-		spec 
-			package: 'SimpleRene-ContactManager' 
-			with: [ spec requires: #('SimpleRene-Model' ) ].
-		spec 
-			package: 'SimpleRene-Model-Tests' 
-			with: [ spec requires: #('SimpleRene-Model' ) ] ].
+	spec for: #pharo do: [ 
 		
-	
-
+		spec 
+			package: 'SimpleRene-Model';
+			package: 'SimpleRene-ContactManager' with: [ spec requires: #('SimpleRene-Model') ];
+			package: 'SimpleRene-Model-Tests' with: [ spec requires: #('SimpleRene-Model') ].
 			
-	
+		spec group: 'default' with: #('Core' 'Tests').
+		spec group: 'Core' with: #('SimpleRene-Model').
+		spec group: 'Tests' with: #('SimpleRene-Model-Tests').
+		spec group: 'All' with: #('Core' 'Tests' 'SimpleRene-ContactManager') ]
 ]
