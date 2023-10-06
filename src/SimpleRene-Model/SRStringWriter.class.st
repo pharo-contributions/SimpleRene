@@ -14,9 +14,10 @@ SRStringWriter >> defaultWriteStream [
 
 { #category : #private }
 SRStringWriter >> printObjectDescribedBy: aDescription [
-
-	| string |
-	string := aDescription displayStringFor: self object.
+	| value string |
+	
+	value := self object simpleReneReadUsing: aDescription.
+	string := aDescription displayStringFor: value.
 	self stream nextPutAll: string.
 ]
 
