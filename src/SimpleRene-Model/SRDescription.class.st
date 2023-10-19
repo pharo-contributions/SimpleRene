@@ -862,7 +862,7 @@ SRDescription >> tryValidation: tryBlock ifPass: passBlock [
 SRDescription >> type [
 	"Answer the name of the description, a human-readable string describing the type."
 
-	^ self class label
+	^ self class simpleReneLabel
 ]
 
 { #category : #'accessing-strings' }
