@@ -36,42 +36,44 @@ maintain) better working and well tested relationship descriptions
 that solve the current problems. - *Lukas>http://forum.world.st/magrite-toOne-relationship-and-component-creation-tp1561754p1563032.html*
 "
 Class {
-	#name : #SRRelationDescription,
-	#superclass : #SRReferenceDescription,
+	#name : 'SRRelationDescription',
+	#superclass : 'SRReferenceDescription',
 	#instVars : [
 		'classes'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRRelationDescription class >> defaultClasses [
 	^ Set new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRRelationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitRelationDescription: self
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRRelationDescription >> allClasses [
 	^ (Array withAll: self classes)
 		sort: [ :a :b | a label caseInsensitiveLessOrEqual: b label ];
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRRelationDescription >> classes [
 	^ classes ifNil: [ classes := self class defaultClasses ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRRelationDescription >> classes: aCollection [
 	classes := aCollection
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRRelationDescription >> commonClass [
 	"Answer a common superclass of the classes of the receiver. The algorithm is implemented to be as efficient as possible. The inner loop will be only executed the first few iterations."
 
@@ -85,7 +87,7 @@ SRRelationDescription >> commonClass [
 	^ current
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRRelationDescription >> descriptionClasses [
 	<simpleReneDescription>
 	^ SRMultipleOptionDescription new
@@ -100,7 +102,7 @@ SRRelationDescription >> descriptionClasses [
 "1. There may be a better way. When generating description methods from meta-meta descriptions, without the line above, an unneeded `default: Set new;` was being added to the generated method."
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRRelationDescription >> descriptionReference [
 	<simpleReneDescription>
 	^ super descriptionReference
@@ -109,13 +111,13 @@ SRRelationDescription >> descriptionReference [
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SRRelationDescription >> postCopy [
 	super postCopy.
 	classes := classes copy
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRRelationDescription >> reference [
 	"The reference within a ==*MARelationDescription*== is calculated automatically from all the classes of the receiver, if set to ==nil==. By setting the reference to a ==*MAContainer*== instance it is possible to customize the reference description."
 

@@ -1,37 +1,39 @@
 Class {
-	#name : #SRValidatorVisitor,
-	#superclass : #SRVisitor,
+	#name : 'SRValidatorVisitor',
+	#superclass : 'SRVisitor',
 	#instVars : [
 		'object'
 	],
-	#category : #'SimpleRene-Model-Visitor'
+	#category : 'SimpleRene-Model-Visitor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Visitor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRValidatorVisitor class >> on: anObject description: aDescription [
 	^ self new on: anObject description: aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRValidatorVisitor >> object [
 	"Answer the currently validated object."
 
 	^ object
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRValidatorVisitor >> on: anObject description: aDescription [
 	self use: anObject during: [ self visit: aDescription ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRValidatorVisitor >> use: anObject during: aBlock [
 	| previous |
 	previous := object. object := anObject.
 	^ aBlock ensure: [ object := previous ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRValidatorVisitor >> validate: anObject using: aDescription [
 	aDescription validateRequired: anObject.
 	anObject = aDescription undefinedValue ifTrue: [ ^ self ].
@@ -44,7 +46,7 @@ SRValidatorVisitor >> validate: anObject using: aDescription [
 		
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRValidatorVisitor >> visit: aDescription [
 	"Only visit objects that are visible and that can be changed."
 	
@@ -53,7 +55,7 @@ SRValidatorVisitor >> visit: aDescription [
 	
 ]
 
-{ #category : #'visiting-descriptions' }
+{ #category : 'visiting-descriptions' }
 SRValidatorVisitor >> visitContainer: aDescription [
 	
 	super visitContainer: aDescription.
@@ -64,7 +66,7 @@ SRValidatorVisitor >> visitContainer: aDescription [
 				during: [ self visit: description ] ] ]
 ]
 
-{ #category : #'visiting-descriptions' }
+{ #category : 'visiting-descriptions' }
 SRValidatorVisitor >> visitDescription: aDescription [
 	self validate: self object using: aDescription
 ]

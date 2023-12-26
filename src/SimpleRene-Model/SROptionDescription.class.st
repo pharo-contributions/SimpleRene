@@ -21,73 +21,75 @@ Possible fixes might be:
 - have the `options` getter return what's currently returned by `allOptions`
 "
 Class {
-	#name : #SROptionDescription,
-	#superclass : #SRReferenceDescription,
+	#name : 'SROptionDescription',
+	#superclass : 'SRReferenceDescription',
 	#instVars : [
 		'options'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SROptionDescription class >> defaultExtensible [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SROptionDescription class >> defaultOptions [
 	^ OrderedCollection new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SROptionDescription class >> defaultSorted [
 	^ false
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SROptionDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitOptionDescription: self
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SROptionDescription >> allOptions [
 	^ self options simpleReneAllOptionsFor: self
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SROptionDescription >> allOptionsWith: anObject [
 	^ self prepareOptions: ((self shouldNotInclude: anObject)
 		ifFalse: [ self options copyWith: anObject ]
 		ifTrue: [ self options copy ])
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SROptionDescription >> beExtensible [
 	self extensible: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SROptionDescription >> beLimited [
 	self extensible: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SROptionDescription >> beSorted [
 	self sorted: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SROptionDescription >> beUnsorted [
 	self sorted: false
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SROptionDescription >> descriptionDefault [
 	<simpleReneDescription>
 	^ nil
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SROptionDescription >> descriptionExtensible [
 	<simpleReneDescription>
 	^ SRBooleanDescription new
@@ -98,7 +100,7 @@ SROptionDescription >> descriptionExtensible [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SROptionDescription >> descriptionOptions [
 	<simpleReneDescription>
 	^ SRMemoDescription new
@@ -109,7 +111,7 @@ SROptionDescription >> descriptionOptions [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SROptionDescription >> descriptionSorted [
 	<simpleReneDescription>
 	^ SRBooleanDescription new
@@ -120,48 +122,48 @@ SROptionDescription >> descriptionSorted [
 		yourself
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SROptionDescription >> extensible [
 	^ self propertyAt: #extensible ifAbsent: [ self class defaultExtensible ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SROptionDescription >> extensible: aBoolean [
 	self propertyAt: #extensible put: aBoolean
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SROptionDescription >> isExtensible [
 	^ self extensible
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SROptionDescription >> isMultiple [
 	^false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SROptionDescription >> isSorted [
 	^ self sorted
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SROptionDescription >> labelForOption: anObject [
 	self propertyAt: #labels ifPresent: [ :labels | labels simpleReneOptionFor: anObject ifPresent: [ :value | ^ value ] ].
 	^ self displayStringFor: anObject.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SROptionDescription >> options [
 	^ options ifNil: [ options := self class defaultOptions ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SROptionDescription >> options: anArray [
 	options := anArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SROptionDescription >> optionsAndLabels: aCollection [
 	"Set the options to be the keys of aCollection and the labels to be the values of aCollection."
 
@@ -171,26 +173,26 @@ SROptionDescription >> optionsAndLabels: aCollection [
 		into: [ :result :assoc | result add: assoc; yourself ])
 ]
 
-{ #category : #'accessing-textual' }
+{ #category : 'accessing-textual' }
 SROptionDescription >> optionsTextual [
 	^ (self reference toStringCollection: self options)
 		simpleReneAsMultilineString
 ]
 
-{ #category : #'accessing-textual' }
+{ #category : 'accessing-textual' }
 SROptionDescription >> optionsTextual: aString [
 	| lines |
 	lines := (aString ifNil: [ String new ]) lines.
 	^ self options: (self reference fromStringCollection: lines)
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SROptionDescription >> postCopy [
 	super postCopy.
 	options := options copy
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SROptionDescription >> prepareOptions: aCollection [
 	^ self isSorted
 		ifFalse: [ aCollection asArray ]
@@ -200,34 +202,34 @@ SROptionDescription >> prepareOptions: aCollection [
 				yourself ]
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SROptionDescription >> shouldNotInclude: anObject [
 	^ self isExtensible not or: [ anObject isNil or: [ self options includes: anObject ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SROptionDescription >> sortBlock [
 	^ [ :a :b | (self reference toString: a) caseInsensitiveLessOrEqual: (self reference toString: b) ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SROptionDescription >> sorted [
 	^ self propertyAt: #sorted ifAbsent: [ self class defaultSorted ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SROptionDescription >> sorted: aBoolean [
 	self propertyAt: #sorted put: aBoolean
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SROptionDescription >> undefined: aString [
 	super undefined: aString.
 	self reference isNil
 		ifFalse: [ self reference undefined: aString ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 SROptionDescription >> validateOptionKind: anObject [
 	(self options includes: anObject)
 		ifTrue: [ ^ self ].

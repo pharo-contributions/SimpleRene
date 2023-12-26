@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 String >> simpleReneMatches: aString [
 	aString isEmpty ifTrue: [ ^ true ].
 	^ (aString includesAnyOf: '*#')
@@ -8,7 +8,7 @@ String >> simpleReneMatches: aString [
 		ifFalse: [ self includesSubstring: aString caseSensitive: false ]
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 String >> simpleReneNormalizeCamelCase [
 
 	^ self class streamContents: [ :out |

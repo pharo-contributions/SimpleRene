@@ -2,32 +2,34 @@
 I cache values being read and written without touching the model. When committing changes, the modifications will be propagated to the model all at once.
 "
 Class {
-	#name : #SRCachedMemento,
-	#superclass : #SRMemento,
+	#name : 'SRCachedMemento',
+	#superclass : 'SRMemento',
 	#instVars : [
 		'cache'
 	],
-	#category : #'SimpleRene-Model-Memento'
+	#category : 'SimpleRene-Model-Memento',
+	#package : 'SimpleRene-Model',
+	#tag : 'Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCachedMemento class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRCachedMemento >> cache [
 	^ cache
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRCachedMemento >> commit [
 	super commit.
 	self push: self cache.
 	self reset
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRCachedMemento >> cookRawPull: aDictionary [
 
 	super cookRawPull: aDictionary.
@@ -39,30 +41,30 @@ SRCachedMemento >> cookRawPull: aDictionary [
 			aDictionary at: key put: value copy ] ].
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCachedMemento >> hasChanges [
 	"Answer ==true==, if the cached data is different to the data in the model."
 
 	^ self isDifferent: self cache to: self pullRaw
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRCachedMemento >> reset [
 	super reset.
 	self setCache: self pull
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRCachedMemento >> setCache: aDictionary [
 	cache := aDictionary
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRCachedMemento >> simpleReneReadUsing: aDescription [
 	^ self cache at: aDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRCachedMemento >> simpleReneWrite: anObject using: aDescription [
 	self cache at: aDescription put: anObject
 ]

@@ -6,21 +6,23 @@ I am an abstract memento. I am a stand-in for an object, typically for reading a
 - the ==description== currently used to describe this ==model==
 "
 Class {
-	#name : #SRMemento,
-	#superclass : #SRObject,
+	#name : 'SRMemento',
+	#superclass : 'SRObject',
 	#instVars : [
 		'model',
 		'description'
 	],
-	#category : #'SimpleRene-Model-Memento'
+	#category : 'SimpleRene-Model-Memento',
+	#package : 'SimpleRene-Model',
+	#tag : 'Memento'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRMemento class >> model: aModel [
 	^ self model: aModel description: aModel simpleReneDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRMemento class >> model: aModel description: aDescription [
 	^ self new
 		setModel: aModel;
@@ -28,12 +30,12 @@ SRMemento class >> model: aModel description: aDescription [
 		reset; yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRMemento >> commit [
 	"Commit the receiver into the model."
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> cookRawPull: aDictionary [
 
 	aDictionary keysAndValuesDo: [ :key :value |
@@ -41,7 +43,7 @@ SRMemento >> cookRawPull: aDictionary [
 			ifTrue: [ aDictionary at: key put: key default yourself ] ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 SRMemento >> doesNotUnderstand: aMessage [
   ^ self simpleReneDescription children 
   	detect: [ :desc | desc handlesSelector: aMessage selector ] 
@@ -49,7 +51,7 @@ SRMemento >> doesNotUnderstand: aMessage [
   	ifNone: [ super doesNotUnderstand: aMessage ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> isDifferent: firstDictionary to: secondDictionary [
 	| firstValue secondValue |
 	self simpleReneDescription do: [ :each |
@@ -60,18 +62,18 @@ SRMemento >> isDifferent: firstDictionary to: secondDictionary [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMemento >> model [
 	^ model
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRMemento >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' model: '; print: self model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> pull [
 	"Utility method to pull the model into a dictionary mapping descriptions to values. nil values are replaced with the default ones of the model."
 
@@ -81,13 +83,13 @@ SRMemento >> pull [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> pullRaw [
 	
 	^ self pullRawTransforming: [ :e | e ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
@@ -99,7 +101,7 @@ SRMemento >> pullRawTransforming: aBlock [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
@@ -108,38 +110,38 @@ SRMemento >> push: aDictionary [
 			ifTrue: [ self model simpleReneWrite: value using: key ] ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRMemento >> reset [
 	"Reset the memento from the model."
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRMemento >> setDescription: aDescription [
 	description := aDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRMemento >> setModel: aModel [
 	model := aModel
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 SRMemento >> shouldPush: anObject using: aDescription [
 	^ aDescription isVisible and: [ aDescription isReadOnly not ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMemento >> simpleReneDescription [
 	"`#modelDescription` would probably be clearer, but we want to be polymorphic (see implementors)"
 	^ description
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRMemento >> simpleReneReadUsing: aDescription [
 	^ self subclassResponsibility
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRMemento >> validate [
 	"Check if the data in the receiver would be valid if committed. In case of problems an exception is raised."
 

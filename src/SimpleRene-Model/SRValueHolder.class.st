@@ -1,23 +1,25 @@
 Class {
-	#name : #SRValueHolder,
-	#superclass : #SRBasicObject,
+	#name : 'SRValueHolder',
+	#superclass : 'SRBasicObject',
 	#instVars : [
 		'contents'
 	],
-	#category : #'SimpleRene-Model-Utility'
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRValueHolder class >> on: anObject [
 	^ self new contents: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRValueHolder >> contents [
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRValueHolder >> contents: anObject [
 	contents := anObject
 ]

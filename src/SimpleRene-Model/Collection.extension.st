@@ -1,11 +1,11 @@
-Extension { #name : #Collection }
+Extension { #name : 'Collection' }
 
-{ #category : #'*SimpleRene-Model-dynopt' }
+{ #category : '*SimpleRene-Model-dynopt' }
 Collection >> simpleReneAllOptionsFor: aDescription [
 	^ aDescription prepareOptions: self copy
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Collection >> simpleReneAsMultilineString [
 	^ String streamContents: [ :stream |
 		self
@@ -13,14 +13,14 @@ Collection >> simpleReneAsMultilineString [
 			separatedBy: [ stream nextPut: Character cr ] ]
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Collection >> simpleReneCopyWithAll: aCollection [
 	^ self copy
 		addAll: aCollection;
 		yourself
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Collection >> simpleReneCopyWithoutFirstOccurrenceOf: anObject [
 	| done |
 	done := false.
@@ -30,7 +30,7 @@ Collection >> simpleReneCopyWithoutFirstOccurrenceOf: anObject [
 			and: [ done := true ] ] ]
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Collection >> simpleReneSelectMatching: aString [ 
 	^ self select: [ :e | e asString beginsWith: aString ]
 ]

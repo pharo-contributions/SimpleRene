@@ -2,43 +2,45 @@
 I am a description of files, their contents, filename and mime-type. Possible values include instances of *MAFileModel*. My visual representation could be a file-upload dialog.
 "
 Class {
-	#name : #SRFileDescription,
-	#superclass : #SRElementDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRFileDescription',
+	#superclass : 'SRElementDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRFileDescription class >> defaultDisplayProperty [
 	^ #filename
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRFileDescription class >> defaultKind [
 	^ SRMemoryFileModel
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRFileDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRFileDescription class >> label [
 	^ 'File'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRFileDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitFileDescription: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRFileDescription >> defaultDirectory [
 
 	^ self propertyAt: #defaultDirectory ifAbsent: [ SRFileSystem imageDirectory ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRFileDescription >> defaultDirectory: fileReference [
 	"fileReference - a FileSystem FileReference, or an MAFileReference if FileSystem is not installed"
 

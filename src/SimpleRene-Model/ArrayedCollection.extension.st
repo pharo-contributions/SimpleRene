@@ -1,6 +1,6 @@
-Extension { #name : #ArrayedCollection }
+Extension { #name : 'ArrayedCollection' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 ArrayedCollection >> simpleReneCopyWithAll: aCollection [
 	^ (self species new: self size + aCollection size)
 		replaceFrom: 1 to: self size with: self startingAt: 1;

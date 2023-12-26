@@ -2,27 +2,29 @@
 I am a description of durations, possible values are instances of ==Duration==.
 "
 Class {
-	#name : #SRDurationDescription,
-	#superclass : #SRMagnitudeDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRDurationDescription',
+	#superclass : 'SRMagnitudeDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDurationDescription class >> defaultKind [
 	^ Duration
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDurationDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDurationDescription class >> label [
 	^ 'Duration'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDurationDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitDurationDescription: self
 ]

@@ -1,16 +1,18 @@
 Class {
-	#name : #SRPluggableCondition,
-	#superclass : #SRCondition,
+	#name : 'SRPluggableCondition',
+	#superclass : 'SRCondition',
 	#instVars : [
 		'receiver',
 		'selector',
 		'arguments',
 		'index'
 	],
-	#category : #'SimpleRene-Model-Utility'
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRPluggableCondition >> initializeReceiver: anObject selector: aSelector arguments: anArray index: anInteger [
 	receiver := anObject.
 	selector := aSelector.
@@ -18,7 +20,7 @@ SRPluggableCondition >> initializeReceiver: anObject selector: aSelector argumen
 	index := anInteger
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SRPluggableCondition >> value: anObject [
 	| actualReceiver actualArguments |
 	actualReceiver := index = 0

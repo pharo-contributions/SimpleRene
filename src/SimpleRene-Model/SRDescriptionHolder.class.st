@@ -1,15 +1,17 @@
 Class {
-	#name : #SRDescriptionHolder,
-	#superclass : #SRValueHolder,
-	#category : #'SimpleRene-Model-Utility'
+	#name : 'SRDescriptionHolder',
+	#superclass : 'SRValueHolder',
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescriptionHolder class >> descriptionClasses [
 	^ SRElementDescription withAllConcreteClasses asOrderedCollection
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupChoice [
 	^ Set new
 		add: SRBooleanDescription;
@@ -21,7 +23,7 @@ SRDescriptionHolder class >> groupChoice [
 		yourself
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupMagnitude [
 	^ Set new
 		add: SRNumberDescription;
@@ -32,7 +34,7 @@ SRDescriptionHolder class >> groupMagnitude [
 		yourself
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupMisc [
 	^ Set new
 		add: SRFileDescription;
@@ -41,7 +43,7 @@ SRDescriptionHolder class >> groupMisc [
 		yourself
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupOf: aClass [ 
 	(self groupText includes: aClass)
 		ifTrue: [ ^ 'Text' ].
@@ -56,7 +58,7 @@ SRDescriptionHolder class >> groupOf: aClass [
 	^ 'Other'
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupPick [
 	^ Set new
 		add: SRColorDescription;
@@ -64,7 +66,7 @@ SRDescriptionHolder class >> groupPick [
 		yourself
 ]
 
-{ #category : #groups }
+{ #category : 'groups' }
 SRDescriptionHolder class >> groupText [
 	^ Set new
 		add: SRStringDescription;
@@ -75,7 +77,7 @@ SRDescriptionHolder class >> groupText [
 
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescriptionHolder >> descriptionValue [
 	<simpleReneDescription>
 	^ SRSingleOptionDescription new
@@ -88,7 +90,7 @@ SRDescriptionHolder >> descriptionValue [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRDescriptionHolder >> initialize [
 	super initialize.
 	self contents: self class descriptionClasses first

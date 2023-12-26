@@ -1,23 +1,25 @@
 Class {
-	#name : #SRConjunctiveCondition,
-	#superclass : #SRCondition,
+	#name : 'SRConjunctiveCondition',
+	#superclass : 'SRCondition',
 	#instVars : [
 		'conditions'
 	],
-	#category : #'SimpleRene-Model-Utility'
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRConjunctiveCondition >> & aCondition [
 	conditions := conditions copyWith: aCondition
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRConjunctiveCondition >> initialize [
 	conditions := #()
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SRConjunctiveCondition >> value: anObject [
 	^ conditions allSatisfy: [ :each | each value: anObject ]
 ]

@@ -1,45 +1,47 @@
 Class {
-	#name : #SRWriter,
-	#superclass : #SRStreamingVisitor,
-	#category : #'SimpleRene-Model-Visitor'
+	#name : 'SRWriter',
+	#superclass : 'SRStreamingVisitor',
+	#category : 'SimpleRene-Model-Visitor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Visitor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRWriter class >> write: anObject [
 	^ self new write: anObject
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRWriter class >> write: anObject description: aDescription [
 	^ self new write: anObject description: aDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRWriter class >> write: anObject description: aDescription to: aStream [
 	^ self new write: anObject description: aDescription to: aStream
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRWriter >> defaultWriteStream [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRWriter >> error: aString [ 
 	SRWriteError signal: aString
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRWriter >> write: anObject [
 	^ self write: anObject description: anObject simpleReneDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRWriter >> write: anObject description: aDescription [
 	^ self write: anObject description: aDescription to: self defaultWriteStream
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRWriter >> write: anObject description: aDescription to: aStream [
 	self
 		object: anObject;

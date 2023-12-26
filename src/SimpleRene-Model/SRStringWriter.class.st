@@ -2,17 +2,19 @@
 I take into account the description's specified ==undefined== string. See ${method:MAStringWriter>>#write:description:to:}$.
 "
 Class {
-	#name : #SRStringWriter,
-	#superclass : #SRWriter,
-	#category : #'SimpleRene-Model-Visitor'
+	#name : 'SRStringWriter',
+	#superclass : 'SRWriter',
+	#category : 'SimpleRene-Model-Visitor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Visitor'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SRStringWriter >> defaultWriteStream [
 	^ WriteStream on: String new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRStringWriter >> printObjectDescribedBy: aDescription [
 
 	| string |
@@ -20,14 +22,14 @@ SRStringWriter >> printObjectDescribedBy: aDescription [
 	self stream nextPutAll: string.
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitBooleanDescription: aDescription [
 	self stream nextPutAll: (self object
 		ifTrue: [ aDescription trueString ]
 		ifFalse: [ aDescription falseString ])
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitColorDescription: aDescription [
 	stream nextPut: $#.
 	stream nextPutAll: ((255 * self object red) asInteger
@@ -38,7 +40,7 @@ SRStringWriter >> visitColorDescription: aDescription [
 		printPaddedWith: $0 to: 2 base: 16)
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitContainer: aDescription [
 	aDescription do: [ :each |
 		each isVisible ifTrue: [
@@ -48,12 +50,12 @@ SRStringWriter >> visitContainer: aDescription [
 			^ self ] ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitElementDescription: aDescription [
 	self printObjectDescribedBy: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitMultipleOptionDescription: aDescription [
 	self object isEmpty
 		ifTrue: [ self stream nextPutAll: aDescription undefined ]
@@ -63,37 +65,37 @@ SRStringWriter >> visitMultipleOptionDescription: aDescription [
 				separatedBy: [ self stream nextPutAll: ', ' ] ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitSingleOptionDescription: aDescription [
 	self stream nextPutAll: (aDescription labelForOption: self object)
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitTimeStampDescription: aDescription [
 	self stream print: self object asDate; space.
 	self stream print: self object asTime
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitToManyRelationDescription: aDescription [
 	self object
 		do: [ :each | self object: each during: [ self visit: each simpleReneDescription ] ]
 		separatedBy: [ self stream nextPutAll: ', ' ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitToOneRelationDescription: aDescription [
 	self visit: self object simpleReneDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRStringWriter >> visitTokenDescription: aDescription [
 	self object
 		do: [ :each | self object: each during: [ self visit: aDescription reference ] ]
 		separatedBy: [ self stream nextPut: aDescription separators first ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRStringWriter >> write: anObject description: aDescription to: aStream [
 	^ anObject 
 		ifNil: [ 

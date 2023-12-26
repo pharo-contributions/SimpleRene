@@ -9,18 +9,20 @@ Instance Variables:
 - buildedDescription: the result
 "
 Class {
-	#name : #SRDescriptionBuilder,
-	#superclass : #SRVisitor,
+	#name : 'SRDescriptionBuilder',
+	#superclass : 'SRVisitor',
 	#instVars : [
 		'model',
 		'target',
 		'priority',
 		'builtDescription'
 	],
-	#category : #'SimpleRene-Model-Builder'
+	#category : 'SimpleRene-Model-Builder',
+	#package : 'SimpleRene-Model',
+	#tag : 'Builder'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder class >> buildFrom: aDescription target: aTarget [
 	^ self new 
 		target: aTarget;
@@ -28,7 +30,7 @@ SRDescriptionBuilder class >> buildFrom: aDescription target: aTarget [
 		builtDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder class >> buildFrom: aDescription target: aTarget model: aModel [
 	^ self new 
 		target: aTarget;
@@ -37,58 +39,58 @@ SRDescriptionBuilder class >> buildFrom: aDescription target: aTarget model: aMo
 		builtDescription
 ]
 
-{ #category : #'accessing defaults' }
+{ #category : 'accessing defaults' }
 SRDescriptionBuilder class >> defaultPriority [
 	^0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> buildFrom: aDescription target: aTarget [ 
 	self target: aTarget; visit: aDescription.
 	^self builtDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionBuilder >> builtDescription [
 	^builtDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> model [
 	^model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> model: aModel [
 	model := aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> priority [
 	^ priority ifNil: [ ^self class defaultPriority ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionBuilder >> setBuiltDescription: aDescription [ 
 	builtDescription := aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescriptionBuilder >> target: anObject [
 	target := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionBuilder >> visitContainer: aContainer [
 	builtDescription := aContainer copy.
 	builtDescription removeAll.
@@ -96,7 +98,7 @@ SRDescriptionBuilder >> visitContainer: aContainer [
 		self visit: each copy ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionBuilder >> visitDescription: anObject [
 	builtDescription
 		ifNil: [ self setBuiltDescription: anObject]

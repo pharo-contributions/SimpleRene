@@ -2,27 +2,29 @@
 I am a read-only access strategy and I answer the model itself when being read.
 "
 Class {
-	#name : #SRIdentityAccessor,
-	#superclass : #SRAccessor,
-	#category : #'SimpleRene-Model-Accessor'
+	#name : 'SRIdentityAccessor',
+	#superclass : 'SRAccessor',
+	#category : 'SimpleRene-Model-Accessor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRIdentityAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRIdentityAccessor >> canRead: aModel [
 	^ true
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRIdentityAccessor >> read: aModel [
 	^ aModel
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRIdentityAccessor >> write: anObject to: aModel [ 
 	SRWriteError signal: 'Not supposed to write to ' , aModel asString , '.'
 ]

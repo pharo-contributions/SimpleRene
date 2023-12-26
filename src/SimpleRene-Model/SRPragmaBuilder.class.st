@@ -5,37 +5,39 @@ I dynamically build container descriptions from instance-side methods decorated 
 - `simpleReneDescription:` for single parameter methods returning SimpleRene description extensions, where the pragma parameter defines the related SimpleRene description method. The extension method will be called after the related method to refine the description definition.
 "
 Class {
-	#name : #SRPragmaBuilder,
-	#superclass : #SRBasicObject,
-	#category : #'SimpleRene-Model-Utility'
+	#name : 'SRPragmaBuilder',
+	#superclass : 'SRBasicObject',
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 SRPragmaBuilder class >> containerPragma [ 
 	^ #simpleReneContainer
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRPragmaBuilder class >> for: anObject [
 	^ self new for: anObject
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 SRPragmaBuilder class >> simpleReneDescriptionExtensionPragma [ 
 	^ #simpleReneDescription:
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 SRPragmaBuilder class >> simpleReneDescriptionPragma [ 
 	^ #simpleReneDescription
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 SRPragmaBuilder class >> simpleReneSelectors [
 	^ Array with: self containerPragma with: self simpleReneDescriptionExtensionPragma with: self simpleReneDescriptionPragma
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> applyExtensions: descriptionExtensions for: each of: anObject to: description [
 	description ifNil: [ ^ nil ].
 	^ (self extensionsFrom: descriptionExtensions matching: description) 
@@ -46,7 +48,7 @@ SRPragmaBuilder >> applyExtensions: descriptionExtensions for: each of: anObject
 				into: [ :desc :extensionSelector | anObject perform: extensionSelector with: description ] ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> build: anObject cache: cache [
 	| container |
 	container := cache at: anObject put: (self buildContainer: anObject).
@@ -57,7 +59,7 @@ SRPragmaBuilder >> build: anObject cache: cache [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> buildContainer: anObject [
 	| containerPragmas containerPragma containerSelector extensionSelectors container |
 	
@@ -80,7 +82,7 @@ SRPragmaBuilder >> buildContainer: anObject [
 	^ container
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> buildDescriptions: anObject [
 	| descriptionExtensions descriptionSelectors extendedDescriptions |
 	
@@ -96,7 +98,7 @@ SRPragmaBuilder >> buildDescriptions: anObject [
 	^ extendedDescriptions select: #notNil.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> description: description extendedBy: descriptionExtensions for: descriptionSelector of: anObject [
 	description ifNil: [ ^ nil ].
 	^ (self extensionsFrom: descriptionExtensions matching: descriptionSelector) 
@@ -107,7 +109,7 @@ SRPragmaBuilder >> description: description extendedBy: descriptionExtensions fo
 				into: [ :desc :extensionSelector | anObject perform: extensionSelector with: description ] ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> descriptionExtensions: anObject [
 	| extensionPragmas |
 	
@@ -123,7 +125,7 @@ SRPragmaBuilder >> descriptionExtensions: anObject [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> extensionsFrom: aDictionary matching: aSymbol [
 	"
 	aDictionary - a cache mapping extensionSelectors to the description they extend
@@ -131,7 +133,7 @@ SRPragmaBuilder >> extensionsFrom: aDictionary matching: aSymbol [
 	^ aDictionary at: aSymbol ifAbsent: [ #() ].
 ]
 
-{ #category : #'description building' }
+{ #category : 'description building' }
 SRPragmaBuilder >> for: anObject [
 	| cache |
 	cache := SRDynamicDescriptionCache value.
@@ -140,7 +142,7 @@ SRPragmaBuilder >> for: anObject [
 		^ cache at: anObject ifAbsentPut: [ self build: anObject cache: cache ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRPragmaBuilder >> uniqueDescriptionSelectors: anObject [
 	| descriptionPragmas selectors |
 	

@@ -4,50 +4,51 @@ I manage the file-data I represent on the file-system. From the programmer this 
 I delegate my actual location on disk to MAFileDatabase (see class comment).
 "
 Class {
-	#name : #SRExternalFileModel,
-	#superclass : #SRFileModel,
+	#name : 'SRExternalFileModel',
+	#superclass : 'SRFileModel',
 	#instVars : [
 		'location',
 		'directory'
 	],
-	#category : #'SimpleRene-Model'
+	#category : 'SimpleRene-Model',
+	#package : 'SimpleRene-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel class >> baseDirectoryPath [
 	" deprecated: use MAFileDatabase baseDirectoryPath instead "
 	^SRFileDatabase baseDirectory fullName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel class >> baseDirectoryPath: aString [ 
 	" deprecated, but still used by pier "
 	SRFileDatabase baseDirectory: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel class >> baseUrl [
 	" deprecated: use MAFileDatabase baseDirectoryPath instead "
 	^ SRFileDatabase baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel class >> baseUrl: aString [
 	" deprecated: use MAFileDatabase baseUrl instead "
 	^ SRFileDatabase baseUrl: aString
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRExternalFileModel >> = anObject [
     ^ super = anObject and: [ self directory = anObject directory ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 SRExternalFileModel >> baseUrl [
 	^ self database baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel >> contents [
 	| stream |
 	^ self file exists
@@ -58,7 +59,7 @@ SRExternalFileModel >> contents [
 				ensure: [ stream close ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRExternalFileModel >> contents: aByteArray [
 	| stream |
 	stream := self writeStream.
@@ -67,24 +68,24 @@ SRExternalFileModel >> contents: aByteArray [
 	super contents: aByteArray
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRExternalFileModel >> database [
 
 	^ SRFileDatabase new.
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRExternalFileModel >> directory [
 
 	^ directory ifNil: [ directory := self database uniqueLocation ].
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRExternalFileModel >> file [
 	^(self directory / self filename) asFileReference
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRExternalFileModel >> finalize [
 	|  dir |
 	dir := self directory.
@@ -96,12 +97,12 @@ SRExternalFileModel >> finalize [
 	location := nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRExternalFileModel >> hash [
 	^ super hash bitXor: self directory hash
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SRExternalFileModel >> postCopy [
 	| previous |
 	super postCopy.
@@ -110,12 +111,12 @@ SRExternalFileModel >> postCopy [
 	self contents: previous
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRExternalFileModel >> readStream [
 	^ self file binaryReadStream 
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 SRExternalFileModel >> writeStream [
 	^ self file binaryWriteStream 
 ]

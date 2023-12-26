@@ -1,6 +1,6 @@
-Extension { #name : #Dictionary }
+Extension { #name : 'Dictionary' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Dictionary >> simpleReneOptionFor: anObject ifPresent: aBlock [
 	self at: anObject ifPresent: aBlock
 

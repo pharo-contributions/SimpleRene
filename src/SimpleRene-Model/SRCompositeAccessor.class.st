@@ -2,18 +2,20 @@
 When you have a ""to-many"" relationship, I describe the flattened collection of its items - something like {{gtMethod:Collection>>#flatCollect:}} meets {{gtClass:MAChainAccessor}}. Here's a usage example {{gtExample:MACompositeElementBuilder class>>#example}}:
 "
 Class {
-	#name : #SRCompositeAccessor,
-	#superclass : #SRChainAccessor,
+	#name : 'SRCompositeAccessor',
+	#superclass : 'SRChainAccessor',
 	#instVars : [
 		'kind'
 	],
 	#classInstVars : [
 		'elementKind'
 	],
-	#category : #'SimpleRene-Model-Accessor'
+	#category : 'SimpleRene-Model-Accessor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Accessor'
 }
 
-{ #category : #'example support' }
+{ #category : 'example support' }
 SRCompositeAccessor class >> sampleContainer [
 	
 	| desc |
@@ -27,7 +29,7 @@ SRCompositeAccessor class >> sampleContainer [
 	^ desc
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRCompositeAccessor class >> via: anAccessor using: aDescription [
 	| result |
 	result := (self on: aDescription accessor asSimpleReneAccessor accessor: anAccessor asSimpleReneAccessor)
@@ -38,32 +40,32 @@ SRCompositeAccessor class >> via: anAccessor using: aDescription [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCompositeAccessor >> canRead: aModel [
 	^ (self accessor canRead: aModel) and: [ (self elementsFrom: aModel) allSatisfy: [ :e | self next canRead: e ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCompositeAccessor >> canWrite: aModel [
 	^ (self accessor canRead: aModel) and: [ (self elementsFrom: aModel) allSatisfy: [ :e | self next canWrite: e ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCompositeAccessor >> elementsFrom: aModel [
 	^ self accessor read: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRCompositeAccessor >> kind [
 	^ kind
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRCompositeAccessor >> kind: aClass [
 	kind := aClass
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRCompositeAccessor >> read: aModel [
 	| elements values |
 	elements := self elementsFrom: aModel.
@@ -74,7 +76,7 @@ SRCompositeAccessor >> read: aModel [
 	
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRCompositeAccessor >> write: anObject to: aModel [
 	^ (self elementsFrom: aModel) do: [ :e | 
 		(anObject isKindOf: SRCompositeConflict) ifFalse: [ self next write: anObject to: e ] ]

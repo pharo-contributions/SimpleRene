@@ -2,12 +2,14 @@
 I am an abstract description for all basic description types.
 "
 Class {
-	#name : #SRElementDescription,
-	#superclass : #SRDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRElementDescription',
+	#superclass : 'SRDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRElementDescription class >> new [
 	"override #new so that we can create an object without adding it to the collection returned by: MAElementDescription withAllConcreteClasses,
 	that is so we can call  MAElementDescription new magritteDescription  and it works as expected, which is used in MADescriptionEditor>>#buildReport .
@@ -15,27 +17,27 @@ SRElementDescription class >> new [
 	^ self basicNew initialize
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRElementDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitElementDescription: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SRElementDescription >> asContainer [
 	^ SRContainer with: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRElementDescription >> default [
 	^ self propertyAt: #default ifAbsent: [ self class defaultDefault ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRElementDescription >> default: anObject [
 	self propertyAt: #default put: anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRElementDescription >> handleMessage: aMessage for: anObject [
 	"We do no error checking; you probably want to send #handlesSelector: first to make sure"
 	^ aMessage numArgs = 0
@@ -43,12 +45,12 @@ SRElementDescription >> handleMessage: aMessage for: anObject [
 		ifFalse: [ anObject simpleReneWrite: aMessage argument using: self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRElementDescription >> handlesSelector: aSelector [
 	^ self accessor handlesSelector: aSelector
 ]
 
-{ #category : #'lazy initialization' }
+{ #category : 'lazy initialization' }
 SRElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	"- The default value is cached if the description's #shouldCacheDefault property is true. An example when caching is necessary is for to-many relations because the user may modify the collection, which will then be thrown away if not cached
 
@@ -69,12 +71,12 @@ SRElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	^ defaultValue
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRElementDescription >> printFor: anObject on: aWriteStream [ 
 	(self read: anObject) ifNotNil: [ :value | aWriteStream nextPutAll: (self toString: value) ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRElementDescription >> storeOn: aStream [
 	aStream 
 		nextPutAll: self className;

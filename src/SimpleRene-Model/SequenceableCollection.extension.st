@@ -1,11 +1,11 @@
-Extension { #name : #SequenceableCollection }
+Extension { #name : 'SequenceableCollection' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 SequenceableCollection >> asSimpleReneAccessor [
 	^ SRChainAccessor accessors: self
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 SequenceableCollection >> simpleReneMoveDown: anObject [
 	| first second |
 	first := self findFirst: [ :value | value == anObject ].
@@ -16,7 +16,7 @@ SequenceableCollection >> simpleReneMoveDown: anObject [
 	^ second
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 SequenceableCollection >> simpleReneMoveUp: anObject [
 	| first second |
 

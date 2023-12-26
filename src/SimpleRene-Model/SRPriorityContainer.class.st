@@ -2,37 +2,39 @@
 I am a container holding a collection of descriptions and I keep them sorted according to their priority.
 "
 Class {
-	#name : #SRPriorityContainer,
-	#superclass : #SRContainer,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRPriorityContainer',
+	#superclass : 'SRContainer',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRPriorityContainer class >> defaultCollection [
 	^ SortedCollection new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRPriorityContainer >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitPriorityContainer: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRPriorityContainer >> resort [
 	self setChildren: self children copy
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRPriorityContainer >> setChildren: aCollection [
 	super setChildren: aCollection asSortedCollection
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 SRPriorityContainer >> simpleReneMoveDown: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 SRPriorityContainer >> simpleReneMoveUp: aDescription [
 	self shouldNotImplement
 ]

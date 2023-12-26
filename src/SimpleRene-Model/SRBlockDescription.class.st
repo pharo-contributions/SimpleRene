@@ -1,35 +1,37 @@
 Class {
-	#name : #SRBlockDescription,
-	#superclass : #SRElementDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRBlockDescription',
+	#superclass : 'SRElementDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRBlockDescription class >> defaultKind [
 	^ BlockClosure
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRBlockDescription class >> defaultLineCount [
 	^ 3
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRBlockDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRBlockDescription class >> label [
 	^ 'Block'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRBlockDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitBlockDescription: self
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 SRBlockDescription >> descriptionLineCount [
 	<simpleReneDescription>
 	^ SRNumberDescription new
@@ -42,12 +44,12 @@ SRBlockDescription >> descriptionLineCount [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRBlockDescription >> lineCount [
 	^ self propertyAt: #lineCount ifAbsent: [ self class defaultLineCount ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRBlockDescription >> lineCount: anInteger [
 	self propertyAt: #lineCount put: anInteger
 ]

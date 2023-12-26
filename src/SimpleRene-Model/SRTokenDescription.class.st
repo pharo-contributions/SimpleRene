@@ -2,40 +2,42 @@
 I am a description of tokens all described by the referenced description, possible values are instances of ==SequenceableCollection==.
 "
 Class {
-	#name : #SRTokenDescription,
-	#superclass : #SRReferenceDescription,
+	#name : 'SRTokenDescription',
+	#superclass : 'SRReferenceDescription',
 	#instVars : [
 		'separators'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRTokenDescription class >> defaultKind [
 	^ Array
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRTokenDescription class >> defaultSeparators [
 	^ ' ,;', (String with: Character cr with: Character lf with: Character tab)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRTokenDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRTokenDescription class >> label [
 	^ 'Token'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRTokenDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitTokenDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRTokenDescription >> descriptionSeparators [
 	<simpleReneDescription>
 	^ SRStringDescription new
@@ -45,12 +47,12 @@ SRTokenDescription >> descriptionSeparators [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRTokenDescription >> separators [
 	^ separators ifNil: [ separators := self class defaultSeparators ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRTokenDescription >> separators: aString [
 	"A string with the separator characters to split tokens, the first character is used as a default for printing."
 

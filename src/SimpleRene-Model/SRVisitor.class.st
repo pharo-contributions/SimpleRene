@@ -6,12 +6,14 @@ My key entry point is `visit:`, which starts the visiting process. Other visitin
 My 'visiting-description' protocol reflects the hierarchy of `SRDescription` and its subclasses. Visiting a class which my subclasses doesn't handle specifically automatically defaults to a less-specific implementation e.g. Boolean -> Element -> Description. This code, along with the corresponding #acceptSimpleReneVisitor:` methods, was automatically created using code on my class-side.
 "
 Class {
-	#name : #SRVisitor,
-	#superclass : #SRBasicObject,
-	#category : #'SimpleRene-Model-Visitor'
+	#name : 'SRVisitor',
+	#superclass : 'SRBasicObject',
+	#category : 'SimpleRene-Model-Visitor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Visitor'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SRVisitor class >> buildVisitorHierarchyForClass: aClass selector: aBlock classified: aSelector [
 	" self 
 			buildVisitorHierarchyForClass: SRDescription 
@@ -34,7 +36,7 @@ SRVisitor class >> buildVisitorHierarchyForClass: aClass selector: aBlock classi
 			class compile: acceptSourceCode classified: #visiting ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRVisitor >> visit: anObject [
 	"Visit ==anObject== with the receiving visitor."
 	| errors |
@@ -54,184 +56,184 @@ SRVisitor >> visit: anObject [
 			signal: anObject label ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRVisitor >> visitAll: aCollection [
 	"Visit all elements of ==aCollection== with the receiving visitor."
 
 	aCollection do: [ :each | self visit: each ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitBlockDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitBooleanDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitClassDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitColorDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitContainer: anObject [
 	self visitDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitDateAndTimeDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitDateDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitDescription: anObject [
 
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitDirectoryDescription: anObject [
 	self visitFileDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitDurationDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitElementDescription: anObject [
 	self visitDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitFileDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitMagnitudeDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitMemoDescription: anObject [
 	self visitStringDescription: anObject
 ]
 
-{ #category : #'visit-money' }
+{ #category : 'visit-money' }
 SRVisitor >> visitMoneyDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitMultipleOptionDescription: anObject [
 	self visitOptionDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitNumberDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitOptionDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitPasswordDescription: anObject [
 	self visitStringDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitPriorityContainer: anObject [
 	self visitContainer: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitReferenceDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitRelationDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitReportContainer: anObject [
 	self visitContainer: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitSingleOptionDescription: anObject [
 	self visitOptionDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitStringDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitSymbolDescription: anObject [
 	self visitStringDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitTableDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitTableReference: anObject [
 	^ self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitTimeDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitTimeStampDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitToManyRelationDescription: anObject [
 	self visitRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitToManyScalarRelationDescription: anObject [
 	self visitToManyRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitToOneRelationDescription: anObject [
 	self visitRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRVisitor >> visitTokenDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-descriptions' }
+{ #category : 'visiting-descriptions' }
 SRVisitor >> visitUrlDescription: aMAUrlDescription [ 
 	self visitElementDescription: aMAUrlDescription
 ]

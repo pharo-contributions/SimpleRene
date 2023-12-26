@@ -1,10 +1,12 @@
 Class {
-	#name : #SRComposedDescriptionBuilder,
-	#superclass : #SRDescriptionBuilder,
-	#category : #'SimpleRene-Model-Builder'
+	#name : 'SRComposedDescriptionBuilder',
+	#superclass : 'SRDescriptionBuilder',
+	#category : 'SimpleRene-Model-Builder',
+	#package : 'SimpleRene-Model',
+	#tag : 'Builder'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRComposedDescriptionBuilder >> setBuiltDescription: aDescription [ 
 	| builders |
 	builders := self target simpleReneDescription descriptionBuilders.
@@ -12,7 +14,7 @@ SRComposedDescriptionBuilder >> setBuiltDescription: aDescription [
 	builders do: [ :each | builtDescription := each buildFrom: builtDescription target: target model: model ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRComposedDescriptionBuilder >> visitContainer: aContainer [
 	| builders |
 	builders := aContainer descriptionBuilders.
@@ -20,7 +22,7 @@ SRComposedDescriptionBuilder >> visitContainer: aContainer [
 	builders do: [ :each | builtDescription := each buildFrom: builtDescription target: self target model: self model ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRComposedDescriptionBuilder >> visitRelationDescription: aDescription [
 	| builders buildedReference relationValue |
 	builders := self target simpleReneDescription descriptionBuilders.

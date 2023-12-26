@@ -1,10 +1,12 @@
 Class {
-	#name : #SRUrlDescription,
-	#superclass : #SRElementDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRUrlDescription',
+	#superclass : 'SRElementDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRUrlDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitUrlDescription: self
 ]

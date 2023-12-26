@@ -2,20 +2,22 @@
 I am a null access strategy and I should be neither read nor written. I am still comparable to other strategies by holding onto a unique-identifier.
 "
 Class {
-	#name : #SRNullAccessor,
-	#superclass : #SRAccessor,
+	#name : 'SRNullAccessor',
+	#superclass : 'SRAccessor',
 	#instVars : [
 		'uuid'
 	],
-	#category : #'SimpleRene-Model-Accessor'
+	#category : 'SimpleRene-Model-Accessor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRNullAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRNullAccessor class >> new [
 	| random uuid |
 	random := Random new.
@@ -24,30 +26,30 @@ SRNullAccessor class >> new [
 	^ self uuid: uuid
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRNullAccessor class >> uuid: anObject [
 	^ self basicNew
 		uuid: anObject;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRNullAccessor >> = anObject [
 	^ super = anObject
 		and: [ self uuid = anObject uuid ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRNullAccessor >> hash [
 	^ super hash bitXor: self uuid hash
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRNullAccessor >> read: aModel [ 
 	SRReadError signal: 'This message is not appropriate for this object'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRNullAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -57,17 +59,17 @@ SRNullAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRNullAccessor >> uuid [
 	^ uuid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRNullAccessor >> uuid: anObject [
 	uuid := anObject
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRNullAccessor >> write: anObject to: aModel [ 
 	SRWriteError signal: 'This message is not appropriate for this object'
 ]

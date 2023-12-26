@@ -1,33 +1,34 @@
 Class {
-	#name : #SRFileSystem,
-	#superclass : #Object,
-	#category : #'SimpleRene-Model'
+	#name : 'SRFileSystem',
+	#superclass : 'Object',
+	#category : 'SimpleRene-Model',
+	#package : 'SimpleRene-Model'
 }
 
-{ #category : #paths }
+{ #category : 'paths' }
 SRFileSystem class >> extensionFor: aString [ 
 
 	^ aString asFileReference extension.
 ]
 
-{ #category : #entries }
+{ #category : 'entries' }
 SRFileSystem class >> fileSizeFor: filenameString [ 
 	^ filenameString asFileReference size
 ]
 
-{ #category : #paths }
+{ #category : 'paths' }
 SRFileSystem class >> fullNameFor: aString [ 
 
 	^ aString asFileReference fullName.
 ]
 
-{ #category : #locations }
+{ #category : 'locations' }
 SRFileSystem class >> imageDirectory [
 
 	^ FileLocator imageDirectory.
 ]
 
-{ #category : #'mime types' }
+{ #category : 'mime types' }
 SRFileSystem class >> mimeTypesForExtension: aString [ 
 
 	| types |

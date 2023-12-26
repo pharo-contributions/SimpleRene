@@ -2,27 +2,29 @@
 I am a description of multiline strings, possible values are instances of ==String==. My visual representation could be a text-area field.
 "
 Class {
-	#name : #SRMemoDescription,
-	#superclass : #SRStringDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRMemoDescription',
+	#superclass : 'SRStringDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRMemoDescription class >> defaultLineCount [
 	^ 3
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMemoDescription class >> label [
 	^ 'Memo'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRMemoDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMemoDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRMemoDescription >> descriptionLineCount [
 	<simpleReneDescription>
 	^ SRNumberDescription new
@@ -35,12 +37,12 @@ SRMemoDescription >> descriptionLineCount [
 		yourself
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRMemoDescription >> lineCount [
 	^ self propertyAt: #lineCount ifAbsent: [ self class defaultLineCount ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRMemoDescription >> lineCount: anInteger [
 	self propertyAt: #lineCount put: anInteger
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #SRActionDescription,
-	#superclass : #SRObject,
+	#name : 'SRActionDescription',
+	#superclass : 'SRObject',
 	#instVars : [
 		'enableBlock',
 		'model',
@@ -12,61 +12,63 @@ Class {
 		'isMutator',
 		'shortcut'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRActionDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription class >> maPragma [
 	"Annotate constructor methods with this pragma to get picked up by SimpleRene; similar to #simpleReneDescription"
 	^ #simpleReneActionDescription
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRActionDescription >> <= anObject [
 
 	^ self priority <= anObject priority
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRActionDescription >> = anObject [
 	^ super = anObject and: [ self action = anObject action ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> action [
 
 	^ action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> action: aValuable [
 
 	action := aValuable.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> comment [
 
 	^ comment ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> comment: aString [
 
 	comment := aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> enableBlock [
 	^ enableBlock ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> enableBlock: aBlock [
 	"aBlock
 		- one argument (optional); the model object
@@ -75,95 +77,95 @@ SRActionDescription >> enableBlock: aBlock [
 	enableBlock := aBlock.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRActionDescription >> hash [
 	^ super hash bitXor: self action hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> icon [
 	^ icon ifNotNil: [ self iconNamed: icon ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> icon: aSymbol [
 	"Browse available via `Smalltalk ui icons`"
 	icon := aSymbol
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialization' }
 SRActionDescription >> initialize [
 
 	super initialize.
 	enableBlock := [ true ].
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRActionDescription >> isEnabled [
 
 	^ enableBlock cull: model.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> isLabelVisible [
 	"Experiment: Are label and icon 'either-or', or might a user want both?"
 	^ self propertyAt: #isLabelVisible ifAbsent: [ true ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> isLabelVisible: aBoolean [
 	self propertyAt: #isLabelVisible put: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> isMutator [
 	^ isMutator ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> isMutator: anObject [
 	"Does the action I describe potentially change the object it acts on?"
 	isMutator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> label [
 
 	^ label ifNil: [ action asString capitalized normalizeCamelCase ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> label: aString [
 
 	label := aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRActionDescription >> performOn: aModel [
 
 	action cull: aModel.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' label: '; print: self label.
 	aStream nextPutAll: ' comment: '; print: self comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> priority [
 
 	^ priority ifNil: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> priority: anInteger [ 
 
 	priority := anInteger.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> selector [
 	self 
 		deprecated: 'Renamed to #action because now accepts any valuable as an action (e.g. aBlock).'
@@ -174,7 +176,7 @@ SRActionDescription >> selector [
 	^ self action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> selector: aValuable [
 		self 
 		deprecated: 'Renamed to #action: because now accepts any valuable as an action (e.g. aBlock).'
@@ -186,12 +188,12 @@ SRActionDescription >> selector: aValuable [
 	self action: aValuable.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> shortcut [
 	^ shortcut
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRActionDescription >> shortcut: anObject [
 	shortcut := anObject
 ]

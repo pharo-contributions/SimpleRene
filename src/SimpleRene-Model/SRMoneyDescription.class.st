@@ -10,36 +10,38 @@ Money decoded from a string uses a float for the amount. See class comment for m
 ]]]
 "
 Class {
-	#name : #SRMoneyDescription,
-	#superclass : #SRElementDescription,
+	#name : 'SRMoneyDescription',
+	#superclass : 'SRElementDescription',
 	#classVars : [
 		'DefaultMoneyClass'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRMoneyDescription class >> defaultKind [
 	^ DefaultMoneyClass
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRMoneyDescription class >> defaultKind: aClass [
 	"This is a hook so one can choose any Money library. An alternative would be to allow the chosen library to implement #defaultKind as an extension method and remove this setter, but that would dirty packages if multiple libraries were loaded simultaneously (not sure how much that matters in practice, especially since each of my instances can specify their kind)"
 	DefaultMoneyClass := aClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRMoneyDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMoneyDescription class >> label [
 	^ 'Money'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRMoneyDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMoneyDescription: self
 ]

@@ -19,120 +19,122 @@ The selector `title` is the name of the accessor method used by SimpleRene to re
 The write-accessor is automatically deduced by adding a colon to the read-selector, in this example `title:`. You can specify your own accessor strategy using one of the subclasses of `SRAccessor`. If you have multiple description within the same object, the `priority:` field is used to order them. Assign a low priority to have descriptions traversed first.
 "
 Class {
-	#name : #SRDescription,
-	#superclass : #SRObject,
+	#name : 'SRDescription',
+	#superclass : 'SRObject',
 	#instVars : [
 		'accessor'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultAccessor [
 	^ SRNullAccessor new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultComment [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultConditions [
 	^ Array new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultDefault [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultDisplayProperty [
 	^ #asString
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultGroup [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultKind [
 	^ Object
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultLabel [
 	^ String new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultPersistent [
 	^ true
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultPriority [
 	^ 0
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultReadOnly [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultRequired [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultShouldCacheDefault [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultStringReader [
 	^ SRStringReader
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultStringWriter [
 	^ SRStringWriter
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultUndefined [
 	^ String new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultUndefinedValue [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultValidator [
 	^ SRValidatorVisitor
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultVisible [
 	^ true
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRDescription class >> defaultVisibleInReport [
 	^true
 ]
 
-{ #category : #'accessing-examples' }
+{ #category : 'accessing-examples' }
 SRDescription class >> grouping [
 	^ SRDescriptionHolder groupOf: self
 ]
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRDescription >> , aDescription [
 	"Concatenate the receiver and ==aDescription== to one composed description. Answer a description container containing both descriptions."
 
@@ -141,44 +143,44 @@ SRDescription >> , aDescription [
 		yourself
 ]
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRDescription >> <= anObject [
 	"Answer whether the receiver should precede ==anObject== in a priority container."
 
 	^ self priority <= anObject priority
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRDescription >> = anObject [
 	^ super = anObject
 		and: [ self accessor = anObject accessor ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitDescription: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> accessor [
 	"Answer the access-strategy of the model-value described by the receiver."
 
 	^ accessor ifNil: [ accessor := self class defaultAccessor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> accessor: anObject [
 	accessor := anObject asSimpleReneAccessor
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SRDescription >> addCondition: aCondition [ 
 	self 
 		addCondition: aCondition
 		labelled: aCondition asString
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SRDescription >> addCondition: aCondition labelled: aString [
 	"Add ==aCondition== as an additional validation condition to the receiver and give it the label ==aString==. The first argument is either a block-context or any other object that responds to ==#value:== with ==true== or ==false==."
 
@@ -188,7 +190,7 @@ SRDescription >> addCondition: aCondition labelled: aString [
 			value: aString))
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SRDescription >> addCondition: aCondition labelled: aStringOrBlock ifValid: aDescription [
 
 	self
@@ -196,106 +198,106 @@ SRDescription >> addCondition: aCondition labelled: aStringOrBlock ifValid: aDes
 		labelled: aStringOrBlock
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SRDescription >> asContainer [
 	"Answer a description container of the receiver."
 
 	self subclassResponsibility
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beHidden [
 	self visible: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beOptional [
 	self required: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beReadOnly [
 	self readOnly: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beRequired [
 	self required: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beVisible [
 	self visible: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SRDescription >> beWriteable [
 	self readOnly: false
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 SRDescription >> canExpand [
 	" used to expand a relation description into a group "
 	^self propertyAt: #canExpand ifAbsent: [ self defaultCanExpand ]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 SRDescription >> canExpand: aBoolean [
 	" used to expand a relation description into a group "
 	^self propertyAt: #canExpand put: aBoolean
 ]
 
-{ #category : #accessors }
+{ #category : 'accessors' }
 SRDescription >> chainAccessor: anArray [
 	"Uses ==anArray== of selectors to read from the model."
 
 	self accessor: (SRChainAccessor accessors: anArray)
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> comment [
 	"Answer a comment or help-text giving a hint what this description is used for. GUIs that are built from this description might display it as a tool-tip."
 
 	^ self propertyAt: #comment ifAbsent: [ self class defaultComment ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> comment: aString [
 	self propertyAt: #comment put: aString
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> conditions [
 	"Answer a collection of additional conditions that need to be fulfilled so that the described model is valid. Internally the collection associates conditions with an error string."
 
 	^ self propertyAt: #conditions ifAbsent: [ self class defaultConditions ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> conditions: anArray [
 	self propertyAt: #conditions put: anArray
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> conflictErrorMessage [
 	^ self propertyAt: #conflictErrorMessage ifAbsent: [ 'Input is conflicting with concurrent modification' ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> conflictErrorMessage: aString [
 	self propertyAt: #conflictErrorMessage put: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> default [
 	^ self undefinedValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> default: anObject [
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 SRDescription >> defaultCanExpand [
 	" used to expand a relation description into a group "
 	self isVisible ifFalse: [ ^false ].
@@ -304,17 +306,17 @@ SRDescription >> defaultCanExpand [
 	^true
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> defaultLabel [
 	^ self accessor defaultLabelFor: self
 ]
 
-{ #category : #'owning object' }
+{ #category : 'owning object' }
 SRDescription >> describedObject [
 	^ SRDynamicDescribedObject value
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionAccessor [
 	<simpleReneDescription>
 	^ SRToOneRelationDescription new
@@ -325,7 +327,7 @@ SRDescription >> descriptionAccessor [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionComment [
 	<simpleReneDescription>
 	^ SRMemoDescription new
@@ -336,7 +338,7 @@ SRDescription >> descriptionComment [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionDefault [
 	<simpleReneDescription>
 	^ self class isAbstract
@@ -349,7 +351,7 @@ SRDescription >> descriptionDefault [
 				yourself ]
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionGroup [
 	<simpleReneDescription>
 	^ SRStringDescription new
@@ -360,7 +362,7 @@ SRDescription >> descriptionGroup [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionLabel [
 	<simpleReneDescription>
 	^ SRStringDescription new
@@ -371,7 +373,7 @@ SRDescription >> descriptionLabel [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionName [
 	<simpleReneDescription>
 	^ SRSymbolDescription new
@@ -380,7 +382,7 @@ SRDescription >> descriptionName [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionPriority [
 	<simpleReneDescription>
 	^ SRNumberDescription new
@@ -392,7 +394,7 @@ SRDescription >> descriptionPriority [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionReadOnly [
 	<simpleReneDescription>
 	^ SRBooleanDescription new
@@ -403,7 +405,7 @@ SRDescription >> descriptionReadOnly [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionRequired [
 	<simpleReneDescription>
 	^ SRBooleanDescription new
@@ -414,7 +416,7 @@ SRDescription >> descriptionRequired [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionStringReader [
 	<simpleReneDescription>
 	^ SRSingleOptionDescription new
@@ -427,7 +429,7 @@ SRDescription >> descriptionStringReader [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionStringWriter [
 	<simpleReneDescription>
 	^ SRSingleOptionDescription new
@@ -440,7 +442,7 @@ SRDescription >> descriptionStringWriter [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionType [
 	<simpleReneDescription>
 	^ SRStringDescription new
@@ -451,7 +453,7 @@ SRDescription >> descriptionType [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionUndefined [
 	<simpleReneDescription>
 	^ SRStringDescription new
@@ -462,7 +464,7 @@ SRDescription >> descriptionUndefined [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionUndefinedValue [
 	<simpleReneDescription>
 	^ SRToOneRelationDescription new
@@ -472,7 +474,7 @@ SRDescription >> descriptionUndefinedValue [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionValidator [
 	<simpleReneDescription>
 	^ SRSingleOptionDescription new
@@ -485,7 +487,7 @@ SRDescription >> descriptionValidator [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRDescription >> descriptionVisible [
 	<simpleReneDescription>
 	^ SRBooleanDescription new
@@ -496,7 +498,7 @@ SRDescription >> descriptionVisible [
 		yourself
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> display: aBlockOrSymbol [
 	"Transform how the model is converted to a string.
 	aSymbol
@@ -510,114 +512,114 @@ SRDescription >> display: aBlockOrSymbol [
 	self propertyAt: #displayBlockOrSymbol put: aBlockOrSymbol.
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> displayBlockOrSymbol [
 	^ self propertyAt: #displayBlockOrSymbol ifAbsent: [ self class defaultDisplayProperty ]
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 SRDescription >> displayStringFor: anObject [
 	"Convert object to a string. If a block was passed to #display: use that, otherwise use the defaultDisplayProperty. N.B. It's probably best not to use this outside of the library insternals. It should be private except that it's used by option descriptions and string writer. The canonical way to get this info is `self reference toString: anObject`"
 
 	^ self displayBlockOrSymbol cull: anObject cull: self.
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> fromString: aString [
 	"Answer an object being parsed from ==aString==."
 
 	^ self fromString: aString reader: self stringReader
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> fromString: aString reader: aReader [
 	"Answer an object being parsed from ==aString== using ==aReader==."
 
 	^ aReader read: aString readStream description: self
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> fromStringCollection: aCollection [
 	"Answer a collection of objects being parsed from ==aCollection== of strings."
 
 	^ self fromStringCollection: aCollection reader: self stringReader
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> fromStringCollection: aCollection reader: aReader [
 	"Answer a collection of objects being parsed from ==aCollection== of strings using ==aReader==."
 
 	^ aCollection collect: [ :each | self fromString: each reader: aReader ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> group [
 	"Answer the group of the receiving description. The group is a string used to categorize and group descriptions. Certain display interpreters with be able to use this information to improve the usability."
 
 	^ self propertyAt: #group ifAbsent: [ self class defaultGroup ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> group: aString [
 	"Answer the group of the receiving description. The group is a string used to categorize and group descriptions. Certain display interpreters with be able to use this information to improve the usability."
 
 	self propertyAt: #group put: aString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> hasChildren [
 	"Answer ==true== if the receiver has any child-descriptions. A description container usually has children."
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> hasComment [
 	"Answer ==true== if the the receiver has got a non empty comment."
 
 	^ self comment notNil and: [ self comment isEmpty not ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> hasLabel [
 	"Answer ==true== if the the receiver has got a non empty label."
 
 	^ self label notNil and: [ self label isEmpty not ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRDescription >> hash [
 	^ super hash bitXor: self accessor hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isContainer [
 	"Answer ==true== if the receiver is a description container."
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isGrouped [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> isKindDefined [
 	^ self propertyAt: #kind ifPresent: [ :theKind | true] ifAbsent: [ false ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isReadOnly [
 	^ self readOnly
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isRequired [
 	^ self required
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SRDescription >> isSatisfiedBy: anObject [
 	"Answer ==true== if ==anObject== is a valid instance of the receiver's description."
 
@@ -627,105 +629,105 @@ SRDescription >> isSatisfiedBy: anObject [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isSimpleReneDescription [
 	"Answer ==true== if the receiver is a description."
 
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isSortable [
 	"Answer ==true== if the described object can be trivially sorted, e.g. it answers to #<=."
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDescription >> isVisible [
 	^ self visible
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> kind [
 	"Answer the base-class (type) the receiver is describing. The default implementation answers the most generic class: Object, the root of the Smalltalk class hierarchy. Subclasses might refine this choice."
 
 	^ self propertyAt: #kind ifAbsent: [ self class defaultKind ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDescription >> kind: aClass [
 	self propertyAt: #kind put: aClass
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> kindErrorMessage [
 	^ self propertyAt: #kindErrorMessage ifAbsent: [ 'Invalid input given' ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> kindErrorMessage: aString [
 	self propertyAt: #kindErrorMessage put: aString
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> label [
 	"Answer the label of the receiving description. The label is mostly used as an identifier that is printed next to the input field when building a GUI from the receiver."
 
 	^ self propertyAt: #label ifAbsent: [ self defaultLabel ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> label: aString [
 	self propertyAt: #label put: aString
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> multipleErrorsMessage [
 	^ self propertyAt: #multipleErrorsMessage ifAbsent: [ 'Multiple errors' ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> multipleErrorsMessage: aString [
 	self propertyAt: #multipleErrorsMessage put: aString
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 SRDescription >> name [
 	^ self propertyAt: #name ifAbsent: [ self accessor name ]
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 SRDescription >> name: aSymbol [
 	^ self propertyAt: #name put: aSymbol
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SRDescription >> postCopy [
 	super postCopy.
 	accessor := accessor copy
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRDescription >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' label: '; print: self label.
 	aStream nextPutAll: ' comment: '; print: self comment
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> priority [
 	"Answer a number that is the priority of the receiving description. Priorities are used to give descriptions an explicit order by sorting them according to this number."
 
 	^ self propertyAt: #priority ifAbsent: [ self class defaultPriority ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> priority: aNumber [
 	self propertyAt: #priority put: aNumber
 ]
 
-{ #category : #accessors }
+{ #category : 'accessors' }
 SRDescription >> propertyAccessor: aSelector [
 	"Uses ==aSelector== to read from the property dictionary of the model."
 
@@ -733,123 +735,123 @@ SRDescription >> propertyAccessor: aSelector [
 		accessor: (SRDictionaryAccessor key: aSelector))
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRDescription >> read: aModel [
 	^ aModel simpleReneReadUsing: self
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> readOnly [
 	"Test whether my model is read-only."
 
 	^ self propertyAt: #readOnly ifAbsent: [ self class defaultReadOnly ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> readOnly: aBoolean [
 	self propertyAt: #readOnly put: aBoolean
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRDescription >> readToString: aModel [
 	^ self toString: (self read: aModel)
 	"This is a common idiom, e.g. for the GUI layer, so we reified it"
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> required [
 	"Answer ==true== if the model described by the receiver is required, this is it cannot be ==nil==."
 
 	^ self propertyAt: #required ifAbsent: [ self class defaultRequired ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> required: aBoolean [
 	self propertyAt: #required put: aBoolean
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> requiredErrorMessage [
 	^ self propertyAt: #requiredErrorMessage ifAbsent: [ 'Input is required but no input given' ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRDescription >> requiredErrorMessage: aString [
 	self propertyAt: #requiredErrorMessage put: aString
 ]
 
-{ #category : #accessors }
+{ #category : 'accessors' }
 SRDescription >> selectorAccessor: aSelector [
 	"Uses ==aSelector== to read from the model."
 
 	self accessor: (SRSelectorAccessor selector: aSelector)
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> shouldCacheDefault [
 
 	^ self propertyAt: #shouldCacheDefault ifAbsent: [ self class defaultShouldCacheDefault ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> shouldCacheDefault: aBoolean [
 
 	^ self propertyAt: #shouldCacheDefault put: aBoolean
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> stringReader [
 	"Answer a Visitor that can be used to parse the model described by the receiver from a string."
 
 	^ self propertyAt: #stringReader ifAbsent: [ self class defaultStringReader ]
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> stringReader: aClass [
 	self propertyAt: #stringReader put: aClass
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> stringWriter [
 	"Answer a Visitor that can be used to convert the model described by the receiver to a string."
 
 	^ self propertyAt: #stringWriter ifAbsent: [ self class defaultStringWriter ]
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> stringWriter: aClass [
 	self propertyAt: #stringWriter put: aClass
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> toString: anObject [
 	"Answer a string being formatted from ==anObject==."
 
 	^ self toString: anObject writer: self stringWriter
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> toString: anObject writer: aFormatter [
 	"Answer a string being formatted from ==anObject== using ==aFormatter==."
 
 	^ aFormatter write: anObject description: self
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> toStringCollection: aCollection [
 	"Answer a collection of strings being formatted from ==aCollection==."
 
 	^ self toStringCollection: aCollection writer: self stringWriter
 ]
 
-{ #category : #strings }
+{ #category : 'strings' }
 SRDescription >> toStringCollection: aCollection writer: aFormatter [
 	"Answer a collection of strings being formatted from ==aCollection== using ==aFormatter==."
 
 	^ aCollection collect: [ :each | self toString: each writer: aFormatter ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRDescription >> tryValidation: tryBlock ifPass: passBlock [
 	| shouldContinue |
 	shouldContinue := true.
@@ -858,14 +860,14 @@ SRDescription >> tryValidation: tryBlock ifPass: passBlock [
 	passBlock value
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 SRDescription >> type [
 	"Answer the name of the description, a human-readable string describing the type."
 
 	^ self class simpleReneLabel
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> undefined [
 	"Answer a string that is printed whenever the model described by the receiver is ==nil==."
 
@@ -873,31 +875,31 @@ SRDescription >> undefined [
 		ifNil: [ self class defaultUndefined ]
 ]
 
-{ #category : #'accessing-strings' }
+{ #category : 'accessing-strings' }
 SRDescription >> undefined: aString [
 	self propertyAt: #undefined put: aString
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> undefinedValue [
 
 	^ (self propertyAt: #undefinedValue ifAbsent: [ self class defaultUndefinedValue ])
 		ifNil: [ self class defaultUndefinedValue ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> undefinedValue: anObject [
 	self propertyAt: #undefinedValue put: anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SRDescription >> validate: anObject [
 	"Validate ==anObject== in the context of the describing-receiver, raises an error in case of a problem. If ==anObject== is ==nil== and not required, most tests will be skipped. Do not override this message, instead have a look at ==#validateSpecific:== what is usually a better place to define the behaviour your description requires."
 
 	self validator on: anObject description: self
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 SRDescription >> validateConditions: anObject [
 	"Validate ==anObject== to satisfy all its custom conditions."
 
@@ -906,7 +908,7 @@ SRDescription >> validateConditions: anObject [
 			ifFalse: [ SRConditionError description: self signal: each value ] ]
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 SRDescription >> validateKind: anObject [
 	"Validate ==anObject== to be of the right kind."
 
@@ -914,7 +916,7 @@ SRDescription >> validateKind: anObject [
 		ifFalse: [ SRKindError description: self signal: self kindErrorMessage ]
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 SRDescription >> validateRequired: anObject [
 	"Validate ==anObject== not to be ==nil== if it is required."
 
@@ -922,52 +924,52 @@ SRDescription >> validateRequired: anObject [
 		ifTrue: [ SRRequiredError description: self signal: self requiredErrorMessage ]
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 SRDescription >> validateSpecific: anObject [
 	"Validate ==anObject== to satisfy its descriptions specific validation rules. Subclasses mostly want to override this method."
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> validator [
 	"Answer a Visitor that can be used to validate the model described by the receiver."
 
 	^ self propertyAt: #validator ifAbsent: [ self class defaultValidator ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> validator: aClass [
 	self propertyAt: #validator put: aClass
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> visible [
 	"Answer ==true== if the model described by the receiver is visible, as an opposite to hidden."
 
 	^ self propertyAt: #visible ifAbsent: [ self class defaultVisible ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> visible: aBoolean [
 	self propertyAt: #visible put: aBoolean
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> visibleInReport [
 
 	^self propertyAt: #visibleInReport ifAbsent: [ self class defaultVisibleInReport ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 SRDescription >> visibleInReport: aBoolean [ 
 	self propertyAt: #visibleInReport put: aBoolean
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRDescription >> write: anObject to: aModel [
 	^ aModel simpleReneWrite: anObject using: self
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRDescription >> writeFromString: aString to: aModel [
 	| value |
 	value := self fromString: aString.

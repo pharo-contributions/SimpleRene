@@ -2,27 +2,29 @@
 I am an abstract description for subclasses of ==Magnitude==. The range of accepted values can be limited using the accessors ==min:== and ==max:==.
 "
 Class {
-	#name : #SRMagnitudeDescription,
-	#superclass : #SRElementDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRMagnitudeDescription',
+	#superclass : 'SRElementDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRMagnitudeDescription class >> defaultMax [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRMagnitudeDescription class >> defaultMin [
 	^ nil
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRMagnitudeDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitMagnitudeDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRMagnitudeDescription >> descriptionMax [
 	<simpleReneDescription>
 	^ self class new
@@ -32,7 +34,7 @@ SRMagnitudeDescription >> descriptionMax [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRMagnitudeDescription >> descriptionMin [
 	<simpleReneDescription>
 	^ self class new
@@ -42,49 +44,49 @@ SRMagnitudeDescription >> descriptionMin [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRMagnitudeDescription >> isSortable [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRMagnitudeDescription >> isWithinRange: anObject [
 	^ (self min isNil or: [ self min <= anObject ])
 		and: [ self max isNil or: [ self max >= anObject ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMagnitudeDescription >> max [
 	^ self propertyAt: #max ifAbsent: [ self class defaultMax ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMagnitudeDescription >> max: aMagnitudeOrNil [
 	"Set the maximum for accepted values, or ==nil== if open."
 
 	self propertyAt: #max put: aMagnitudeOrNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMagnitudeDescription >> min [
 	^ self propertyAt: #min ifAbsent: [ self class defaultMin ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRMagnitudeDescription >> min: aMagnitudeOrNil [
 	"Set the minimum for accepted values, or ==nil== if open."
 
 	self propertyAt: #min put: aMagnitudeOrNil
 ]
 
-{ #category : #conveniance }
+{ #category : 'conveniance' }
 SRMagnitudeDescription >> min: aMinimumObject max: aMaximumObject [
 	"Set the minimum and maximum of accepted values, or ==nil== if open."
 
 	self min: aMinimumObject; max: aMaximumObject
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRMagnitudeDescription >> rangeErrorMessage [
 	| min max |
 	^ self propertyAt: #rangeErrorMessage ifAbsent: [
@@ -97,12 +99,12 @@ SRMagnitudeDescription >> rangeErrorMessage [
 			ifTrue: [ ^ 'Input must be below or equal to ' , max ] ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 SRMagnitudeDescription >> rangeErrorMessage: aString [
 	self propertyAt: #rangeErrorMessage put: aString
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 SRMagnitudeDescription >> validateSpecific: anObject [
 	super validateSpecific: anObject.
 	(self isWithinRange: anObject)

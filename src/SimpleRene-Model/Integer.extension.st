@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Integer >> asSimpleReneFileSize [
 	"Return the receiver with the adequate file size identified."
 	

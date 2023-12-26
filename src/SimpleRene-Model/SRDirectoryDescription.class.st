@@ -1,15 +1,17 @@
 Class {
-	#name : #SRDirectoryDescription,
-	#superclass : #SRFileDescription,
-	#category : #'SimpleRene-Model-Description'
+	#name : 'SRDirectoryDescription',
+	#superclass : 'SRFileDescription',
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #acessing }
+{ #category : 'acessing' }
 SRDirectoryDescription class >> label [
 	^ 'Directory'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDirectoryDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitDirectoryDescription: self
 ]

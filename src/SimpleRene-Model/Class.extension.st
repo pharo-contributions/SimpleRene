@@ -1,6 +1,6 @@
-Extension { #name : #Class }
+Extension { #name : 'Class' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Class >> label [
 	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
 
@@ -9,7 +9,7 @@ Class >> label [
 	^ self simpleReneLabel
 ]
 
-{ #category : #'*SimpleRene-Model-configuration' }
+{ #category : '*SimpleRene-Model-configuration' }
 Class >> simpleReneDescriptionContainer [
 
 	"Return the default description container."
@@ -20,7 +20,7 @@ Class >> simpleReneDescriptionContainer [
 		  yourself
 ]
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 Class >> simpleReneLabel [
 	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
 

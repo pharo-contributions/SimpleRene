@@ -1,20 +1,22 @@
 Class {
-	#name : #SRCondition,
-	#superclass : #SRObject,
-	#category : #'SimpleRene-Model-Utility'
+	#name : 'SRCondition',
+	#superclass : 'SRObject',
+	#category : 'SimpleRene-Model-Utility',
+	#package : 'SimpleRene-Model',
+	#tag : 'Utility'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRCondition class >> isAbstract [
 	^ self name = #SRCondition
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRCondition class >> receiver: anObject selector: aSelector [
 	^ self receiver: anObject selector: aSelector arguments: #(nil) index: 1
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRCondition class >> receiver: anObject selector: aSelector arguments: anArray index: anInteger [
 	(aSelector numArgs = anArray size)
 		ifFalse: [ self error: 'Invalid number of arguments.' ].
@@ -27,37 +29,37 @@ SRCondition class >> receiver: anObject selector: aSelector arguments: anArray i
 		index: anInteger
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRCondition class >> selector: aSelector [
 	^ self receiver: nil selector: aSelector arguments: #() index: 0
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 SRCondition class >> selector: aSelector argument: anObject [
 	^ self receiver: nil selector: aSelector arguments: (Array with: anObject) index: 0
 ]
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRCondition >> & aCondition [ 
 	^ SRConjunctiveCondition new & self & aCondition
 ]
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRCondition >> not [
 	^ SRNegationCondition with: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRCondition >> numArgs [
 	^ 1
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SRCondition >> value: anObject [
 	self subclassResponsibility
 ]
 
-{ #category : #operators }
+{ #category : 'operators' }
 SRCondition >> | aCondition [ 
 	^ (self not & aCondition not) not
 ]

@@ -2,45 +2,47 @@
 My access strategy is to delegate to the next accessor. I am not that useful all by myself, but subclasses might override certain methods to intercept access.
 "
 Class {
-	#name : #SRDelegatorAccessor,
-	#superclass : #SRAccessor,
+	#name : 'SRDelegatorAccessor',
+	#superclass : 'SRAccessor',
 	#instVars : [
 		'next'
 	],
-	#category : #'SimpleRene-Model-Accessor'
+	#category : 'SimpleRene-Model-Accessor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDelegatorAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRDelegatorAccessor class >> on: anAccessor [
 	^ self new next: anAccessor
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRDelegatorAccessor >> = anObject [
 	^ super = anObject and: [ self next = anObject next ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDelegatorAccessor >> canRead: aModel [
 	^ self next canRead: aModel
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRDelegatorAccessor >> canWrite: aModel [
 	^ self next canWrite: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDelegatorAccessor >> defaultLabelFor: aDescription [
 	^ self next defaultLabelFor: aDescription
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 SRDelegatorAccessor >> descriptionNext [
 	<simpleReneDescription>
 	^ SRToOneRelationDescription new
@@ -51,38 +53,38 @@ SRDelegatorAccessor >> descriptionNext [
 			yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRDelegatorAccessor >> hash [
 	^  super hash bitXor: self next hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDelegatorAccessor >> name [
 	^ self next name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDelegatorAccessor >> next [
 	^ next
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRDelegatorAccessor >> next: anAccessor [ 
 	next := anAccessor asSimpleReneAccessor
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SRDelegatorAccessor >> postCopy [
 	super postCopy.
 	next := next copy
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRDelegatorAccessor >> read: aModel [
 	^ self next read: aModel
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRDelegatorAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -92,7 +94,7 @@ SRDelegatorAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRDelegatorAccessor >> write: anObject to: aModel [
 	self next write: anObject to: aModel
 ]

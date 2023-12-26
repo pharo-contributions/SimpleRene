@@ -1,6 +1,6 @@
-Extension { #name : #NumberParser }
+Extension { #name : 'NumberParser' }
 
-{ #category : #'*SimpleRene-Model' }
+{ #category : '*SimpleRene-Model' }
 NumberParser class >> isSimpleReneValidNumber: aStringOrStream [
 	| stream |
 	stream := aStringOrStream readStream.

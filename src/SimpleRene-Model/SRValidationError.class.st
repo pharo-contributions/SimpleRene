@@ -2,12 +2,14 @@
 I am a generic validation error. I reference the description that caused the validation error.
 "
 Class {
-	#name : #SRValidationError,
-	#superclass : #SRError,
-	#category : #'SimpleRene-Model-Exception'
+	#name : 'SRValidationError',
+	#superclass : 'SRError',
+	#category : 'SimpleRene-Model-Exception',
+	#package : 'SimpleRene-Model',
+	#tag : 'Exception'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRValidationError class >> description: aDescription signal: aString [ 
 	^ self new
 		setDescription: aDescription;
@@ -15,19 +17,19 @@ SRValidationError class >> description: aDescription signal: aString [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRValidationError >> isResumable [
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRValidationError >> printOn: aStream [
 	(self tag isSimpleReneDescription and: [ self tag label notNil ])
 		ifTrue: [ aStream nextPutAll: self tag label asString; nextPutAll: ': ' ].
 	aStream nextPutAll: self messageText asString 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SRValidationError >> setDescription: aDescription [
 	self tag: aDescription
 ]

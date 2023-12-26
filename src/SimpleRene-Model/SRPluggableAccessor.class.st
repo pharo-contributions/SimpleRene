@@ -2,21 +2,23 @@
 I am an access strategy defined by two block-closures. The read-block expects the model as its first argument and is used to retrieve a value. The write-block expects the model as its first and the value as its second argument and is used to write a value to the model.
 "
 Class {
-	#name : #SRPluggableAccessor,
-	#superclass : #SRAccessor,
+	#name : 'SRPluggableAccessor',
+	#superclass : 'SRAccessor',
 	#instVars : [
 		'readBlock',
 		'writeBlock'
 	],
-	#category : #'SimpleRene-Model-Accessor'
+	#category : 'SimpleRene-Model-Accessor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRPluggableAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SRPluggableAccessor class >> read: aReadBlock write: aWriteBlock [
 	^ self new
 		readBlock: aReadBlock;
@@ -24,49 +26,49 @@ SRPluggableAccessor class >> read: aReadBlock write: aWriteBlock [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRPluggableAccessor >> = anObject [
 	^ super = anObject
 		and: [ self readBlock = anObject readBlock
 		and: [ self writeBlock = anObject writeBlock ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRPluggableAccessor >> canRead: aModel [
 	^ self readBlock notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SRPluggableAccessor >> canWrite: aModel [
 	^ self writeBlock notNil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SRPluggableAccessor >> hash [
 	^ super hash bitXor: (self readBlock hash bitXor: self writeBlock hash)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRPluggableAccessor >> read: aModel [
 	^ self readBlock value: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRPluggableAccessor >> readBlock [
 	^ readBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRPluggableAccessor >> readBlock: aBlock [
 	readBlock := aBlock
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRPluggableAccessor >> storeBlock: aBlock on: aStream [ 
 	aStream nextPutAll: aBlock decompile asString allButFirst allButLast
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SRPluggableAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -77,17 +79,17 @@ SRPluggableAccessor >> storeOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 SRPluggableAccessor >> write: anObject to: aModel [
 	self writeBlock value: aModel value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRPluggableAccessor >> writeBlock [
 	^ writeBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRPluggableAccessor >> writeBlock: aBlock [
 	writeBlock := aBlock
 ]

@@ -1,41 +1,43 @@
 Class {
-	#name : #SRStreamingVisitor,
-	#superclass : #SRVisitor,
+	#name : 'SRStreamingVisitor',
+	#superclass : 'SRVisitor',
 	#instVars : [
 		'stream',
 		'object'
 	],
-	#category : #'SimpleRene-Model-Visitor'
+	#category : 'SimpleRene-Model-Visitor',
+	#package : 'SimpleRene-Model',
+	#tag : 'Visitor'
 }
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 SRStreamingVisitor >> contents [
 	^ self stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRStreamingVisitor >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRStreamingVisitor >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SRStreamingVisitor >> object: anObject during: aBlock [
 	| previous |
 	previous := self object. self object: anObject.
 	aBlock ensure: [ self object: previous ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRStreamingVisitor >> stream [
 	^ stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRStreamingVisitor >> stream: aStream [
 	stream := aStream
 ]

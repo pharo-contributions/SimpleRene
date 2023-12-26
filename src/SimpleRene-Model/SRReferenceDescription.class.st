@@ -66,25 +66,27 @@ From *a 2006 thread>http://forum.world.st/MA-labaled-options-tp116188.html`*, se
 
 "
 Class {
-	#name : #SRReferenceDescription,
-	#superclass : #SRElementDescription,
+	#name : 'SRReferenceDescription',
+	#superclass : 'SRElementDescription',
 	#instVars : [
 		'reference'
 	],
-	#category : #'SimpleRene-Model-Description'
+	#category : 'SimpleRene-Model-Description',
+	#package : 'SimpleRene-Model',
+	#tag : 'Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 SRReferenceDescription class >> defaultReference [
 	^ SRStringDescription new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRReferenceDescription >> acceptSimpleReneVisitor: aVisitor [
 	aVisitor visitReferenceDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 SRReferenceDescription >> descriptionReference [
 	<simpleReneDescription>
 	^ SRToOneRelationDescription new
@@ -96,33 +98,33 @@ SRReferenceDescription >> descriptionReference [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> gtSearchSource [
 	^ self propertyAt: #gtSearchSource ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> gtSearchSource: valuable [
 	self propertyAt: #gtSearchSource put: valuable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> initializer [
 	^ self propertyAt: #initializer ifAbsent: [ #yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> initializer: valuable [
 	self propertyAt: #initializer put: valuable
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SRReferenceDescription >> postCopy [
 	super postCopy.
 	reference := reference copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> reference [
 	reference ifNil: [ reference := self class defaultReference ].
 	^ reference
@@ -130,7 +132,7 @@ SRReferenceDescription >> reference [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SRReferenceDescription >> reference: aDescription [
 	reference := aDescription
 ]

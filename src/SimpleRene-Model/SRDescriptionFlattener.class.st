@@ -5,12 +5,14 @@ This description is used in a QCMultipartComponent and this is extracted since, 
 
 "
 Class {
-	#name : #SRDescriptionFlattener,
-	#superclass : #SRDescriptionBuilder,
-	#category : #'SimpleRene-Model-Builder'
+	#name : 'SRDescriptionFlattener',
+	#superclass : 'SRDescriptionBuilder',
+	#category : 'SimpleRene-Model-Builder',
+	#package : 'SimpleRene-Model',
+	#tag : 'Builder'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 	"aValue is the intermediate value that can be processed by further expansion"
 	aDescription canExpand
@@ -18,7 +20,7 @@ SRDescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 		ifFalse: [ builtDescription add: aDescription ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SRDescriptionFlattener >> expandDescription: aDescription for: aValue [
 	aValue simpleReneDescription do: [ :each |
 		| val |
@@ -32,7 +34,7 @@ SRDescriptionFlattener >> expandDescription: aDescription for: aValue [
 		self addToBuildedDescription: each for: val ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 SRDescriptionFlattener >> visitToOneRelationDescription: aDescription [
 	| sample |
 	aDescription canExpand ifFalse: [ ^ super visitToOneRelationDescription: aDescription ].
